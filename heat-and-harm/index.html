@@ -432,39 +432,76 @@ a:hover { text-decoration: underline; }
 /* ============ CREDIT / PARTNERSHIP BLOCK ============ */
 .credit-block {
   max-width: var(--max-wide);
-  margin: 2rem auto;
+  margin: 2.5rem auto;
   padding: 0 2rem;
 }
 .credit-block__inner {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  padding: 2rem;
-  background: var(--pd-light-bg);
-  border: 1px solid var(--pd-border);
+  gap: 2.5rem;
+  padding: 2.5rem 3rem;
+  background: #1B2A4A;
+  border-left: 4px solid #E8448A;
+  position: relative;
+  overflow: hidden;
+}
+.credit-block__inner::before {
+  content: '';
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: 200px;
+  background: linear-gradient(135deg, transparent 40%, rgba(232,68,138,0.08) 100%);
+  pointer-events: none;
 }
 .credit-block__logo {
   flex-shrink: 0;
 }
 .credit-block__logo img {
-  width: 180px;
+  width: 200px;
   height: auto;
+}
+.credit-block__body {
+  position: relative; z-index: 1;
+}
+.credit-block__label {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #E8448A;
+  margin-bottom: 0.5rem;
 }
 .credit-block__text {
   font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-style: italic;
-  color: var(--pd-secondary);
-  line-height: 1.5;
+  font-size: 0.95rem;
+  font-style: normal;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.55;
+  margin-bottom: 0.75rem;
+}
+.credit-block__link {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #E8448A;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+.credit-block__link:hover { color: #f472b6; text-decoration: none; }
+.credit-block__link svg {
+  width: 12px; height: 12px;
+  vertical-align: -1px; margin-left: 0.3em;
+  stroke: currentColor; fill: none; stroke-width: 2;
 }
 @media (max-width: 600px) {
   .credit-block__inner {
     flex-direction: column;
     text-align: center;
-    gap: 1rem;
-    padding: 1.5rem;
+    gap: 1.5rem;
+    padding: 2rem 1.5rem;
   }
-  .credit-block__logo img { width: 150px; }
+  .credit-block__logo img { width: 160px; }
 }
 
 /* ============ ANIMATIONS ============ */
@@ -564,7 +601,11 @@ a:hover { text-decoration: underline; }
       <div class="credit-block__logo">
         <img src="storyreach-logo.webp" alt="StoryReach Midwest — Pulitzer Center">
       </div>
-      <p class="credit-block__text">This story was produced as part of the Pulitzer Center's StoryReach U.S. Fellowship.</p>
+      <div class="credit-block__body">
+        <p class="credit-block__label">Supported by</p>
+        <p class="credit-block__text">This story was produced as part of the Pulitzer Center's StoryReach U.S. Fellowship.</p>
+        <a href="https://pulitzercenter.org/journalism/initiatives/storyreach-us/storyreach-us-fellows" class="credit-block__link" target="_blank" rel="noopener">Learn about StoryReach Fellows <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+      </div>
     </div>
   </div>
 
