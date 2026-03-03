@@ -32,7 +32,7 @@
   --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
 
   /* Layout */
-  --max-text: 680px;
+  --max-text: 900px;
   --max-wide: 1100px;
 }
 
@@ -116,7 +116,8 @@ a:hover { text-decoration: underline; }
   font-family: var(--font-ui);
   font-size: 0.75rem; font-weight: 600;
   letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--pd-blue);
+  color: var(--pd-white); background: var(--pd-blue);
+  display: inline-block; padding: 0.25em 0.6em;
   margin-bottom: 1rem;
   opacity: 0; animation: fadeSlideUp 0.8s ease forwards 0.4s;
 }
@@ -143,7 +144,7 @@ a:hover { text-decoration: underline; }
   opacity: 0; animation: fadeSlideUp 0.8s ease forwards 0.9s;
   padding-bottom: 2rem;
 }
-.hero__meta a { color: var(--pd-blue); }
+.hero__meta a { color: var(--pd-white); background: var(--pd-blue); padding: 0.15em 0.5em; }
 .hero__scroll-cue {
   position: absolute; bottom: 1.5rem; left: 50%;
   transform: translateX(-50%); z-index: 4;
@@ -517,7 +518,7 @@ a:hover { text-decoration: underline; }
     <h1 class="hero__title">Heat &amp; Harm</h1>
     <p class="hero__deck">As temperatures climb, Detroit's outdoor workers face dangerous heat with few protections. Latino construction workers bear the heaviest burden — and a proposed federal rule could change everything.</p>
     <div class="hero__meta">
-      <span>By <a href="https://planetdetroit.org">Planet Detroit</a></span>
+      <span>By <a href="https://planetdetroit.org/author/isabelle-tavares/">Isabelle Tavares</a></span>
       <span>February 2026</span>
       <span>12 min read</span>
     </div>
@@ -535,9 +536,6 @@ a:hover { text-decoration: underline; }
     <p>"The sun is very intense, you have to be working all day, your shirt completely soaked in sweat," Alejandro said in Spanish.</p>
     <p>About four years ago, Alejandro said he was finishing a job when his sight started to blur. Concrete dries quickly, and he had to work fast in the intense heat.</p>
     <p>"It was really hot but I had to finish the job right and quickly so the boss didn't get upset," Alejandro said. "It's difficult but you get used to it."</p>
-  </div>
-
-  <div class="text-section reveal">
     <p>Over his career, he said he's never seen a presentation on heat safety, and said state regulators do not come to his jobs. His bosses simply tell him what work he's doing and where.</p>
     <p>It's rare for jobs to provide water, let alone lunch, Alejandro said. Planet Detroit is withholding his full name due to Alejandro's fear of immigration authorities.</p>
     <p>"There are bad days at work," and sometimes the pressure mounts, he said. If employers provided enough water, it would make it more comfortable to work in the heat.</p>
