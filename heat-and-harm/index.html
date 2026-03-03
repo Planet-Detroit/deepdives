@@ -266,27 +266,34 @@ a:hover { text-decoration: underline; }
 
 /* ============ STAT BAND ============ */
 .stat-band {
-  background: var(--pd-dark-bg); padding: 4rem 2rem; margin: 2.5rem 0;
+  background: var(--pd-white); padding: 3.5rem 2rem; margin: 2.5rem 0;
 }
 .stat-band__inner {
   max-width: var(--max-wide); margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
 }
-.stat-card { text-align: center; }
+.stat-card {
+  text-align: left;
+  background: var(--pd-white);
+  border: 1px solid var(--pd-border);
+  border-top: 4px solid var(--pd-blue);
+  border-radius: 6px;
+  padding: 1.75rem 1.5rem;
+}
 .stat-card__number {
   font-family: var(--font-headline);
-  font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 700;
-  color: var(--pd-blue); line-height: 1.1; margin-bottom: 0.4rem;
+  font-size: clamp(2.4rem, 5vw, 3.2rem); font-weight: 700;
+  color: var(--pd-blue); line-height: 1.1; margin-bottom: 0.6rem;
 }
 .stat-card__label {
   font-family: var(--font-ui); font-size: 0.85rem;
-  color: rgba(255,255,255,0.65); line-height: 1.45;
+  color: var(--pd-secondary); line-height: 1.5;
 }
 .stat-card__source {
   font-family: var(--font-ui); font-size: 0.65rem;
-  color: rgba(255,255,255,0.3); margin-top: 0.6rem;
+  color: var(--pd-border); margin-top: 0.75rem;
   text-transform: uppercase; letter-spacing: 0.08em;
 }
 
