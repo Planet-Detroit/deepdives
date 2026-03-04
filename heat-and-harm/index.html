@@ -13,34 +13,18 @@
   gtag('config', 'G-5QQJ9SVV07');
 </script>
 <style>
-/* ============================================================
-   PLANET DETROIT — BRAND TOKENS
-   Core palette from style guide, with warm investigation accent
-   ============================================================ */
 :root {
-  /* Brand colors */
   --pd-blue: #2982C4;
   --pd-orange: #EA5A39;
-  --pd-red: #DD3333;
   --pd-body: #111111;
   --pd-secondary: #515151;
   --pd-dark-bg: #333333;
-  --pd-top-bar: #4A4A4A;
   --pd-light-bg: #F0F0F0;
   --pd-border: #CCCCCC;
   --pd-white: #FFFFFF;
-
-  /* Investigation accent — warm tint from illustration, used sparingly */
-  --inv-warm: #C85A2A;
-  --inv-warm-light: #FDF2EC;
-
-  /* Typography — per style guide */
   --font-headline: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
   --font-body: georgia, garamond, "Times New Roman", serif;
   --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
-
-  /* Layout */
-  --max-text: 900px;
   --max-wide: 1100px;
 }
 
@@ -54,71 +38,42 @@ body {
   line-height: 1.6;
   font-size: 20px;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
-
-@media (max-width: 600px) { body { font-size: 18px; } }
 
 a { color: var(--pd-blue); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-/* ============ PROGRESS BAR ============ */
-.progress-bar {
-  position: fixed; top: 0; left: 0;
-  height: 3px;
-  background: var(--pd-blue);
-  z-index: 1001; width: 0%;
-  transition: width 50ms linear;
-}
-
-/* ============ STICKY NAV ============ */
-.sticky-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: rgba(51, 51, 51, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 0.6rem 1.5rem;
-  transform: translateY(-100%);
-  transition: transform 0.35s ease;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.sticky-nav.visible { transform: translateY(0); }
-.sticky-nav__logo img { height: 28px; width: auto; }
-.sticky-nav__title {
-  font-family: var(--font-headline);
-  font-size: 0.9rem; font-weight: 600;
-  color: var(--pd-white);
-}
-
 /* ============ HERO ============ */
 .hero {
-  position: relative; min-height: 100vh;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  overflow: hidden; background: var(--pd-dark-bg);
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  background: var(--pd-dark-bg);
 }
-.hero__illustration {
+.hero__bg {
   position: absolute; inset: 0; z-index: 1;
 }
-.hero__illustration img {
+.hero__bg img {
   width: 100%; height: 100%;
   object-fit: cover; object-position: center 30%;
-  opacity: 0.88;
+  opacity: 0.7;
 }
 .hero__gradient {
   position: absolute; inset: 0; z-index: 2;
   background: linear-gradient(to bottom,
-    rgba(51,51,51,0) 0%, rgba(51,51,51,0.1) 35%,
-    rgba(51,51,51,0.65) 65%, rgba(51,51,51,0.95) 100%);
+    rgba(51,51,51,0) 0%, rgba(51,51,51,0.2) 30%,
+    rgba(51,51,51,0.75) 60%, rgba(51,51,51,0.98) 100%);
 }
 .hero__content {
   position: relative; z-index: 3;
-  padding: 4rem 2rem 3rem;
+  padding: 4rem 2rem 3.5rem;
   max-width: var(--max-wide); margin: 0 auto; width: 100%;
+  text-align: center;
 }
-.hero__logo {
-  margin-bottom: 1.5rem;
-  opacity: 0; animation: fadeSlideUp 0.8s ease forwards 0.2s;
-}
+.hero__logo { margin-bottom: 1.5rem; }
 .hero__logo img { height: 36px; width: auto; }
 .hero__label {
   font-family: var(--font-ui);
@@ -126,334 +81,132 @@ a:hover { text-decoration: underline; }
   letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--pd-white); background: var(--pd-blue);
   display: inline-block; padding: 0.25em 0.6em; border-radius: 4px;
-  margin-bottom: 1rem;
-  opacity: 0; animation: fadeSlideUp 0.8s ease forwards 0.4s;
+  margin-bottom: 1.25rem;
 }
 .hero__title {
   font-family: var(--font-headline);
-  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-size: clamp(2.8rem, 7vw, 4.5rem);
   font-weight: 700; line-height: 1.1;
   color: var(--pd-white);
   margin-bottom: 1.5rem;
-  opacity: 0; animation: fadeSlideUp 0.8s ease forwards 0.5s;
 }
 .hero__deck {
   font-family: var(--font-body);
-  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
-  line-height: 1.55;
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  line-height: 1.6;
   color: rgba(255,255,255,0.8);
-  max-width: 620px; margin-bottom: 2rem;
-  opacity: 0; animation: fadeSlideUp 0.8s ease forwards 0.7s;
-}
-.hero__meta {
-  display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center;
-  font-family: var(--font-ui); font-size: 0.8rem;
-  color: rgba(255,255,255,0.5);
-  opacity: 0; animation: fadeSlideUp 0.8s ease forwards 0.9s;
-  padding-bottom: 2rem;
-}
-.hero__meta a { color: var(--pd-white); background: var(--pd-blue); padding: 0.15em 0.5em; border-radius: 4px; font-size: 0.85rem; font-weight: 700; }
-.hero__scroll-cue {
-  position: absolute; bottom: 1.5rem; left: 50%;
-  transform: translateX(-50%); z-index: 4;
-  opacity: 0;
-  animation: fadeIn 1s ease forwards 1.5s, bounce 2s ease infinite 2.5s;
-}
-.hero__scroll-cue svg {
-  width: 26px; height: 26px;
-  stroke: rgba(255,255,255,0.35); fill: none; stroke-width: 2;
+  max-width: 700px; margin: 0 auto;
 }
 
-/* ============ TEXT SECTIONS ============ */
-.article { position: relative; }
-.text-section {
-  max-width: var(--max-text); margin: 0 auto; padding: 2.5rem 2rem;
+/* ============ STORIES GRID ============ */
+.stories {
+  max-width: var(--max-wide);
+  margin: 0 auto;
+  padding: 4rem 2rem;
 }
-.text-section p {
-  margin-bottom: 1.4rem;
-  font-size: 1.3rem; color: var(--pd-body); line-height: 1.6;
-}
-.text-section p:last-child { margin-bottom: 0; }
-.text-section--drop-cap p:first-of-type::first-letter {
-  font-family: var(--font-headline);
-  font-size: 3.4em; float: left; line-height: 0.8;
-  margin: 0.06em 0.1em 0 0;
-  color: var(--pd-body); font-weight: 700;
-}
-
-/* ============ PULLQUOTE (floating) ============ */
-.pullquote {
-  float: right;
-  width: 38%;
-  margin: 0.5rem 0 1.5rem 2.5rem;
-  padding: 0;
-}
-.pullquote--left {
-  float: left;
-  margin: 0.5rem 2.5rem 1.5rem 0;
-}
-.pullquote__inner {
-  border-left: 3px solid var(--pd-blue);
-  padding-left: 1.5rem;
-}
-.pullquote__text {
-  font-family: var(--font-body);
-  font-size: 1.2rem;
-  line-height: 1.4; color: var(--pd-body); font-style: italic;
-}
-.pullquote__attr {
-  margin-top: 0.75rem; font-family: var(--font-ui);
-  font-size: 0.78rem; font-weight: 600; color: var(--pd-secondary);
-}
-
-/* ============ SECTION HEADERS ============ */
-.section-header {
-  position: relative; padding: 4rem 2rem 2rem;
-  max-width: var(--max-wide); margin: 0 auto;
-}
-.section-header__rule {
-  width: 50px; height: 3px; background: var(--pd-blue); margin-bottom: 1.25rem;
-}
-.section-header__title {
-  font-family: var(--font-headline);
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  font-weight: 700; line-height: 1.2;
-  color: var(--pd-body); max-width: 700px;
-}
-
-/* ============ PHOTOS ============ */
-.photo-full {
-  position: relative; width: 100%;
-  max-width: var(--max-wide); margin: 2.5rem auto; overflow: hidden;
-}
-.photo-full img { width: 100%; display: block; }
-.photo-full__caption {
-  padding: 0.75rem 2rem;
-  color: var(--pd-secondary); font-family: var(--font-ui);
-  font-size: 0.78rem; font-style: italic;
-  border-bottom: 1px solid var(--pd-border);
-}
-
-/* ============ SCROLLY PHOTO ============ */
-.scrolly-photo {
-  position: relative; display: grid;
-  grid-template-columns: 1fr 1fr; min-height: 100vh;
-}
-.scrolly-photo__image-wrap {
-  position: sticky; top: 0; height: 100vh; overflow: hidden;
-}
-.scrolly-photo__image-wrap img {
-  width: 100%; height: 100%; object-fit: cover;
-}
-.scrolly-photo__text-col {
-  padding: 30vh 2.5rem 30vh 2.5rem;
-  display: flex; flex-direction: column; gap: 55vh;
-}
-.scrolly-photo__card {
-  background: rgba(255,255,255,0.96);
-  backdrop-filter: blur(6px);
-  padding: 2rem;
-  border-left: 3px solid var(--pd-blue);
-  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
-}
-.scrolly-photo__card h3 {
-  font-family: var(--font-headline);
-  font-size: 1.3rem; font-weight: 700;
-  margin-bottom: 0.75rem; color: var(--pd-body);
-}
-.scrolly-photo__card p {
-  font-size: 1.3rem; color: var(--pd-body);
-  line-height: 1.6; margin-bottom: 0.9rem;
-}
-.scrolly-photo__card p:last-child { margin-bottom: 0; }
-.scrolly-photo__credit {
+.stories__heading {
   font-family: var(--font-ui);
-  font-size: 0.75rem; color: var(--pd-secondary);
-  font-style: italic; margin-top: 0.75rem;
+  font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--pd-secondary);
+  margin-bottom: 2rem;
 }
-@media (max-width: 900px) {
-  .scrolly-photo { grid-template-columns: 1fr; }
-  .scrolly-photo__image-wrap { position: relative; height: 50vh; }
-  .scrolly-photo__text-col { padding: 2rem 1.5rem; gap: 2rem; }
-}
-
-/* ============ STAT BAND ============ */
-.stat-band {
-  background: var(--pd-white); padding: 3.5rem 2rem; margin: 2.5rem 0;
-}
-.stat-band__inner {
-  max-width: var(--max-wide); margin: 0 auto;
+.story-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
 }
-.stat-card {
-  text-align: left;
+.story-card {
+  display: block;
   background: var(--pd-white);
   border: 1px solid var(--pd-border);
-  border-top: 4px solid var(--pd-blue);
-  border-radius: 6px;
-  padding: 1.75rem 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
-.stat-card__number {
+.story-card:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+  transform: translateY(-3px);
+  text-decoration: none;
+}
+.story-card__image {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+.story-card__image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+.story-card:hover .story-card__image img {
+  transform: scale(1.03);
+}
+.story-card__badge {
+  position: absolute;
+  top: 1rem; left: 1rem;
+  font-family: var(--font-ui);
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--pd-white);
+  background: var(--pd-blue);
+  padding: 0.2em 0.6em;
+  border-radius: 3px;
+}
+.story-card__body {
+  padding: 1.5rem;
+}
+.story-card__title {
   font-family: var(--font-headline);
-  font-size: clamp(2.4rem, 5vw, 3.2rem); font-weight: 700;
-  color: var(--pd-blue); line-height: 1.1; margin-bottom: 0.6rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--pd-body);
+  margin-bottom: 0.75rem;
 }
-.stat-card__label {
-  font-family: var(--font-ui); font-size: 0.95rem;
-  color: var(--pd-secondary); line-height: 1.5;
+.story-card__excerpt {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--pd-secondary);
+  line-height: 1.55;
+  margin-bottom: 1rem;
 }
-.stat-card__source {
-  font-family: var(--font-ui); font-size: 0.75rem;
-  color: var(--pd-secondary); margin-top: 0.75rem;
-  text-transform: uppercase; letter-spacing: 0.08em;
+.story-card__meta {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: var(--pd-secondary);
 }
-
-/* ============ CHART ============ */
-.chart-section {
-  max-width: var(--max-wide); margin: 3rem auto; padding: 0 2rem;
-}
-.chart-wrap {
-  background: var(--pd-white);
-  border: 1px solid var(--pd-border); padding: 2.5rem;
-}
-.chart-wrap__title {
-  font-family: var(--font-headline);
-  font-size: 1.3rem; font-weight: 700;
-  margin-bottom: 0.35rem; color: var(--pd-body);
-}
-.chart-wrap__subtitle {
-  font-family: var(--font-ui); font-size: 0.8rem;
-  color: var(--pd-secondary); margin-bottom: 2rem;
-}
-.chart-bars { display: flex; flex-direction: column; gap: 1.25rem; }
-.chart-bar {
-  display: grid;
-  grid-template-columns: 200px 1fr 50px;
-  gap: 1rem; align-items: center;
-}
-.chart-bar__label {
-  font-family: var(--font-ui); font-size: 0.82rem;
-  color: var(--pd-secondary); text-align: right;
-}
-.chart-bar__track {
-  height: 28px; background: var(--pd-light-bg);
-  position: relative; overflow: hidden;
-}
-.chart-bar__fill {
-  height: 100%; width: 0%;
-  transition: width 1.2s cubic-bezier(0.23, 1, 0.32, 1);
-}
-.chart-bar__fill--danger { background: var(--pd-red); }
-.chart-bar__fill--warning { background: var(--pd-orange); }
-.chart-bar__fill--caution { background: var(--pd-blue); }
-.chart-bar__value {
-  font-family: var(--font-ui); font-size: 0.85rem;
-  font-weight: 700; color: var(--pd-body);
-}
-.chart-source {
-  font-family: var(--font-ui); font-size: 0.65rem;
-  color: var(--pd-secondary); margin-top: 1.5rem;
-  text-transform: uppercase; letter-spacing: 0.08em;
-}
-@media (max-width: 600px) {
-  .chart-bar { grid-template-columns: 1fr; gap: 0.25rem; }
-  .chart-bar__label { text-align: left; }
+.story-card__meta span + span::before {
+  content: '·';
+  margin: 0 0.5em;
 }
 
-/* ============ TIMELINE ============ */
-.timeline-section {
-  max-width: var(--max-text); margin: 3rem auto; padding: 0 2rem;
+/* ============ COMING SOON ============ */
+.story-card--coming-soon {
+  opacity: 0.6;
+  pointer-events: none;
 }
-.timeline-section__title {
-  font-family: var(--font-headline);
-  font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700;
-  margin-bottom: 2rem; color: var(--pd-body);
+.story-card--coming-soon .story-card__image {
+  background: var(--pd-light-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.timeline { position: relative; padding-left: 2.25rem; }
-.timeline::before {
-  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-  width: 6px; background: var(--pd-blue); opacity: 0.3;
-}
-.timeline__item {
-  position: relative; margin-bottom: 2rem; padding-bottom: 2rem;
-  border-bottom: 1px solid var(--pd-light-bg);
-}
-.timeline__item:last-child { border-bottom: none; margin-bottom: 0; }
-.timeline__dot {
-  position: absolute; left: -2.65rem; top: 0.2rem;
-  width: 14px; height: 14px; border-radius: 50%;
-  background: var(--pd-blue); border: 2px solid var(--pd-white);
-}
-.timeline__year {
-  font-family: var(--font-ui); font-size: 1rem;
-  font-weight: 900; color: var(--pd-blue);
-  letter-spacing: 0.03em; margin-bottom: 0.25rem;
-}
-.timeline__text {
-  font-family: var(--font-ui); font-size: 1.15rem; font-weight: 900;
-  color: var(--pd-secondary); line-height: 1.55;
+.story-card--coming-soon .story-card__image::after {
+  content: 'Coming Soon';
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pd-secondary);
 }
 
-/* ============ DARK SECTION ============ */
-.dark-section {
-  background: var(--pd-dark-bg); color: var(--pd-white);
-  padding: 4rem 2rem; margin: 2.5rem 0;
-}
-.dark-section .text-inner { max-width: var(--max-text); margin: 0 auto; }
-.dark-section p {
-  color: rgba(255,255,255,0.75); margin-bottom: 1.4rem;
-  font-size: 1.05rem; line-height: 1.6;
-}
-.dark-section .section-header__title { color: var(--pd-white); }
-
-/* ============ WARM SECTION ============ */
-.warm-section {
-  background: var(--inv-warm-light); padding: 4rem 2rem; margin: 2.5rem 0;
-}
-.warm-section .text-inner { max-width: var(--max-text); margin: 0 auto; }
-.warm-section p {
-  color: var(--pd-body); margin-bottom: 1.4rem;
-  font-size: 1.05rem; line-height: 1.6;
-}
-
-/* ============ FOOTER ============ */
-.article-footer {
-  background: var(--pd-dark-bg); padding: 3.5rem 2rem; text-align: center;
-}
-.article-footer__logo { margin-bottom: 1.25rem; }
-.article-footer__logo img { height: 40px; width: auto; }
-.article-footer__note {
-  font-family: var(--font-ui); font-size: 0.85rem;
-  color: rgba(255,255,255,0.5);
-  max-width: 480px; margin: 0 auto 1.5rem; line-height: 1.55;
-}
-.article-footer__cta {
-  display: inline-block; font-family: var(--font-ui);
-  font-size: 0.85rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.08em;
-  background: var(--pd-orange); color: var(--pd-white);
-  padding: 0.75rem 2rem; text-decoration: none;
-  margin-bottom: 2rem; transition: opacity 0.2s;
-}
-.article-footer__cta:hover { opacity: 0.9; text-decoration: none; }
-.article-footer__credits {
-  font-family: var(--font-ui); font-size: 0.72rem;
-  color: rgba(255,255,255,0.3); margin-bottom: 0.5rem;
-}
-.article-footer__links {
-  font-family: var(--font-ui); font-size: 0.7rem;
-  color: rgba(255,255,255,0.25);
-}
-.article-footer__links a {
-  color: rgba(255,255,255,0.4); margin: 0 0.5rem;
-}
-
-/* ============ CREDIT / PARTNERSHIP BLOCK ============ */
+/* ============ CREDIT BLOCK ============ */
 .credit-block {
   max-width: var(--max-wide);
-  margin: 2.5rem auto;
+  margin: 0 auto 3rem;
   padding: 0 2rem;
 }
 .credit-block__inner {
@@ -474,41 +227,25 @@ a:hover { text-decoration: underline; }
   background: linear-gradient(135deg, transparent 40%, rgba(27,42,74,0.05) 100%);
   pointer-events: none;
 }
-.credit-block__logo {
-  flex-shrink: 0;
-}
-.credit-block__logo img {
-  width: 200px;
-  height: auto;
-}
-.credit-block__body {
-  position: relative; z-index: 1;
-}
+.credit-block__logo { flex-shrink: 0; }
+.credit-block__logo img { width: 200px; height: auto; }
+.credit-block__body { position: relative; z-index: 1; }
 .credit-block__label {
   font-family: var(--font-ui);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #1B2A4A;
-  margin-bottom: 0.5rem;
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #1B2A4A; margin-bottom: 0.5rem;
 }
 .credit-block__text {
   font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-style: normal;
-  color: #333333;
-  line-height: 1.55;
-  margin-bottom: 0.75rem;
+  font-size: 0.95rem; color: #333333;
+  line-height: 1.55; margin-bottom: 0.75rem;
 }
 .credit-block__link {
   font-family: var(--font-ui);
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #E8448A;
-  text-decoration: none;
-  letter-spacing: 0.03em;
-  transition: color 0.2s;
+  font-size: 0.78rem; font-weight: 600;
+  color: #E8448A; text-decoration: none;
+  letter-spacing: 0.03em; transition: color 0.2s;
 }
 .credit-block__link:hover { color: #f472b6; text-decoration: none; }
 .credit-block__link svg {
@@ -516,7 +253,36 @@ a:hover { text-decoration: underline; }
   vertical-align: -1px; margin-left: 0.3em;
   stroke: currentColor; fill: none; stroke-width: 2;
 }
+
+/* ============ FOOTER ============ */
+.footer {
+  background: var(--pd-dark-bg);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.footer__logo { margin-bottom: 1rem; }
+.footer__logo img { height: 36px; width: auto; }
+.footer__note {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  max-width: 480px; margin: 0 auto 1.5rem;
+  line-height: 1.55;
+}
+.footer__links {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.25);
+}
+.footer__links a {
+  color: rgba(255,255,255,0.4);
+  margin: 0 0.5rem;
+}
+
 @media (max-width: 600px) {
+  .hero__content { padding: 3rem 1.25rem 2.5rem; }
+  .stories { padding: 2.5rem 1.25rem; }
+  .story-grid { grid-template-columns: 1fr; }
   .credit-block__inner {
     flex-direction: column;
     text-align: center;
@@ -525,112 +291,12 @@ a:hover { text-decoration: underline; }
   }
   .credit-block__logo img { width: 160px; }
 }
-
-/* ============ DONATE PARALLAX ============ */
-.donate-banner {
-  position: relative;
-  min-height: 420px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-}
-.donate-banner__bg {
-  position: absolute; inset: 0; z-index: 1;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.donate-banner__overlay {
-  position: absolute; inset: 0; z-index: 2;
-  background: rgba(17, 17, 17, 0.7);
-}
-.donate-banner__content {
-  position: relative; z-index: 3;
-  max-width: 620px;
-  padding: 4rem 2rem;
-}
-.donate-banner__label {
-  font-family: var(--font-ui);
-  font-size: 0.7rem; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--pd-orange);
-  margin-bottom: 1rem;
-}
-.donate-banner__title {
-  font-family: var(--font-headline);
-  font-size: clamp(1.6rem, 4vw, 2.2rem);
-  font-weight: 700; line-height: 1.2;
-  color: var(--pd-white);
-  margin-bottom: 1.25rem;
-}
-.donate-banner__text {
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  color: rgba(255,255,255,0.8);
-  line-height: 1.6;
-  margin-bottom: 2rem;
-}
-.donate-banner__cta {
-  display: inline-block;
-  font-family: var(--font-ui);
-  font-size: 0.9rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.08em;
-  background: var(--pd-orange); color: var(--pd-white);
-  padding: 0.85rem 2.5rem;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: opacity 0.2s;
-}
-.donate-banner__cta:hover { opacity: 0.9; text-decoration: none; }
-@media (max-width: 600px) {
-  .donate-banner { min-height: 360px; }
-  .donate-banner__bg { background-attachment: scroll; }
-  .donate-banner__content { padding: 3rem 1.25rem; }
-}
-
-/* ============ ANIMATIONS ============ */
-.reveal {
-  opacity: 0; transform: translateY(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-@keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn { to { opacity: 1; } }
-@keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(7px); }
-}
-
-@media (max-width: 600px) {
-  .hero__content { padding: 3rem 1.25rem 2rem; }
-  .text-section { padding: 2rem 1.25rem; }
-  .stat-band { padding: 3rem 1.25rem; }
-  .pullquote { float: none; width: 100%; margin: 1.5rem 0; }
-  .pullquote__inner { padding-left: 1.25rem; }
-}
 </style>
 </head>
 <body>
 
-<div class="progress-bar" id="progressBar"></div>
-
-<nav class="sticky-nav" id="stickyNav">
-  <span class="sticky-nav__logo">
-    <img src="https://planetdetroit.org/wp-content/uploads/2024/07/cropped-PlanetDetroitLogo-WhiteText-2.png" alt="Planet Detroit">
-  </span>
-  <span class="sticky-nav__title">Heat &amp; Harm</span>
-</nav>
-
-<!-- ===== HERO ===== -->
 <header class="hero">
-  <div class="hero__illustration">
+  <div class="hero__bg">
     <img src="hero.png" alt="Illustration of construction workers laboring under extreme heat">
   </div>
   <div class="hero__gradient"></div>
@@ -638,308 +304,71 @@ a:hover { text-decoration: underline; }
     <div class="hero__logo">
       <img src="https://planetdetroit.org/wp-content/uploads/2024/07/cropped-PlanetDetroitLogo-WhiteText-2.png" alt="Planet Detroit">
     </div>
-    <div class="hero__label">Deep Dive / Investigation</div>
+    <div class="hero__label">Investigative Series</div>
     <h1 class="hero__title">Heat &amp; Harm</h1>
-    <p class="hero__deck">As temperatures climb, Detroit's outdoor workers face dangerous heat with few protections. Latino construction workers bear the heaviest burden — and a proposed federal rule could change everything.</p>
-    <div class="hero__meta">
-      <span>By <a href="https://planetdetroit.org/author/isabelle-tavares/">Isabelle Tavares</a></span>
-      <span>February 2026</span>
-      <span>12 min read</span>
-    </div>
-  </div>
-  <div class="hero__scroll-cue">
-    <svg viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    <p class="hero__deck">As the climate crisis accelerates, who bears the cost? This investigative series examines how rising temperatures are reshaping the lives of workers across Michigan — with a focus on Detroit's Latino community, where outdoor laborers face dangerous heat with few protections.</p>
   </div>
 </header>
 
-<!-- ===== ARTICLE ===== -->
-<article class="article">
+<section class="stories">
+  <p class="stories__heading">Stories in this series</p>
+  <div class="story-grid">
 
-  <div class="text-section text-section--drop-cap reveal">
-    <p>Detroiter Alejandro, 47, works all day under the open sky. He does finishing work in construction on driveways, sidewalks, and patios. Although he's worked in construction for years and knows how to manage in the heat, he said he still gets dizzy sometimes.</p>
-    <p>"The sun is very intense, you have to be working all day, your shirt completely soaked in sweat," Alejandro said in Spanish.</p>
-    <p>About four years ago, Alejandro said he was finishing a job when his sight started to blur. Concrete dries quickly, and he had to work fast in the intense heat.</p>
-    <p>"It was really hot but I had to finish the job right and quickly so the boss didn't get upset," Alejandro said. "It's difficult but you get used to it."</p>
-    <p>Over his career, he said he's never seen a presentation on heat safety, and said state regulators do not come to his jobs. His bosses simply tell him what work he's doing and where.</p>
-    <p>It's rare for jobs to provide water, let alone lunch, Alejandro said. Planet Detroit is withholding his full name due to Alejandro's fear of immigration authorities.</p>
-    <p>"There are bad days at work," and sometimes the pressure mounts, he said. If employers provided enough water, it would make it more comfortable to work in the heat.</p>
-    <p>"I would like that managers consider us as human beings, not animals working without drinks," Alejandro said.</p>
-    <div class="pullquote">
-      <div class="pullquote__inner">
-        <p class="pullquote__text">"I would like that managers consider us as human beings, not animals working without drinks."</p>
-        <p class="pullquote__attr">— Alejandro, Detroit construction worker</p>
+    <a href="latino-workers-heat/" class="story-card">
+      <div class="story-card__image">
+        <img src="latino-workers-heat/hero.png" alt="Illustration of construction workers laboring under extreme heat">
+        <span class="story-card__badge">Part 1</span>
       </div>
-    </div>
-    <p>Alejandro said he works in difficult circumstances to make sure his family has "everything" — bills that are paid and food on the table. He spoke with Planet Detroit while his children played soccer at Patton Park on a summer afternoon.</p>
-    <p>"We came to work, not to steal anything from anyone. We work to bring money home," Alejandro said.</p>
-  </div>
-
-  <div class="photo-full reveal">
-    <img src="aus6.jpg" alt="A construction worker's hand reaches for a concrete finishing trowel on a store display wall">
-    <div class="photo-full__caption">Photo by Austin Steele for Planet Detroit</div>
-  </div>
-
-  <!-- Pulitzer Center / StoryReach credit -->
-  <div class="credit-block reveal">
-    <div class="credit-block__inner">
-      <div class="credit-block__logo">
-        <img src="storyreach-logo.webp" alt="StoryReach Midwest — Pulitzer Center">
-      </div>
-      <div class="credit-block__body">
-        <p class="credit-block__label">Supported by</p>
-        <p class="credit-block__text">This story was produced as part of the Pulitzer Center's StoryReach U.S. Fellowship.</p>
-        <a href="https://pulitzercenter.org/journalism/initiatives/storyreach-us/storyreach-us-fellows" class="credit-block__link" target="_blank" rel="noopener">Learn about StoryReach Fellows <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-header reveal">
-    <div class="section-header__rule"></div>
-    <h2 class="section-header__title">Heat challenges surface at Southwest Detroit urgent care</h2>
-  </div>
-
-  <div class="text-section reveal">
-    <p>The roof you sleep under, the sidewalk you walk on, the HVAC system that's keeping your home at a comfortable temperature: each element was installed by someone working under increasingly hot conditions.</p>
-    <div class="pullquote pullquote--left">
-      <div class="pullquote__inner">
-        <p class="pullquote__text">"Even the healthiest person can still get heat stroke or heat exhaustion, even if they drink a ton of water. Once they get heat stroke, they need to be in the hospital."</p>
-        <p class="pullquote__attr">— Christopher Noah-Sayers, PA, Acadian Urgent Care Clinic</p>
-      </div>
-    </div>
-    <p>Christopher Noah-Sayers, physician assistant at Acadian Urgent Care Clinic in the Springwells neighborhood of Southwest Detroit, said during summer 2025 he saw "at least" one worker a week due to heat-related illnesses.</p>
-    <p>Outdoor workers in construction, roofing, or landscaping come in "very red in the face" from heat rash or heat exhaustion, he said.</p>
-    <p>"Even the healthiest person can still get heat stroke or heat exhaustion, even if they drink a ton of water. Once they get heat stroke, they need to be in the hospital," Noah-Sayers said.</p>
-  </div>
-
-  <div class="stat-band reveal">
-    <div class="stat-band__inner">
-      <div class="stat-card">
-        <div class="stat-card__number">#1</div>
-        <div class="stat-card__label">Weather-related killer in the United States</div>
-        <div class="stat-card__source">National Weather Service</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-card__number">4</div>
-        <div class="stat-card__label">Heat-related workplace deaths in Michigan, 2011–2024</div>
-        <div class="stat-card__source">MIOSHA records</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-card__number">986</div>
-        <div class="stat-card__label">U.S. workers who died from heat exposure, 1992–2022</div>
-        <div class="stat-card__source">Bureau of Labor Statistics</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-card__number">34%</div>
-        <div class="stat-card__label">Of occupational heat deaths were construction workers — despite being 6% of the workforce</div>
-        <div class="stat-card__source">American Journal of Industrial Medicine</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="text-section reveal">
-    <p>Heat is the No. 1 weather-related killer in the United States, according to the National Weather Service. Heat claimed the lives of four workers in Michigan from 2011 to 2024.</p>
-    <p>Heat kills more Americans than hurricanes or tornadoes, yet people don't think of the dangers in the same dramatic way, and until recently, neither did policymakers.</p>
-    <p>On Aug. 30, 2024, the Occupational Safety and Health Administration proposed a new heat injury and illness prevention standard that would require employers to plan for heat hazards in their workplace.</p>
-    <p>In the meantime, Latinos — who are overrepresented in construction, food processing, and manufacturing — are still being affected by heat, yet few protections exist to safeguard them from rising temperatures.</p>
-  </div>
-
-  <!-- Luis Hernandez scrolly -->
-  <div class="scrolly-photo">
-    <div class="scrolly-photo__image-wrap">
-      <img src="luis2.jpg" alt="Luis Hernandez, retired construction worker">
-    </div>
-    <div class="scrolly-photo__text-col">
-      <div class="scrolly-photo__card reveal">
-        <h3>Freeway work 'like a sauna'</h3>
-        <p>Luis Hernandez, a 69-year-old retired construction worker and Wyandotte resident, spent 24 years in highway construction. He helped build sections of I-75, I-94, the John C. Lodge freeway, and airports in Detroit, Kalamazoo, and Flint.</p>
-      </div>
-      <div class="scrolly-photo__card reveal">
-        <p>For most of his career, Hernandez worked with a crew of four others building manholes for freeway drains. The jobs started 30 feet deep at the bottom of a hole, and the workers spiraled up the cylinder, laying the drains block by block.</p>
-        <p>Each manhole took about an hour. In the summer, Hernandez said they felt "like a sauna."</p>
-      </div>
-      <div class="scrolly-photo__card reveal">
-        <p>"I felt like I was suffocating because there was so much condensation," he said in Spanish. "When I came out, I looked like a mouse that had fallen into a bucket of water."</p>
-        <p>The crew had to stay "in the hole" until the job was done: no water and no food until they came out.</p>
-      </div>
-      <div class="scrolly-photo__card reveal">
-        <p>His enjoyment of retirement is tempered by hearing loss and physical therapy for back problems — what he calls "the payback of all of those years of hard physical work."</p>
-        <p>Some worksites are improving, Hernandez said. His sons work on the Gordie Howe International Bridge project, where workers are supplied with "quite a lot" of mineralized water.</p>
-        <p class="scrolly-photo__credit">Photo by Maricela Hernández for Planet Detroit</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-header reveal">
-    <div class="section-header__rule"></div>
-    <h2 class="section-header__title">Detroit heats up</h2>
-  </div>
-
-  <div class="text-section reveal">
-    <p>In 2024, the earth's average surface temperature record was shattered as the warmest in history since recordkeeping began in 1880, according to NASA. The third warmest year was 2025, according to NOAA's global temperature record.</p>
-    <p>Since 1970, the average annual temperature in Detroit has climbed 4.1 degrees Fahrenheit, according to Climate Central. The urban heat island effect — in which high temperatures and humidity combine to create dangerous heat index values — is a significant concern for Detroit and similar urban areas.</p>
-    <p>Outdoor urban workers may face higher temperatures from the heat island effect, which can raise city temperatures by 18 to 27°F during the day and 9 to 18°F at night compared to outlying areas, according to the EPA.</p>
-  </div>
-
-  <div class="chart-section reveal" id="chartSection">
-    <div class="chart-wrap">
-      <h3 class="chart-wrap__title">Rising Heat Index Days in Detroit</h3>
-      <p class="chart-wrap__subtitle">Additional days per year compared to 1979 baseline · 1979–2023</p>
-      <div class="chart-bars">
-        <div class="chart-bar">
-          <span class="chart-bar__label">High heat index days (≥80°F)</span>
-          <div class="chart-bar__track"><div class="chart-bar__fill chart-bar__fill--caution" data-width="67"></div></div>
-          <span class="chart-bar__value">+10</span>
-        </div>
-        <div class="chart-bar">
-          <span class="chart-bar__label">Warning days (80–94°F)</span>
-          <div class="chart-bar__track"><div class="chart-bar__fill chart-bar__fill--warning" data-width="60"></div></div>
-          <span class="chart-bar__value">+9</span>
-        </div>
-        <div class="chart-bar">
-          <span class="chart-bar__label">Danger days (≥95°F)</span>
-          <div class="chart-bar__track"><div class="chart-bar__fill chart-bar__fill--danger" data-width="20"></div></div>
-          <span class="chart-bar__value">+1</span>
+      <div class="story-card__body">
+        <h2 class="story-card__title">Michigan's Latino workers face deadly heat. A proposed federal rule could save lives</h2>
+        <p class="story-card__excerpt">Detroit's outdoor workers face dangerous heat with few protections. Latino construction workers bear the heaviest burden — and a proposed federal rule could change everything.</p>
+        <div class="story-card__meta">
+          <span>Isabelle Tavares</span>
+          <span>February 2026</span>
+          <span>12 min read</span>
         </div>
       </div>
-      <p class="chart-source">Source: gridMET dataset, National Weather Service · Climate Central analysis</p>
-    </div>
-  </div>
+    </a>
 
-  <div class="text-section reveal">
-    <p>A study supported by Nature found that U.S. population exposure to extreme heat increases four- to six-fold over observed levels in the late twentieth century. Overnight lows have warmed faster than daytime highs, which may lessen opportunities for relief during heat waves.</p>
-    <p>More frequent heatwaves and humid conditions elevate the risk of heat-related deaths and illnesses.</p>
-  </div>
-
-  <div class="photo-full reveal">
-    <img src="aus7.jpg" alt="A construction worker sits in a dimly lit storage room, silhouetted against a bright light">
-    <div class="photo-full__caption">Photo by Austin Steele for Planet Detroit</div>
-  </div>
-
-  <div class="section-header reveal">
-    <div class="section-header__rule"></div>
-    <h2 class="section-header__title">Outdoor workers pay the price of a warming climate</h2>
-  </div>
-
-  <div class="text-section reveal">
-    <p>Construction workers represent only 6% of the total U.S. workforce, yet they account for more than one-third of all reported occupational deaths associated with heat exposure, according to a study published in the American Journal of Industrial Medicine.</p>
-    <p>Outdoor workers disproportionately face greater heat-related health threats, especially in jobs involving strenuous activity like shoveling, manual sawing, pushing and pulling heavy loads, or walking at a fast pace.</p>
-    <p>Heat-related injuries, illnesses, and deaths at work are largely preventable, according to the National Integrated Heat Health Information System. Yet comprehensive nationwide standards and protections for workers contending with heat are lacking, said Laurel Harduar Morano, associate professor at Michigan State University.</p>
-  </div>
-
-  <div class="dark-section">
-    <div class="text-inner">
-      <div class="section-header" style="padding:0 0 2rem;">
-        <div class="section-header__rule"></div>
-        <h2 class="section-header__title">'In workplace death, one is too many'</h2>
-      </div>
-      <p>The Michigan Occupational Safety and Health Administration does not define a specific temperature that is too hot for work, and the state agency does not have a heat standard. Instead, MIOSHA encourages employers to enact elements of a heat illness prevention program.</p>
-      <p>The federal OSHA's proposed national heat rule would cover all employers working indoors or outdoors when the heat index is 80°F or higher. Post-hearing comments were accepted until Oct. 30, 2025.</p>
-    </div>
-  </div>
-
-  <div class="timeline-section reveal">
-    <h3 class="timeline-section__title">The long road to a heat standard</h3>
-    <div class="timeline">
-      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">1970</div><p class="timeline__text">The Occupational Safety and Health Act creates OSHA and establishes nationwide workplace safety standards.</p></div>
-      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">1973</div><p class="timeline__text">NIOSH issues first criteria document recommending heat standards.</p></div>
-      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">2016</div><p class="timeline__text">NIOSH revises heat criteria, setting a formal criteria for a heat standard — still only a recommendation.</p></div>
-      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">Jan 2021</div><p class="timeline__text">President Biden signs an executive order laying groundwork for the Labor Department's Climate Action Plan.</p></div>
-      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">April 2022</div><p class="timeline__text">OSHA's National Emphasis Program on heat-related hazards expands to cover both outdoor and indoor environments.</p></div>
-      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">Aug 2024</div><p class="timeline__text">OSHA proposes historic heat injury and illness prevention standard for employers nationwide.</p></div>
-      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">Oct 2025</div><p class="timeline__text">Public comment period closes. OSHA concludes hearings as part of ongoing rulemaking process.</p></div>
-    </div>
-  </div>
-
-  <div class="text-section reveal">
-    <p>Kristen Osterkamp, program manager at MIOSHA, said the state agency has seen a 30% increase in heat consultations in the last three years since the state program was created. In the last year, 225 employers asked for heat consultations.</p>
-    <p>"It's a clear sign that employers are engaging with us before a problem happens," Osterkamp said.</p>
-    <p>"In workplace death, one is too many. Our trainers work daily with employers to implement plans to ensure our workers are going to be safe, not wait for a death to happen," Osterkamp said.</p>
-    <div class="pullquote">
-      <div class="pullquote__inner">
-        <p class="pullquote__text">"In workplace death, one is too many. Our trainers work daily with employers to implement plans to ensure our workers are going to be safe, not wait for a death to happen."</p>
-        <p class="pullquote__attr">— Kristen Osterkamp, MIOSHA Program Manager</p>
+    <div class="story-card story-card--coming-soon">
+      <div class="story-card__image"></div>
+      <div class="story-card__body">
+        <h2 class="story-card__title">Part 2 coming soon</h2>
+        <p class="story-card__excerpt">The next chapter in our investigation into climate, labor, and the communities most affected.</p>
+        <div class="story-card__meta">
+          <span>Coming 2026</span>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="section-header reveal">
-    <div class="section-header__rule"></div>
-    <h2 class="section-header__title">Employers doing it right</h2>
-  </div>
-
-  <div class="text-section reveal">
-    <p>Paul Mahon, senior project manager for Grand Traverse Construction in Traverse City, completed MIOSHA's heat safety training in summer 2025. The company's 58 employees provide commercial and industrial services across Northern Michigan.</p>
-    <p>Summer temperatures in Traverse City averaged 77°F in the past three years. In late June 2025, the northern coastal city saw a heat index of 107°F — placing workers in NOAA's "danger" category.</p>
-    <p>A week before high heat index days, Mahon sends out reminders to his crews to plan accordingly. He stocks all worksites with water, coolers, electrolyte drinks, and plans break times in cool trailers during peak temperatures.</p>
-    <p>"We're not opposed to spending dollars to make sure everybody's safe. You got to take care of your employees across the board," Mahon said.</p>
-    <div class="pullquote pullquote--left">
-      <div class="pullquote__inner">
-        <p class="pullquote__text">"We're not opposed to spending dollars to make sure everybody's safe. You got to take care of your employees across the board."</p>
-        <p class="pullquote__attr">— Paul Mahon, Grand Traverse Construction</p>
-      </div>
-    </div>
-    <p>Mahon said the "good" employers look out for their employees — "we're nothing without" them. If an employer is not looking ahead or providing the right equipment, additional break time, and resources, that's impacting the employee.</p>
-    <p>"It's just a bad condition to be in. We don't operate that as a business, and we wouldn't expect other businesses to operate that way either," Mahon said.</p>
-  </div>
-
-</article>
-
-<section class="donate-banner">
-  <div class="donate-banner__bg" style="background-image:url(donate-bg.jpg)"></div>
-  <div class="donate-banner__overlay"></div>
-  <div class="donate-banner__content">
-    <p class="donate-banner__label">Support Planet Detroit</p>
-    <h2 class="donate-banner__title">Support this journalism</h2>
-    <p class="donate-banner__text">This investigation looks at the relationship between climate and labor, and how it disproportionately impacts Detroit's Latino communities. It's the first in a series and requires time and sustained work.</p>
-    <a href="https://donorbox.org/be-a-planet-detroiter-780440" class="donate-banner__cta" target="_blank" rel="noopener">Donate Now</a>
   </div>
 </section>
 
-<footer class="article-footer">
-  <div class="article-footer__logo">
+<div class="credit-block">
+  <div class="credit-block__inner">
+    <div class="credit-block__logo">
+      <img src="storyreach-logo.webp" alt="StoryReach Midwest — Pulitzer Center">
+    </div>
+    <div class="credit-block__body">
+      <p class="credit-block__label">Supported by</p>
+      <p class="credit-block__text">This series was produced as part of the Pulitzer Center's StoryReach U.S. Fellowship.</p>
+      <a href="https://pulitzercenter.org/journalism/initiatives/storyreach-us/storyreach-us-fellows" class="credit-block__link" target="_blank" rel="noopener">Learn about StoryReach Fellows <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer__logo">
     <img src="https://planetdetroit.org/wp-content/uploads/2024/07/cropped-PlanetDetroitLogo-WhiteText-2.png" alt="Planet Detroit">
   </div>
-  <p class="article-footer__note">Rooted in Detroit, we're on a mission to drive informed action through community-centered independent environmental and climate journalism by amplifying local voices, holding power accountable, and spotlighting solutions to inspire hope and action across Michigan and the Great Lakes.</p>
-  <p class="article-footer__credits">Photography: Austin Steele &amp; Maricela Hernández · Illustration: Planet Detroit</p>
-  <p class="article-footer__links">
+  <p class="footer__note">Rooted in Detroit, we're on a mission to drive informed action through community-centered independent environmental and climate journalism by amplifying local voices, holding power accountable, and spotlighting solutions to inspire hope and action across Michigan and the Great Lakes.</p>
+  <p class="footer__links">
     <a href="https://planetdetroit.org">planetdetroit.org</a>
     <a href="https://www.instagram.com/planetdetroitnews/">Instagram</a>
     <a href="https://www.facebook.com/planetdetroitnews">Facebook</a>
     <a href="https://bsky.app/profile/planetdetroit.bsky.social">Bluesky</a>
   </p>
 </footer>
-
-<script>
-const progressBar = document.getElementById('progressBar');
-const stickyNav = document.getElementById('stickyNav');
-function updateProgress() {
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  progressBar.style.width = (scrollTop / docHeight) * 100 + '%';
-  stickyNav.classList.toggle('visible', scrollTop > window.innerHeight * 0.8);
-}
-window.addEventListener('scroll', updateProgress, { passive: true });
-
-const reveals = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-reveals.forEach(el => revealObserver.observe(el));
-
-const chartSection = document.getElementById('chartSection');
-const chartFills = document.querySelectorAll('.chart-bar__fill');
-let chartAnimated = false;
-new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && !chartAnimated) {
-      chartAnimated = true;
-      chartFills.forEach(fill => { fill.style.width = fill.dataset.width + '%'; });
-    }
-  });
-}, { threshold: 0.3 }).observe(chartSection);
-</script>
 
 </body>
 </html>
