@@ -169,11 +169,11 @@ a:hover { text-decoration: underline; }
 .text-section {
   max-width: var(--max-text); margin: 0 auto; padding: 2.5rem 2rem;
 }
-.text-section p {
+.text-section > p {
   margin-bottom: 1.4rem;
   font-size: 1.3rem; color: var(--pd-body); line-height: 1.6;
 }
-.text-section p:last-child { margin-bottom: 0; }
+.text-section > p:last-child { margin-bottom: 0; }
 .text-section--drop-cap p:first-of-type::first-letter {
   font-family: var(--font-headline);
   font-size: 3.4em; float: left; line-height: 0.8;
@@ -447,16 +447,6 @@ a:hover { text-decoration: underline; }
   .civic-action-float .civic-action-box {
     max-width: 100% !important;
   }
-}
-.civic-action-float p,
-.civic-action-float div,
-.civic-action-float li,
-.civic-action-float span,
-.civic-action-float label {
-  font-size: inherit !important;
-  color: inherit !important;
-  margin-bottom: 0 !important;
-  line-height: inherit !important;
 }
 
 /* ============ WARM SECTION ============ */
