@@ -567,6 +567,64 @@ a:hover { text-decoration: underline; }
   .credit-block__logo img { width: 160px; }
 }
 
+/* ============ AUTHOR BOX ============ */
+.author-box {
+  max-width: var(--max-text);
+  margin: 0 auto;
+  padding: 2.5rem 2rem 3rem;
+}
+.author-box__inner {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 2rem;
+  border-top: 1px solid var(--pd-border);
+  border-bottom: 1px solid var(--pd-border);
+}
+.author-box__photo {
+  flex-shrink: 0;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.author-box__photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.author-box__label {
+  font-family: var(--font-ui);
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--pd-secondary);
+  margin-bottom: 0.25rem;
+}
+.author-box__name {
+  font-family: var(--font-headline);
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--pd-body);
+  margin-bottom: 0.5rem;
+}
+.author-box__name a {
+  color: var(--pd-body);
+  text-decoration: none;
+}
+.author-box__name a:hover { color: var(--pd-blue); }
+.author-box__bio {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--pd-secondary);
+  line-height: 1.55;
+}
+@media (max-width: 600px) {
+  .author-box__inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+}
+
 /* ============ DONATE PARALLAX ============ */
 .donate-banner {
   position: relative;
@@ -1033,6 +1091,19 @@ Gov. Gretchen Whitmer, Lansing: 517-335-7858</span></span></label></li>
   </div>
 
 </article>
+
+<div class="author-box reveal">
+  <div class="author-box__inner">
+    <div class="author-box__photo">
+      <img src="https://planetdetroit.org/wp-content/uploads/2025/04/cropped-Planet-Detroit1899-isabelle-80x80.jpeg" alt="Isabelle Tavares">
+    </div>
+    <div class="author-box__text">
+      <p class="author-box__label">About the author</p>
+      <p class="author-box__name"><a href="https://planetdetroit.org/author/isabelle-tavares/">Isabelle Tavares</a></p>
+      <p class="author-box__bio">Isabelle Tavares covers environmental and public health impacts in Southwest Detroit for Planet Detroit with Report for America. Working in text, film and audio, she is a Dominican-American storyteller who is concerned with identity, generational time, and ecology.</p>
+    </div>
+  </div>
+</div>
 
 <section class="donate-banner">
   <div class="donate-banner__bg" style="background-image:url(donate-bg.jpg)"></div>
