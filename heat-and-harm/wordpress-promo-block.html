@@ -1,0 +1,41 @@
+<!--
+  HEAT & HARM PROMO BLOCK
+  Paste this into a Custom HTML block on the WordPress homepage.
+  Self-contained — all styles are inline/scoped so they won't
+  affect the rest of the page.
+-->
+<div style="max-width:1200px;margin:2rem auto;padding:0 1.5rem;">
+  <a href="https://deepdives.planetdetroit.org/heat-and-harm/"
+     style="display:grid;grid-template-columns:1fr 1fr;min-height:340px;text-decoration:none;color:inherit;background:#1a1a1a;border-radius:8px;overflow:hidden;transition:box-shadow 0.3s ease;"
+     onmouseover="this.style.boxShadow='0 8px 30px rgba(0,0,0,0.2)'"
+     onmouseout="this.style.boxShadow='none'">
+    <div style="position:relative;overflow:hidden;">
+      <img src="https://planetdetroit.org/wp-content/uploads/2026/03/WEBSITE-.png"
+           alt="Heat and Harm illustration"
+           style="width:100%;height:100%;object-fit:cover;opacity:0.85;transition:transform 0.4s ease;"
+           onmouseover="this.style.transform='scale(1.03)'"
+           onmouseout="this.style.transform='scale(1)'">
+    </div>
+    <div style="padding:2.5rem 3rem;display:flex;flex-direction:column;justify-content:center;">
+      <div style="font-family:Asap,sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fff;background:#2982C4;display:inline-block;padding:0.2em 0.7em;border-radius:3px;margin-bottom:1rem;width:fit-content;">Investigative Series</div>
+      <div style="font-family:Asap,sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;line-height:1.15;color:#fff;margin-bottom:1rem;">Heat &amp; Harm</div>
+      <div style="font-family:Gelasio,Georgia,serif;font-size:1rem;line-height:1.6;color:rgba(255,255,255,0.75);margin-bottom:1.5rem;">As the climate crisis accelerates, who bears the cost? An investigative series examining how rising temperatures reshape the lives of workers — with a focus on Detroit's Latino community.</div>
+      <div style="font-family:Asap,sans-serif;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#EA5A39;">Read the series →</div>
+    </div>
+  </a>
+</div>
+
+<style>
+  @media (max-width: 768px) {
+    /* Override grid to stack on mobile */
+    [href*="deepdives.planetdetroit.org/heat-and-harm"] {
+      grid-template-columns: 1fr !important;
+    }
+    [href*="deepdives.planetdetroit.org/heat-and-harm"] > div:first-child {
+      min-height: 220px;
+    }
+    [href*="deepdives.planetdetroit.org/heat-and-harm"] > div:last-child {
+      padding: 1.5rem !important;
+    }
+  }
+</style>
