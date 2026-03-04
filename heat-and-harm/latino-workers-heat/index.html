@@ -423,6 +423,32 @@ a:hover { text-decoration: underline; }
 .dark-section .pullquote__attr { color: rgba(255,255,255,0.5); }
 .dark-section .pullquote__inner { border-left-color: var(--pd-blue); }
 
+/* ============ CIVIC ACTION FLOAT ============ */
+.civic-action-float {
+  float: right;
+  width: 350px;
+  margin: 0.5rem -80px 1.5rem 2rem;
+  position: relative;
+  z-index: 10;
+}
+.civic-action-float .civic-action-box {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+@media (max-width: 1100px) {
+  .civic-action-float { margin-right: 0; }
+}
+@media (max-width: 768px) {
+  .civic-action-float {
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 1.5rem 0;
+  }
+  .civic-action-float .civic-action-box {
+    max-width: 100% !important;
+  }
+}
+
 /* ============ WARM SECTION ============ */
 .warm-section {
   background: var(--inv-warm-light); padding: 4rem 2rem; margin: 2.5rem 0;
@@ -865,6 +891,62 @@ a:hover { text-decoration: underline; }
   </div>
 
   <div class="text-section reveal">
+    <div class="civic-action-float">
+      <div class="civic-action-box" style="background: #f0f5f8; border: 1px solid #d0d8e0; border-radius: 8px; padding: 20px; font-family: -apple-system, sans-serif; max-width: 350px;">
+        <h3 style="font-size: 18px; font-weight: bold; margin: 0 0 16px 0; padding-bottom: 12px; border-bottom: 2px solid #2f80c3;">🗳️ Civic Action Toolbox</h3>
+        <div style="margin-bottom: 16px;">
+          <h4 style="font-size: 14px; font-weight: 600; margin: 0 0 8px 0; color: #333;">Why it matters</h4>
+          <div style="font-size: 14px; color: #333; line-height: 1.5;">
+            <p>Outdoor and manual laborers, many of which are Latino workers, are facing rising, dangerous heat with few protections, leading to preventable illness, injury, and death. Detroit is heating up faster than in past decades, increasing the risk for workers who build and maintain essential infrastructure.</p>
+          </div>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <h4 style="font-size: 14px; font-weight: 600; margin: 0 0 8px 0; color: #333;">Who&#39;s making public decisions</h4>
+          <div style="font-size: 14px; color: #333; line-height: 1.5;">
+            <p><strong>OSHA: </strong>A new, national heat standard is under consideration that would require employers to put heat safety plans into effect.</p><p><strong>Michigan OSHA:</strong> Enforces workplace safety, conducts inspections and consultations; lacks a specific heat standard.&nbsp;</p><p><strong>Employers and industry leaders </strong>who decide whether to voluntarily adopt heat-safety practices while regulations lag.</p>
+          </div>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <h4 style="font-size: 14px; font-weight: 600; margin: 0 0 8px 0; color: #333;">Upcoming Meetings</h4>
+          <ul style="margin: 0; padding-left: 0; list-style: none; font-size: 14px;">
+            <li style="margin-bottom: 8px; list-style: none;"><label style="display: flex; align-items: flex-start; gap: 6px; cursor: pointer;"><input type="checkbox" class="civic-checkbox" data-action="attend_meeting" data-label="Public Health and Safety Standing Committee" style="margin-top: 3px; cursor: pointer;"> <span><strong>Public Health and Safety Standing Committee</strong> (Detroit City Council) — Mar 9, 10:00 AM · <a href="https://cityofdetroit.zoom.us/j/85846903626?utm_source=planet_detroit&amp;utm_medium=civic_action_box&amp;utm_campaign=civic_action&amp;utm_content=meeting_detroit_city_council" style="color: #2f80c3;">Details</a><br><span style="font-size: 12px;">📅 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Public%20Health%20and%20Safety%20Standing%20Committee&amp;dates=20260309T140000Z/20260309T150000Z&amp;ctz=America/Detroit&amp;details=Agency%3A%20Detroit%20City%20Council%0AJoin%20online%3A%20https%3A%2F%2Fcityofdetroit.zoom.us%2Fj%2F85846903626%0APublic%20comment%20accepted.%20Email%20CCPublicComment%40detroitmi.gov%20or%20attend%20in%20person.&amp;location=Coleman%20A.%20Young%20Municipal%20Center%2C%202%20Woodward%20Ave%2C%20Detroit&amp;utm_source=planet_detroit&amp;utm_medium=civic_action_box&amp;utm_campaign=civic_action&amp;utm_content=calendar_google" style="color: #2f80c3;">Google</a> · <a href="https://outlook.live.com/calendar/0/action/compose?subject=Public%20Health%20and%20Safety%20Standing%20Committee&amp;startdt=2026-03-09T14:00:00.000Z&amp;enddt=2026-03-09T15:00:00.000Z&amp;body=Agency%3A%20Detroit%20City%20Council%0AJoin%20online%3A%20https%3A%2F%2Fcityofdetroit.zoom.us%2Fj%2F85846903626%0APublic%20comment%20accepted.%20Email%20CCPublicComment%40detroitmi.gov%20or%20attend%20in%20person.&amp;location=Coleman%20A.%20Young%20Municipal%20Center%2C%202%20Woodward%20Ave%2C%20Detroit&amp;utm_source=planet_detroit&amp;utm_medium=civic_action_box&amp;utm_campaign=civic_action&amp;utm_content=calendar_outlook" style="color: #2f80c3;">Outlook</a></span></span></label></li>
+          </ul>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <h4 style="font-size: 14px; font-weight: 600; margin: 0 0 8px 0; color: #333;">Civic Actions: What You Can Do</h4>
+          <ul style="margin: 0; padding-left: 0; list-style: none; font-size: 14px;">
+            <li style="margin-bottom: 8px; list-style: none;"><label style="display: flex; align-items: flex-start; gap: 6px; cursor: pointer;"><input type="checkbox" class="civic-checkbox" data-action="contact_your_elected_officials" data-label="Contact your elected officials" style="margin-top: 3px; cursor: pointer;"> <span><strong>Contact your elected officials</strong><br><span style="color: #666; font-size: 13px;">Contact federal and state representatives to support the proposed OSHA heat standard and stronger worker protections.
+
+U.S. Sen. Elissa Slotkin, Detroit office: 313-961-4330
+U.S. Sen. Gary Peters, Detroit office: 313-226-6020
+U.S. Rep. Shri Thanedar, Detroit office: 313-880-2400
+U.S. Rep. Rashida Tlaib, Detroit office: 313-463-6220
+U.S. Rep. John James, Warren office: 586-498-7122
+U.S. Rep. Debbie Dingell, Ann Arbor office: 734-481-1100
+U.S. Rep. Haley Stevens, Farmington Hills office: 734-853-3040
+Gov. Gretchen Whitmer, Lansing: 517-335-7858</span></span></label></li>
+          </ul>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <h4 style="font-size: 14px; font-weight: 600; margin: 0 0 8px 0; color: #333;">What to watch for next</h4>
+          <div style="font-size: 14px; color: #333; line-height: 1.5;">Watch for OSHA&#39;s decision on whether to implement the proposed federal heat safety standard that would require employers to protect workers when temperatures reach 80°F or higher.</div>
+        </div>
+        <div id="civic-response-form" style="margin: 16px 0 12px 0; padding: 12px; background: #e8f0fe; border-radius: 6px;">
+          <p style="font-size: 13px; color: #333; margin: 0 0 8px 0; font-weight: 600;">Did you take action? Let us know.</p>
+          <form id="civic-response-submit">
+            <textarea id="civic-response-message" placeholder="I attended a meeting, contacted my rep, submitted a comment..." required style="width: 100%; box-sizing: border-box; padding: 6px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px; font-family: inherit; resize: vertical; min-height: 50px; margin-bottom: 6px;"></textarea>
+            <div style="display: flex; gap: 8px;">
+              <input type="email" id="civic-response-email" placeholder="Email (optional)" style="flex: 1; padding: 6px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px;">
+              <button type="submit" style="padding: 6px 14px; background: #2f80c3; color: white; border: none; border-radius: 4px; font-size: 13px; cursor: pointer; font-weight: 600;">Submit</button>
+            </div>
+          </form>
+          <p id="civic-response-thanks" style="display: none; font-size: 13px; color: #2f80c3; margin: 8px 0 0 0; font-weight: 600;">Thank you! Your response has been recorded.</p>
+        </div>
+        <p style="font-size: 11px; color: #888; margin: 0; padding-top: 12px; border-top: 1px solid #d0d8e0;">
+          Civic resources compiled by <a href="https://planetdetroit.org" style="color: #2f80c3;">Planet Detroit</a>
+        </p>
+      </div>
+    </div>
     <p>Construction workers represent 6% of the total U.S. workforce, yet they account for more than one-third of all reported occupational deaths associated with heat exposure, according to a study published in the American Journal of Industrial Medicine.</p>
     <p>Outdoor workers disproportionately face greater heat-related health threats, especially in jobs involving strenuous activity like shoveling, manual sawing, pushing and pulling heavy loads, or walking at a fast pace, according to the U.S. Department of Labor's National Emphasis Program instructions — a temporary program that focuses OSHA's resources on a particular hazard.</p>
     <p>Effective April 2022, the program on outdoor and indoor heat-related hazards expands on the agency's heat-related illness prevention initiative, aiming to encourage early employer interventions to prevent worker illnesses and deaths during high heat conditions.</p>
@@ -1006,6 +1088,67 @@ new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.3 }).observe(chartSection);
+
+// Civic Action Box
+(function() {
+  function civicActionInit() {
+    var box = document.querySelector('.civic-action-box');
+    if (box) {
+      var checks = box.querySelectorAll('.civic-checkbox');
+      checks.forEach(function(cb) {
+        cb.addEventListener('change', function() {
+          var action = cb.getAttribute('data-action');
+          var label = cb.getAttribute('data-label');
+          if (typeof gtag !== 'undefined') {
+            gtag('event', cb.checked ? 'civic_action_taken' : 'civic_action_untaken', {
+              action_label: action,
+              action_detail: label,
+              article_url: window.location.href
+            });
+          }
+        });
+      });
+    }
+    var form = document.getElementById('civic-response-submit');
+    var wrapper = document.getElementById('civic-response-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var msg = document.getElementById('civic-response-message').value.trim();
+        var email = document.getElementById('civic-response-email').value.trim();
+        if (!msg) return;
+        var payload = {
+          message: msg,
+          article_url: window.location.href,
+          article_title: document.title
+        };
+        if (email) payload.email = email;
+        function showThanks() {
+          if (wrapper) {
+            wrapper.innerHTML = '';
+            var p = document.createElement('p');
+            p.style.fontSize = '13px';
+            p.style.color = '#2f80c3';
+            p.style.margin = '0';
+            p.style.fontWeight = '600';
+            p.textContent = 'Thank you! Your response has been recorded.';
+            wrapper.appendChild(p);
+          }
+        }
+        fetch('https://ask-planet-detroit-production.up.railway.app/api/civic-responses', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).then(showThanks).catch(showThanks);
+      });
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', civicActionInit);
+  } else {
+    civicActionInit();
+  }
+})();
 </script>
 
 </body>
