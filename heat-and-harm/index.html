@@ -512,6 +512,71 @@ a:hover { text-decoration: underline; }
   .credit-block__logo img { width: 160px; }
 }
 
+/* ============ DONATE PARALLAX ============ */
+.donate-banner {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.donate-banner__bg {
+  position: absolute; inset: 0; z-index: 1;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.donate-banner__overlay {
+  position: absolute; inset: 0; z-index: 2;
+  background: rgba(17, 17, 17, 0.7);
+}
+.donate-banner__content {
+  position: relative; z-index: 3;
+  max-width: 620px;
+  padding: 4rem 2rem;
+}
+.donate-banner__label {
+  font-family: var(--font-ui);
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--pd-orange);
+  margin-bottom: 1rem;
+}
+.donate-banner__title {
+  font-family: var(--font-headline);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700; line-height: 1.2;
+  color: var(--pd-white);
+  margin-bottom: 1.25rem;
+}
+.donate-banner__text {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+.donate-banner__cta {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.9rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  background: var(--pd-orange); color: var(--pd-white);
+  padding: 0.85rem 2.5rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: opacity 0.2s;
+}
+.donate-banner__cta:hover { opacity: 0.9; text-decoration: none; }
+@media (max-width: 600px) {
+  .donate-banner { min-height: 360px; }
+  .donate-banner__bg { background-attachment: scroll; }
+  .donate-banner__content { padding: 3rem 1.25rem; }
+}
+
 /* ============ ANIMATIONS ============ */
 .reveal {
   opacity: 0; transform: translateY(24px);
@@ -810,6 +875,17 @@ a:hover { text-decoration: underline; }
   </div>
 
 </article>
+
+<section class="donate-banner">
+  <div class="donate-banner__bg" style="background-image:url(donate-bg.jpg)"></div>
+  <div class="donate-banner__overlay"></div>
+  <div class="donate-banner__content">
+    <p class="donate-banner__label">Support Planet Detroit</p>
+    <h2 class="donate-banner__title">Support this journalism</h2>
+    <p class="donate-banner__text">This investigation looks at the relationship between climate and labor, and how it disproportionately impacts Detroit's Latino communities. It's the first in a series and requires time and sustained work.</p>
+    <a href="https://donorbox.org/be-a-planet-detroiter-780440" class="donate-banner__cta" target="_blank" rel="noopener">Donate Now</a>
+  </div>
+</section>
 
 <footer class="article-footer">
   <div class="article-footer__logo">
