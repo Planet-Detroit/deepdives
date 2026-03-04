@@ -173,24 +173,25 @@ a:hover { text-decoration: underline; }
   color: var(--pd-body); font-weight: 700;
 }
 
-/* ============ PULLQUOTE ============ */
+/* ============ PULLQUOTE (floating) ============ */
 .pullquote {
-  position: relative; max-width: var(--max-wide);
-  margin: 3rem auto; padding: 3rem 2rem;
-  display: flex; align-items: center; justify-content: center;
+  float: right;
+  width: 38%;
+  margin: 0.5rem 0 1.5rem 2.5rem;
+  padding: 0;
 }
 .pullquote__inner {
-  position: relative; max-width: 650px;
-  border-left: 3px solid var(--pd-blue); padding-left: 2rem;
+  border-left: 3px solid var(--pd-blue);
+  padding-left: 1.5rem;
 }
 .pullquote__text {
   font-family: var(--font-body);
-  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  font-size: 1.2rem;
   line-height: 1.4; color: var(--pd-body); font-style: italic;
 }
 .pullquote__attr {
-  margin-top: 1rem; font-family: var(--font-ui);
-  font-size: 0.8rem; font-weight: 600; color: var(--pd-secondary);
+  margin-top: 0.75rem; font-family: var(--font-ui);
+  font-size: 0.78rem; font-weight: 600; color: var(--pd-secondary);
 }
 
 /* ============ SECTION HEADERS ============ */
@@ -599,7 +600,7 @@ a:hover { text-decoration: underline; }
   .hero__content { padding: 3rem 1.25rem 2rem; }
   .text-section { padding: 2rem 1.25rem; }
   .stat-band { padding: 3rem 1.25rem; }
-  .pullquote { padding: 2rem 1.25rem; }
+  .pullquote { float: none; width: 100%; margin: 1.5rem 0; }
   .pullquote__inner { padding-left: 1.25rem; }
 }
 </style>
@@ -650,16 +651,13 @@ a:hover { text-decoration: underline; }
     <p>Over his career, he said he's never seen a presentation on heat safety, and said state regulators do not come to his jobs. His bosses simply tell him what work he's doing and where.</p>
     <p>It's rare for jobs to provide water, let alone lunch, Alejandro said. Planet Detroit is withholding his full name due to Alejandro's fear of immigration authorities.</p>
     <p>"There are bad days at work," and sometimes the pressure mounts, he said. If employers provided enough water, it would make it more comfortable to work in the heat.</p>
-  </div>
-
-  <div class="pullquote reveal">
-    <div class="pullquote__inner">
-      <p class="pullquote__text">"I would like that managers consider us as human beings, not animals working without drinks."</p>
-      <p class="pullquote__attr">— Alejandro, Detroit construction worker</p>
+    <p>"I would like that managers consider us as human beings, not animals working without drinks," Alejandro said.</p>
+    <div class="pullquote">
+      <div class="pullquote__inner">
+        <p class="pullquote__text">"I would like that managers consider us as human beings, not animals working without drinks."</p>
+        <p class="pullquote__attr">— Alejandro, Detroit construction worker</p>
+      </div>
     </div>
-  </div>
-
-  <div class="text-section reveal">
     <p>Alejandro said he works in difficult circumstances to make sure his family has "everything" — bills that are paid and food on the table. He spoke with Planet Detroit while his children played soccer at Patton Park on a summer afternoon.</p>
     <p>"We came to work, not to steal anything from anyone. We work to bring money home," Alejandro said.</p>
   </div>
@@ -692,12 +690,12 @@ a:hover { text-decoration: underline; }
     <p>The roof you sleep under, the sidewalk you walk on, the HVAC system that's keeping your home at a comfortable temperature: each element was installed by someone working under increasingly hot conditions.</p>
     <p>Christopher Noah-Sayers, physician assistant at Acadian Urgent Care Clinic in the Springwells neighborhood of Southwest Detroit, said during summer 2025 he saw "at least" one worker a week due to heat-related illnesses.</p>
     <p>Outdoor workers in construction, roofing, or landscaping come in "very red in the face" from heat rash or heat exhaustion, he said.</p>
-  </div>
-
-  <div class="pullquote reveal">
-    <div class="pullquote__inner">
-      <p class="pullquote__text">"Even the healthiest person can still get heat stroke or heat exhaustion, even if they drink a ton of water. Once they get heat stroke, they need to be in the hospital."</p>
-      <p class="pullquote__attr">— Christopher Noah-Sayers, PA, Acadian Urgent Care Clinic</p>
+    <p>"Even the healthiest person can still get heat stroke or heat exhaustion, even if they drink a ton of water. Once they get heat stroke, they need to be in the hospital," Noah-Sayers said.</p>
+    <div class="pullquote">
+      <div class="pullquote__inner">
+        <p class="pullquote__text">"Even the healthiest person can still get heat stroke or heat exhaustion, even if they drink a ton of water. Once they get heat stroke, they need to be in the hospital."</p>
+        <p class="pullquote__attr">— Christopher Noah-Sayers, PA, Acadian Urgent Care Clinic</p>
+      </div>
     </div>
   </div>
 
@@ -843,12 +841,12 @@ a:hover { text-decoration: underline; }
   <div class="text-section reveal">
     <p>Kristen Osterkamp, program manager at MIOSHA, said the state agency has seen a 30% increase in heat consultations in the last three years since the state program was created. In the last year, 225 employers asked for heat consultations.</p>
     <p>"It's a clear sign that employers are engaging with us before a problem happens," Osterkamp said.</p>
-  </div>
-
-  <div class="pullquote reveal">
-    <div class="pullquote__inner">
-      <p class="pullquote__text">"In workplace death, one is too many. Our trainers work daily with employers to implement plans to ensure our workers are going to be safe, not wait for a death to happen."</p>
-      <p class="pullquote__attr">— Kristen Osterkamp, MIOSHA Program Manager</p>
+    <p>"In workplace death, one is too many. Our trainers work daily with employers to implement plans to ensure our workers are going to be safe, not wait for a death to happen," Osterkamp said.</p>
+    <div class="pullquote">
+      <div class="pullquote__inner">
+        <p class="pullquote__text">"In workplace death, one is too many. Our trainers work daily with employers to implement plans to ensure our workers are going to be safe, not wait for a death to happen."</p>
+        <p class="pullquote__attr">— Kristen Osterkamp, MIOSHA Program Manager</p>
+      </div>
     </div>
   </div>
 
@@ -861,16 +859,13 @@ a:hover { text-decoration: underline; }
     <p>Paul Mahon, senior project manager for Grand Traverse Construction in Traverse City, completed MIOSHA's heat safety training in summer 2025. The company's 58 employees provide commercial and industrial services across Northern Michigan.</p>
     <p>Summer temperatures in Traverse City averaged 77°F in the past three years. In late June 2025, the northern coastal city saw a heat index of 107°F — placing workers in NOAA's "danger" category.</p>
     <p>A week before high heat index days, Mahon sends out reminders to his crews to plan accordingly. He stocks all worksites with water, coolers, electrolyte drinks, and plans break times in cool trailers during peak temperatures.</p>
-  </div>
-
-  <div class="pullquote reveal">
-    <div class="pullquote__inner">
-      <p class="pullquote__text">"We're not opposed to spending dollars to make sure everybody's safe. You got to take care of your employees across the board."</p>
-      <p class="pullquote__attr">— Paul Mahon, Grand Traverse Construction</p>
+    <p>"We're not opposed to spending dollars to make sure everybody's safe. You got to take care of your employees across the board," Mahon said.</p>
+    <div class="pullquote">
+      <div class="pullquote__inner">
+        <p class="pullquote__text">"We're not opposed to spending dollars to make sure everybody's safe. You got to take care of your employees across the board."</p>
+        <p class="pullquote__attr">— Paul Mahon, Grand Traverse Construction</p>
+      </div>
     </div>
-  </div>
-
-  <div class="text-section reveal">
     <p>Mahon said the "good" employers look out for their employees — "we're nothing without" them. If an employer is not looking ahead or providing the right equipment, additional break time, and resources, that's impacting the employee.</p>
     <p>"It's just a bad condition to be in. We don't operate that as a business, and we wouldn't expect other businesses to operate that way either," Mahon said.</p>
   </div>
