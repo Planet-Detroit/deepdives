@@ -180,6 +180,10 @@ a:hover { text-decoration: underline; }
   margin: 0.5rem 0 1.5rem 2.5rem;
   padding: 0;
 }
+.pullquote--left {
+  float: left;
+  margin: 0.5rem 2.5rem 1.5rem 0;
+}
 .pullquote__inner {
   border-left: 3px solid var(--pd-blue);
   padding-left: 1.5rem;
@@ -356,13 +360,13 @@ a:hover { text-decoration: underline; }
 }
 .timeline-section__title {
   font-family: var(--font-headline);
-  font-size: 1.3rem; font-weight: 700;
+  font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700;
   margin-bottom: 2rem; color: var(--pd-body);
 }
 .timeline { position: relative; padding-left: 2.25rem; }
 .timeline::before {
   content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-  width: 2px; background: var(--pd-blue); opacity: 0.3;
+  width: 6px; background: var(--pd-blue); opacity: 0.3;
 }
 .timeline__item {
   position: relative; margin-bottom: 2rem; padding-bottom: 2rem;
@@ -370,17 +374,17 @@ a:hover { text-decoration: underline; }
 }
 .timeline__item:last-child { border-bottom: none; margin-bottom: 0; }
 .timeline__dot {
-  position: absolute; left: -2.55rem; top: 0.2rem;
-  width: 10px; height: 10px; border-radius: 50%;
+  position: absolute; left: -2.65rem; top: 0.2rem;
+  width: 14px; height: 14px; border-radius: 50%;
   background: var(--pd-blue); border: 2px solid var(--pd-white);
 }
 .timeline__year {
-  font-family: var(--font-ui); font-size: 0.78rem;
-  font-weight: 700; color: var(--pd-blue);
+  font-family: var(--font-ui); font-size: 1rem;
+  font-weight: 900; color: var(--pd-blue);
   letter-spacing: 0.03em; margin-bottom: 0.25rem;
 }
 .timeline__text {
-  font-family: var(--font-ui); font-size: 1.05rem; font-weight: 700;
+  font-family: var(--font-ui); font-size: 1.15rem; font-weight: 900;
   color: var(--pd-secondary); line-height: 1.55;
 }
 
@@ -688,15 +692,15 @@ a:hover { text-decoration: underline; }
 
   <div class="text-section reveal">
     <p>The roof you sleep under, the sidewalk you walk on, the HVAC system that's keeping your home at a comfortable temperature: each element was installed by someone working under increasingly hot conditions.</p>
-    <p>Christopher Noah-Sayers, physician assistant at Acadian Urgent Care Clinic in the Springwells neighborhood of Southwest Detroit, said during summer 2025 he saw "at least" one worker a week due to heat-related illnesses.</p>
-    <p>Outdoor workers in construction, roofing, or landscaping come in "very red in the face" from heat rash or heat exhaustion, he said.</p>
-    <p>"Even the healthiest person can still get heat stroke or heat exhaustion, even if they drink a ton of water. Once they get heat stroke, they need to be in the hospital," Noah-Sayers said.</p>
-    <div class="pullquote">
+    <div class="pullquote pullquote--left">
       <div class="pullquote__inner">
         <p class="pullquote__text">"Even the healthiest person can still get heat stroke or heat exhaustion, even if they drink a ton of water. Once they get heat stroke, they need to be in the hospital."</p>
         <p class="pullquote__attr">— Christopher Noah-Sayers, PA, Acadian Urgent Care Clinic</p>
       </div>
     </div>
+    <p>Christopher Noah-Sayers, physician assistant at Acadian Urgent Care Clinic in the Springwells neighborhood of Southwest Detroit, said during summer 2025 he saw "at least" one worker a week due to heat-related illnesses.</p>
+    <p>Outdoor workers in construction, roofing, or landscaping come in "very red in the face" from heat rash or heat exhaustion, he said.</p>
+    <p>"Even the healthiest person can still get heat stroke or heat exhaustion, even if they drink a ton of water. Once they get heat stroke, they need to be in the hospital," Noah-Sayers said.</p>
   </div>
 
   <div class="stat-band reveal">
@@ -860,7 +864,7 @@ a:hover { text-decoration: underline; }
     <p>Summer temperatures in Traverse City averaged 77°F in the past three years. In late June 2025, the northern coastal city saw a heat index of 107°F — placing workers in NOAA's "danger" category.</p>
     <p>A week before high heat index days, Mahon sends out reminders to his crews to plan accordingly. He stocks all worksites with water, coolers, electrolyte drinks, and plans break times in cool trailers during peak temperatures.</p>
     <p>"We're not opposed to spending dollars to make sure everybody's safe. You got to take care of your employees across the board," Mahon said.</p>
-    <div class="pullquote">
+    <div class="pullquote pullquote--left">
       <div class="pullquote__inner">
         <p class="pullquote__text">"We're not opposed to spending dollars to make sure everybody's safe. You got to take care of your employees across the board."</p>
         <p class="pullquote__attr">— Paul Mahon, Grand Traverse Construction</p>
