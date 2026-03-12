@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Los trabajadores latinos de Michigan se enfrentan a un calor mortal — Calor y Daño — Planet Detroit</title>
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5QQJ9SVV07"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5QQJ9SVV07');
+</script>
+<style>
+/* ============================================================
+   PLANET DETROIT — BRAND TOKENS
+   Core palette from style guide, with warm investigation accent
+   ============================================================ */
+:root {
+  /* Brand colors */
+  --pd-blue: #2982C4;
+  --pd-orange: #EA5A39;
+  --pd-red: #DD3333;
+  --pd-body: #111111;
+  --pd-secondary: #515151;
+  --pd-dark-bg: #333333;
+  --pd-top-bar: #4A4A4A;
+  --pd-light-bg: #F0F0F0;
+  --pd-border: #CCCCCC;
+  --pd-white: #FFFFFF;
+
+  /* Investigation accent — warm tint from illustration, used sparingly */
+  --inv-warm: #C85A2A;
+  --inv-warm-light: #FDF2EC;
+
+  /* Typography — per style guide */
+  --font-headline: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+  --font-body: georgia, garamond, "Times New Roman", serif;
+  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+
+  /* Layout */
+  --max-text: 900px;
+  --max-wide: 1100px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--pd-white);
+  color: var(--pd-body);
+  line-height: 1.6;
+  font-size: 20px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+@media (max-width: 600px) { body { font-size: 18px; } }
+
+a { color: var(--pd-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ============ PROGRESS BAR ============ */
+.progress-bar {
+  position: fixed; top: 0; left: 0;
+  height: 3px;
+  background: var(--pd-blue);
+  z-index: 1001; width: 0%;
+  transition: width 50ms linear;
+}
+
+/* ============ STICKY NAV ============ */
+.sticky-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(51, 51, 51, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.6rem 1.5rem;
+  transform: translateY(-100%);
+  transition: transform 0.35s ease;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.sticky-nav.visible { transform: translateY(0); }
+.sticky-nav__logo img { height: 28px; width: auto; }
+.sticky-nav__title {
+  font-family: var(--font-headline);
+  font-size: 0.9rem; font-weight: 600;
+  color: var(--pd-white);
+}
+
+/* ============ HERO ============ */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  overflow: hidden; background: var(--pd-dark-bg);
+}
+.hero__illustration {
+  position: absolute; inset: 0; z-index: 1;
+}
+.hero__illustration img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 30%;
+  opacity: 0.88;
+}
+.hero__gradient {
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(to bottom,
+    rgba(51,51,51,0) 0%, rgba(51,51,51,0.1) 35%,
+    rgba(51,51,51,0.65) 65%, rgba(51,51,51,0.95) 100%);
+}
+.hero__content {
+  position: relative; z-index: 3;
+  padding: 4rem 2rem 3rem;
+  max-width: var(--max-wide); margin: 0 auto; width: 100%;
+}
+.hero__logo {
+  margin-bottom: 1.5rem;
+  opacity: 0; animation: fadeSlideUp 0.8s ease forwards 0.2s;
+}
+.hero__logo img { height: 36px; width: auto; }
+.hero__label {
+  font-family: var(--font-ui);
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--pd-white); background: var(--pd-blue);
+  display: inline-block; padding: 0.25em 0.6em; border-radius: 4px;
+  margin-bottom: 1rem;
+  opacity: 0; animation: fadeSlideUp 0.8s ease forwards 0.4s;
+}
+.hero__title {
+  font-family: var(--font-headline);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700; line-height: 1.15;
+  color: var(--pd-white);
+  margin-bottom: 1.5rem;
+  opacity: 0; animation: fadeSlideUp 0.8s ease forwards 0.5s;
+}
+.hero__deck {
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  line-height: 1.55;
+  color: rgba(255,255,255,0.8);
+  max-width: 620px; margin-bottom: 2rem;
+  opacity: 0; animation: fadeSlideUp 0.8s ease forwards 0.7s;
+}
+.hero__meta {
+  display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center;
+  font-family: var(--font-ui); font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  opacity: 0; animation: fadeSlideUp 0.8s ease forwards 0.9s;
+  padding-bottom: 2rem;
+}
+.hero__meta a { color: var(--pd-white); background: var(--pd-blue); padding: 0.15em 0.5em; border-radius: 4px; font-size: 0.85rem; font-weight: 700; }
+.hero__scroll-cue {
+  position: absolute; bottom: 1.5rem; left: 50%;
+  transform: translateX(-50%); z-index: 4;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 1.5s, bounce 2s ease infinite 2.5s;
+}
+.hero__scroll-cue svg {
+  width: 26px; height: 26px;
+  stroke: rgba(255,255,255,0.35); fill: none; stroke-width: 2;
+}
+
+/* ============ TEXT SECTIONS ============ */
+.article { position: relative; }
+.text-section {
+  max-width: var(--max-text); margin: 0 auto; padding: 2.5rem 2rem;
+}
+.text-section > p {
+  margin-bottom: 1.4rem;
+  font-size: 1.3rem; color: var(--pd-body); line-height: 1.6;
+}
+.text-section > p:last-child { margin-bottom: 0; }
+.text-section--drop-cap p:first-of-type::first-letter {
+  font-family: var(--font-headline);
+  font-size: 3.4em; float: left; line-height: 0.8;
+  margin: 0.06em 0.1em 0 0;
+  color: var(--pd-body); font-weight: 700;
+}
+
+/* ============ PULLQUOTE (floating) ============ */
+.pullquote {
+  float: right;
+  width: 38%;
+  margin: 0.5rem 0 1.5rem 2.5rem;
+  padding: 0;
+}
+.pullquote--left {
+  float: left;
+  margin: 0.5rem 2.5rem 1.5rem 0;
+}
+.pullquote__inner {
+  border-left: 3px solid var(--pd-blue);
+  padding-left: 1.5rem;
+}
+.pullquote__text {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  line-height: 1.4; color: var(--pd-body); font-style: italic;
+}
+.pullquote__attr {
+  margin-top: 0.75rem; font-family: var(--font-ui);
+  font-size: 0.78rem; font-weight: 600; color: var(--pd-secondary);
+}
+
+/* ============ SECTION HEADERS ============ */
+.section-header {
+  position: relative; padding: 4rem 2rem 2rem;
+  max-width: var(--max-wide); margin: 0 auto;
+}
+.section-header__rule {
+  width: 50px; height: 3px; background: var(--pd-blue); margin-bottom: 1.25rem;
+}
+.section-header__title {
+  font-family: var(--font-headline);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700; line-height: 1.2;
+  color: var(--pd-body); max-width: 700px;
+}
+
+/* ============ PHOTOS ============ */
+.photo-full {
+  position: relative; width: 100%;
+  max-width: var(--max-wide); margin: 2.5rem auto; overflow: hidden;
+}
+.photo-full img { width: 100%; display: block; }
+.photo-full__caption {
+  padding: 0.75rem 2rem;
+  color: var(--pd-secondary); font-family: var(--font-ui);
+  font-size: 0.78rem; font-style: italic;
+  border-bottom: 1px solid var(--pd-border);
+}
+
+/* ============ SCROLLY PHOTO ============ */
+.scrolly-photo {
+  position: relative; display: grid;
+  grid-template-columns: 1fr 1fr; min-height: 100vh;
+}
+.scrolly-photo__image-wrap {
+  position: sticky; top: 0; height: 100vh; overflow: hidden;
+}
+.scrolly-photo__image-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.scrolly-photo__text-col {
+  padding: 30vh 2.5rem 30vh 2.5rem;
+  display: flex; flex-direction: column; gap: 55vh;
+}
+.scrolly-photo__card {
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(6px);
+  padding: 2rem;
+  border-left: 3px solid var(--pd-blue);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+.scrolly-photo__card h3 {
+  font-family: var(--font-headline);
+  font-size: 1.3rem; font-weight: 700;
+  margin-bottom: 0.75rem; color: var(--pd-body);
+}
+.scrolly-photo__card p {
+  font-size: 1.3rem; color: var(--pd-body);
+  line-height: 1.6; margin-bottom: 0.9rem;
+}
+.scrolly-photo__card p:last-child { margin-bottom: 0; }
+.scrolly-photo__caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 0.6rem 1rem;
+  background: rgba(0,0,0,0.6);
+  font-family: var(--font-ui);
+  font-size: 0.75rem; color: rgba(255,255,255,0.8);
+  font-style: italic;
+}
+.scrolly-photo__credit {
+  font-family: var(--font-ui);
+  font-size: 0.75rem; color: var(--pd-secondary);
+  font-style: italic; margin-top: 0.75rem;
+}
+@media (max-width: 900px) {
+  .scrolly-photo { grid-template-columns: 1fr; }
+  .scrolly-photo__image-wrap { position: relative; height: 50vh; }
+  .scrolly-photo__text-col { padding: 2rem 1.5rem; gap: 2rem; }
+}
+
+/* ============ STAT BAND ============ */
+.stat-band {
+  background: var(--pd-white); padding: 3.5rem 2rem; margin: 2.5rem 0;
+}
+.stat-band__inner {
+  max-width: var(--max-wide); margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+.stat-card {
+  text-align: left;
+  background: var(--pd-white);
+  border: 1px solid var(--pd-border);
+  border-top: 4px solid var(--pd-blue);
+  border-radius: 6px;
+  padding: 1.75rem 1.5rem;
+}
+.stat-card__number {
+  font-family: var(--font-headline);
+  font-size: clamp(2.4rem, 5vw, 3.2rem); font-weight: 700;
+  color: var(--pd-blue); line-height: 1.1; margin-bottom: 0.6rem;
+}
+.stat-card__label {
+  font-family: var(--font-ui); font-size: 0.95rem;
+  color: var(--pd-secondary); line-height: 1.5;
+}
+.stat-card__source {
+  font-family: var(--font-ui); font-size: 0.75rem;
+  color: var(--pd-secondary); margin-top: 0.75rem;
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+
+/* ============ CHART ============ */
+.chart-section {
+  max-width: var(--max-wide); margin: 3rem auto; padding: 0 2rem;
+}
+.chart-wrap {
+  background: var(--pd-white);
+  border: 1px solid var(--pd-border); padding: 2.5rem;
+}
+.chart-wrap__title {
+  font-family: var(--font-headline);
+  font-size: 1.3rem; font-weight: 700;
+  margin-bottom: 0.35rem; color: var(--pd-body);
+}
+.chart-wrap__subtitle {
+  font-family: var(--font-ui); font-size: 0.8rem;
+  color: var(--pd-secondary); margin-bottom: 2rem;
+}
+.chart-bars { display: flex; flex-direction: column; gap: 1.25rem; }
+.chart-bar {
+  display: grid;
+  grid-template-columns: 200px 1fr 50px;
+  gap: 1rem; align-items: center;
+}
+.chart-bar__label {
+  font-family: var(--font-ui); font-size: 0.82rem;
+  color: var(--pd-secondary); text-align: right;
+}
+.chart-bar__track {
+  height: 28px; background: var(--pd-light-bg);
+  position: relative; overflow: hidden;
+}
+.chart-bar__fill {
+  height: 100%; width: 0%;
+  transition: width 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.chart-bar__fill--danger { background: var(--pd-red); }
+.chart-bar__fill--warning { background: var(--pd-orange); }
+.chart-bar__fill--caution { background: var(--pd-blue); }
+.chart-bar__value {
+  font-family: var(--font-ui); font-size: 0.85rem;
+  font-weight: 700; color: var(--pd-body);
+}
+.chart-source {
+  font-family: var(--font-ui); font-size: 0.65rem;
+  color: var(--pd-secondary); margin-top: 1.5rem;
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+@media (max-width: 600px) {
+  .chart-bar { grid-template-columns: 1fr; gap: 0.25rem; }
+  .chart-bar__label { text-align: left; }
+}
+
+/* ============ TIMELINE ============ */
+.timeline-section {
+  max-width: var(--max-text); margin: 3rem auto; padding: 0 2rem;
+}
+.timeline-section__title {
+  font-family: var(--font-headline);
+  font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700;
+  margin-bottom: 2rem; color: var(--pd-body);
+}
+.timeline { position: relative; padding-left: 2.25rem; }
+.timeline::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 6px; background: var(--pd-blue); opacity: 0.3;
+}
+.timeline__item {
+  position: relative; margin-bottom: 2rem; padding-bottom: 2rem;
+  border-bottom: 1px solid var(--pd-light-bg);
+}
+.timeline__item:last-child { border-bottom: none; margin-bottom: 0; }
+.timeline__dot {
+  position: absolute; left: -2.65rem; top: 0.2rem;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--pd-blue); border: 2px solid var(--pd-white);
+}
+.timeline__year {
+  font-family: var(--font-ui); font-size: 1rem;
+  font-weight: 900; color: var(--pd-blue);
+  letter-spacing: 0.03em; margin-bottom: 0.25rem;
+}
+.timeline__text {
+  font-family: var(--font-ui); font-size: 1.15rem; font-weight: 900;
+  color: var(--pd-secondary); line-height: 1.55;
+}
+
+/* ============ DARK SECTION ============ */
+.dark-section {
+  background: var(--pd-dark-bg); color: var(--pd-white);
+  padding: 4rem 2rem; margin: 2.5rem 0;
+}
+.dark-section .text-inner { max-width: var(--max-text); margin: 0 auto; }
+.dark-section p {
+  color: rgba(255,255,255,0.75); margin-bottom: 1.4rem;
+  font-size: 1.3rem; line-height: 1.6;
+}
+.dark-section .section-header__title { color: var(--pd-white); }
+.dark-section .timeline-section { padding: 0; margin: 3rem 0; }
+.dark-section .timeline-section__title { color: var(--pd-white); }
+.dark-section .timeline__text { color: rgba(255,255,255,0.6); }
+.dark-section .timeline__item { border-bottom-color: rgba(255,255,255,0.1); }
+.dark-section .pullquote__text { color: rgba(255,255,255,0.9); }
+.dark-section .pullquote__attr { color: rgba(255,255,255,0.5); }
+.dark-section .pullquote__inner { border-left-color: var(--pd-blue); }
+
+/* ============ CIVIC ACTION FLOAT ============ */
+.civic-action-float {
+  float: right;
+  width: 350px;
+  margin: 0.5rem -80px 1.5rem 2rem;
+  position: relative;
+  z-index: 10;
+}
+.civic-action-float .civic-action-box {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+@media (max-width: 1100px) {
+  .civic-action-float { margin-right: 0; }
+}
+@media (max-width: 768px) {
+  .civic-action-float {
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 1.5rem 0;
+  }
+  .civic-action-float .civic-action-box {
+    max-width: 100% !important;
+  }
+}
+
+/* ============ WARM SECTION ============ */
+.warm-section {
+  background: var(--inv-warm-light); padding: 4rem 2rem; margin: 2.5rem 0;
+}
+.warm-section .text-inner { max-width: var(--max-text); margin: 0 auto; }
+.warm-section p {
+  color: var(--pd-body); margin-bottom: 1.4rem;
+  font-size: 1.05rem; line-height: 1.6;
+}
+
+/* ============ FOOTER ============ */
+.article-footer {
+  background: var(--pd-dark-bg); padding: 3.5rem 2rem; text-align: center;
+}
+.article-footer__logo { margin-bottom: 1.25rem; }
+.article-footer__logo img { height: 40px; width: auto; }
+.article-footer__note {
+  font-family: var(--font-ui); font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  max-width: 480px; margin: 0 auto 1.5rem; line-height: 1.55;
+}
+.article-footer__cta {
+  display: inline-block; font-family: var(--font-ui);
+  font-size: 0.85rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  background: var(--pd-orange); color: var(--pd-white);
+  padding: 0.75rem 2rem; text-decoration: none;
+  margin-bottom: 2rem; transition: opacity 0.2s;
+}
+.article-footer__cta:hover { opacity: 0.9; text-decoration: none; }
+.article-footer__credits {
+  font-family: var(--font-ui); font-size: 0.72rem;
+  color: rgba(255,255,255,0.3); margin-bottom: 0.5rem;
+}
+.article-footer__links {
+  font-family: var(--font-ui); font-size: 0.7rem;
+  color: rgba(255,255,255,0.25);
+}
+.article-footer__links a {
+  color: rgba(255,255,255,0.4); margin: 0 0.5rem;
+}
+
+/* ============ CREDIT / PARTNERSHIP BLOCK ============ */
+.credit-block {
+  max-width: var(--max-wide);
+  margin: 2.5rem auto;
+  padding: 0 2rem;
+}
+.credit-block__inner {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 2.5rem 3rem;
+  background: #EDF2F9;
+  border-left: 5px solid #1B2A4A;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.credit-block__inner::before {
+  content: '';
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: 200px;
+  background: linear-gradient(135deg, transparent 40%, rgba(27,42,74,0.05) 100%);
+  pointer-events: none;
+}
+.credit-block__logo {
+  flex-shrink: 0;
+}
+.credit-block__logo img {
+  width: 200px;
+  height: auto;
+}
+.credit-block__body {
+  position: relative; z-index: 1;
+}
+.credit-block__label {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #1B2A4A;
+  margin-bottom: 0.5rem;
+}
+.credit-block__text {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-style: normal;
+  color: #333333;
+  line-height: 1.55;
+  margin-bottom: 0.75rem;
+}
+.credit-block__link {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #E8448A;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+.credit-block__link:hover { color: #f472b6; text-decoration: none; }
+.credit-block__link svg {
+  width: 12px; height: 12px;
+  vertical-align: -1px; margin-left: 0.3em;
+  stroke: currentColor; fill: none; stroke-width: 2;
+}
+@media (max-width: 600px) {
+  .credit-block__inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 2rem 1.5rem;
+  }
+  .credit-block__logo img { width: 160px; }
+}
+
+/* ============ AUTHOR BOX ============ */
+.author-box {
+  max-width: var(--max-text);
+  margin: 0 auto;
+  padding: 2.5rem 2rem 3rem;
+}
+.author-box__inner {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 2rem;
+  border-top: 1px solid var(--pd-border);
+  border-bottom: 1px solid var(--pd-border);
+}
+.author-box__photo {
+  flex-shrink: 0;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.author-box__photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.author-box__label {
+  font-family: var(--font-ui);
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--pd-secondary);
+  margin-bottom: 0.25rem;
+}
+.author-box__name {
+  font-family: var(--font-headline);
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--pd-body);
+  margin-bottom: 0.5rem;
+}
+.author-box__name a {
+  color: var(--pd-body);
+  text-decoration: none;
+}
+.author-box__name a:hover { color: var(--pd-blue); }
+.author-box__bio {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--pd-secondary);
+  line-height: 1.55;
+}
+@media (max-width: 600px) {
+  .author-box__inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+}
+
+/* ============ DONATE PARALLAX ============ */
+.donate-banner {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.donate-banner__bg {
+  position: absolute; inset: 0; z-index: 1;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.donate-banner__overlay {
+  position: absolute; inset: 0; z-index: 2;
+  background: rgba(17, 17, 17, 0.7);
+}
+.donate-banner__content {
+  position: relative; z-index: 3;
+  max-width: 620px;
+  padding: 4rem 2rem;
+}
+.donate-banner__label {
+  font-family: var(--font-ui);
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--pd-orange);
+  margin-bottom: 1rem;
+}
+.donate-banner__title {
+  font-family: var(--font-headline);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700; line-height: 1.2;
+  color: var(--pd-white);
+  margin-bottom: 1.25rem;
+}
+.donate-banner__text {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+.donate-banner__cta {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.9rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  background: var(--pd-orange); color: var(--pd-white);
+  padding: 0.85rem 2.5rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: opacity 0.2s;
+}
+.donate-banner__cta:hover { opacity: 0.9; text-decoration: none; }
+@media (max-width: 600px) {
+  .donate-banner { min-height: 360px; }
+  .donate-banner__bg { background-attachment: scroll; }
+  .donate-banner__content { padding: 3rem 1.25rem; }
+}
+
+/* ============ ANIMATIONS ============ */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(7px); }
+}
+
+@media (max-width: 600px) {
+  .hero__content { padding: 3rem 1.25rem 2rem; }
+  .text-section { padding: 2rem 1.25rem; }
+  .stat-band { padding: 3rem 1.25rem; }
+  .pullquote { float: none; width: 100%; margin: 1.5rem 0; }
+  .pullquote__inner { padding-left: 1.25rem; }
+}
+
+/* ============ LANGUAGE TOGGLE ============ */
+.lang-toggle {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.5);
+}
+.lang-toggle a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.lang-toggle a:hover {
+  color: var(--pd-white);
+  text-decoration: none;
+}
+.lang-toggle__current {
+  color: var(--pd-white);
+  font-weight: 600;
+}
+.sticky-nav .lang-toggle {
+  font-size: 0.75rem;
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="sticky-nav" id="stickyNav">
+  <span class="sticky-nav__logo">
+    <img src="https://planetdetroit.org/wp-content/uploads/2024/07/cropped-PlanetDetroitLogo-WhiteText-2.png" alt="Planet Detroit">
+  </span>
+  <span class="sticky-nav__title">Calor y Daño</span>
+  <span class="lang-toggle"><a href="../latino-workers-heat/">English</a> | <span class="lang-toggle__current">Español</span></span>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero__illustration">
+    <img src="hero.png" alt="Illustration of outdoor labor in extreme heat.">
+  </div>
+  <div class="hero__gradient"></div>
+  <div class="hero__content">
+    <div class="hero__logo">
+      <img src="https://planetdetroit.org/wp-content/uploads/2024/07/cropped-PlanetDetroitLogo-WhiteText-2.png" alt="Planet Detroit">
+    </div>
+    <div class="hero__label">Investigación a fondo</div>
+    <h1 class="hero__title">Los trabajadores latinos de Michigan se enfrentan a un calor mortal. Una propuesta de normativa federal podría salvar vidas.</h1>
+    <p class="hero__deck">A medida que suben las temperaturas, los trabajadores al aire libre de Detroit se enfrentan a un calor peligroso con pocas protecciones. Una propuesta de normativa federal podría cambiarlo todo.</p>
+    <div class="hero__meta">
+      <span>By <a href="https://planetdetroit.org/author/isabelle-tavares/">Isabelle Tavares</a></span>
+      <span>3 de marzo de 2026</span>
+      <span>16 min de lectura</span>
+      <span class="lang-toggle"><a href="../latino-workers-heat/">English</a> | <span class="lang-toggle__current">Español</span></span>
+    </div>
+  </div>
+  <div class="hero__scroll-cue">
+    <svg viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+  </div>
+</header>
+
+<!-- ===== ARTICLE ===== -->
+<article class="article">
+
+  <div class="text-section text-section--drop-cap reveal">
+    <p>Alejandro, de 47 años y residente en Detroit, trabaja todo el día al aire libre. Se dedica a los acabados en la construcción de entradas de garajes, aceras y patios. Aunque lleva años trabajando en la construcción y sabe cómo lidiar con el calor, dice que a veces todavía se marea.</p>
+    <p>"El sol es muy intenso, tienes que estar trabajando todo el día, con la camisa completamente empapada en sudor," explica Alejandro en español.</p>
+    <p>Hace unos cuatro años, Alejandro cuenta que estaba terminando un trabajo cuando empezó a ver borroso. El hormigón se seca rápidamente y tenía que trabajar rápido bajo un calor intenso.</p>
+    <p>"Hacía mucho calor, pero tenía que terminar el trabajo bien y rápido para que el jefe no se enfadara", explica Alejandro. "Es difícil, pero te acostumbras."</p>
+    <p>A lo largo de su carrera, dijo que nunca ha visto una presentación sobre seguridad contra el calor y que los reguladores estatales no acuden a sus lugares de trabajo. Sus jefes simplemente le dicen qué trabajo tiene que hacer y dónde.</p>
+    <p>Es raro que los empleos proporcionen agua, y mucho menos almuerzo, dijo Alejandro. Planet Detroit no revela su nombre completo por temor a que las autoridades de inmigración lo persigan.</p>
+    <p>"Hay días malos en el trabajo" y, a veces, la presión aumenta, dijo. Si los empleadores proporcionaran suficiente agua, sería más cómodo trabajar con el calor, afirmó.</p>
+    <p>"Me gustaría que los gerentes nos consideraran seres humanos, no animales que trabajan sin beber," dijo.</p>
+    <div class="pullquote">
+      <div class="pullquote__inner">
+        <p class="pullquote__text">"Me gustaría que los gerentes nos consideraran seres humanos, no animales que trabajan sin beber."</p>
+        <p class="pullquote__attr">— Alejandro, trabajador de la construcción de Detroit</p>
+      </div>
+    </div>
+    <p>Alejandro dijo que trabaja en condiciones difíciles para asegurarse de que su familia tenga "todo": las facturas pagadas y comida en la mesa. Habló con Planet Detroit mientras sus hijos jugaban al fútbol en Patton Park en una tarde de verano.</p>
+    <p>"Vinimos a trabajar, no a robarle nada a nadie. Trabajamos para llevar dinero a casa," dijo Alejandro.</p>
+  </div>
+
+  <div class="photo-full reveal">
+    <img src="aus6.jpg" alt="Alejandro, un trabajador de la construcción de Detroit, sentado en una ferretería en febrero de 2026.">
+    <div class="photo-full__caption">Alejandro, un trabajador de la construcción de Detroit, sentado en una ferretería en febrero de 2026. Trabaja bajo temperaturas sofocantes y afirma que nunca ha recibido formación sobre seguridad frente al calor. Foto de Alejandro Ugalde Sandoval.</div>
+  </div>
+
+  <!-- Pulitzer Center / StoryReach credit -->
+  <div class="credit-block reveal">
+    <div class="credit-block__inner">
+      <div class="credit-block__logo">
+        <img src="storyreach-logo.webp" alt="StoryReach Midwest — Pulitzer Center">
+      </div>
+      <div class="credit-block__body">
+        <p class="credit-block__label">Con el apoyo de</p>
+        <p class="credit-block__text">Este reportaje fue producido como parte de la Beca StoryReach U.S. del Pulitzer Center.</p>
+        <a href="https://pulitzercenter.org/journalism/initiatives/storyreach-us/storyreach-us-fellows" class="credit-block__link" target="_blank" rel="noopener">Conozca a los becarios de StoryReach <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header reveal">
+    <div class="section-header__rule"></div>
+    <h2 class="section-header__title">Los retos del calor salen a la luz en el centro de urgencias del suroeste de Detroit</h2>
+  </div>
+
+  <div class="text-section reveal">
+    <p>El techo bajo el que duermes, la acera por la que caminas, el sistema de climatización que mantiene tu hogar a una temperatura agradable: cada uno de estos elementos ha sido instalado por alguien que trabaja en condiciones cada vez más calurosas.</p>
+    <div class="pullquote pullquote--left">
+      <div class="pullquote__inner">
+        <p class="pullquote__text">"Incluso las personas más sanas pueden sufrir un golpe de calor o agotamiento por calor, aunque beban mucha agua. Una vez que sufren un golpe de calor, deben ser hospitalizadas."</p>
+        <p class="pullquote__attr">— Christopher Noah-Sayers, asistente médico, Clínica de Urgencias Acadian</p>
+      </div>
+    </div>
+    <p>Christopher Noah-Sayers, asistente médico de la clínica Acadian Urgent Care Clinic, situada en el barrio de Springwells, al suroeste de Detroit, afirmó que durante el verano de 2025 atendió "al menos" a un trabajador a la semana por enfermedades relacionadas con el calor.</p>
+    <p>Los trabajadores al aire libre en la construcción, los tejados o el paisajismo llegan con "la cara muy roja" por erupciones cutáneas o agotamiento por calor, dijo.</p>
+    <p>"Cualquiera que trabaje al aire libre no tiene muchos descansos a la sombra, y muchos de ellos piensan que basta con beber suficiente agua," dijo Noah-Sayers. "Acaban sufriendo un golpe de calor."</p>
+    <p>Tomar descansos frecuentes a la sombra es esencial para prevenir los golpes de calor, dijo Noah-Sayers, y muchos trabajadores al aire libre siguen adelante sin hacerlo.</p>
+    <p>"Incluso la persona más sana puede sufrir un golpe de calor o agotamiento por calor, aunque beba mucha agua," afirma Noah-Sayers. "Una vez que sufren un golpe de calor, necesitan ser hospitalizados."</p>
+  </div>
+
+  <div class="stat-band reveal">
+    <div class="stat-band__inner">
+      <div class="stat-card">
+        <div class="stat-card__number">#1</div>
+        <div class="stat-card__label">La principal causa de muerte relacionada con el clima en Estados Unidos.</div>
+        <div class="stat-card__source">Servicio Meteorológico Nacional</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__number">4</div>
+        <div class="stat-card__label">Muertes relacionadas con el calor en el lugar de trabajo en Michigan, 2011-2024</div>
+        <div class="stat-card__source">Registros de MIOSHA</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__number">986</div>
+        <div class="stat-card__label">Trabajadores estadounidenses fallecidos por exposición al calor, 1992-2022</div>
+        <div class="stat-card__source">Oficina de Estadísticas Laborales</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__number">34%</div>
+        <div class="stat-card__label">De las muertes por calor en el trabajo correspondieron a trabajadores de la construcción, a pesar de que estos representan solo el 6% de la población activa</div>
+        <div class="stat-card__source">American Journal of Industrial Medicine</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-section reveal">
+    <p>Según el Servicio Meteorológico Nacional, el calor es la principal causa de muerte relacionada con el clima en Estados Unidos. Entre 2011 y 2024, el calor se cobró la vida de cuatro trabajadores en Míchigan.</p>
+    <p>El calor mata a más estadounidenses que los huracanes o los tornados, pero la gente no percibe el peligro de la misma manera dramática, y hasta hace poco, tampoco lo hacían los responsables políticos.</p>
+    <p>Según sus registros, la Administración de Seguridad y Salud Ocupacional de Míchigan tiene constancia de cuatro muertes relacionadas con el calor en el lugar de trabajo: en 2011, 2016, 2020 y 2024.</p>
+    <p>Los efectos del calor sobre la salud suelen estar infrarrepresentados y mal diagnosticados, según declaró a Planet Detroit un investigador de la Universidad Estatal de Michigan especializado en el tema del calor en el lugar de trabajo.</p>
+    <p>El 30 de agosto de 2024, la Administración Federal de Seguridad y Salud Ocupacional (OSHA) propuso una norma de prevención de lesiones y enfermedades causadas por el calor que obligaría a los empleadores a planificar medidas contra los riesgos del calor en sus lugares de trabajo.</p>
+    <p>Si se aprueba, la histórica norma propuesta aclararía las obligaciones de los empleadores y las medidas necesarias para proteger a los empleados del calor peligroso. El objetivo final es prevenir y reducir el número de lesiones, enfermedades y muertes laborales causadas por el calor.</p>
+    <p>La OSHA ha concluido las audiencias públicas sobre la norma propuesta y tomará una decisión sobre cómo proceder una vez que se cierre el expediente de la audiencia, según ha declarado un portavoz de la agencia.</p>
+    <p>La versión de 2021 de la norma publicada en el Registro Federal incluye un capítulo sobre el cambio climático. En la versión actual de 2024, no se mencionan las palabras "cambio climático."</p>
+    <p>Según la versión anterior de la norma, "el cambio climático está aumentando la frecuencia y la intensidad de los episodios de calor extremo... y los trabajadores se enfrentarán a un mayor riesgo de enfermedades relacionadas con el calor debido a la exposición al mismo."</p>
+    <p>Mientras tanto, los latinos, que están sobrerrepresentados en la construcción, la industria alimentaria y la manufactura —sectores que se encuentran en primera línea del riesgo climático— siguen viéndose afectados por el calor, pero existen pocas medidas de protección para salvaguardarlos del aumento de las temperaturas.</p>
+    <p>Las personas de origen hispano o latino representaban casi la mitad de la población activa nacida en el extranjero en 2024, según la Oficina de Estadísticas Laborales.</p>
+  </div>
+
+  <!-- Luis Hernandez scrolly -->
+  <div class="scrolly-photo">
+    <div class="scrolly-photo__image-wrap">
+      <img src="luis2.jpg" alt="Luis Hernández disfruta visitando México tras jubilarse, después de décadas trabajando en el sector de la construcción.">
+      <div class="scrolly-photo__caption">Luis Hernández disfruta visitando México tras jubilarse, después de décadas trabajando en el sector de la construcción. Foto cortesía de Maricela Hernández.</div>
+    </div>
+    <div class="scrolly-photo__text-col">
+      <div class="scrolly-photo__card reveal">
+        <h3>El trabajo en la autopista es "como una sauna"</h3>
+        <p>Luis Hernández, un trabajador de la construcción jubilado de 69 años y residente en Wyandotte, esperaba con ilusión un viaje de invierno a México cuando habló con Planet Detroit en septiembre.</p>
+        <p>Esa noche, sus hijos adultos estaban de visita para cenar en su casa, que cuenta con una gran sala de estar con techos altos. El camino hasta la casa estaba marcado por un hermoso paisaje con líneas curvas y flores de colores.</p>
+        <p>Esto es por lo que trabajó: una casa cómoda y tiempo para estar con su familia. Su disfrute se ve empañado por la pérdida de audición y la fisioterapia para los problemas de espalda, que atribuye a sus 24 años de trabajo en la construcción de autopistas.</p>
+      </div>
+      <div class="scrolly-photo__card reveal">
+        <p>En sus años de trabajo en proyectos financiados por el estado, Hernández dijo que ayudó a construir tramos de la I-75, la I-94, la autopista John C. Lodge y los aeropuertos de Detroit, Kalamazoo y Flint.</p>
+        <p>Durante la mayor parte de su carrera, Hernández trabajó con un equipo de otras cuatro personas en la construcción de pozos de registro para los desagües de las autopistas. Los trabajos comenzaban a 9 metros de profundidad en el fondo de un agujero, y los trabajadores subían en espiral por el cilindro, colocando los desagües bloque a bloque. Un trabajador levantaba un bloque de entre 7 y 14 kilos, y Hernández lo colocaba con cemento.</p>
+      </div>
+      <div class="scrolly-photo__card reveal">
+        <p>Cada alcantarilla tardaba aproximadamente una hora en completarse, dijo. En verano, Hernández dijo que las alcantarillas parecían "una sauna."</p>
+        <p>"Sentía que me asfixiaba porque había mucha condensación," dijo en español. "Cuando salí, parecía un ratón que se había caído en un cubo de agua."</p>
+        <p>El equipo tenía que permanecer "en el agujero" hasta terminar el trabajo: sin agua ni comida hasta que salían, e incluso entonces, tenían que comer mientras trabajaban, dijo.</p>
+      </div>
+      <div class="scrolly-photo__card reveal">
+        <p>"Tienes suerte si tienes un lugar donde comer. Si te quedas sin agua, se acabó," dijo Hernández.</p>
+        <p>Debido a la falta de agua, Hernández dijo que a menudo sentía que iba a desmayarse en el trabajo.</p>
+        <p>"Llegó un momento en que tuve que llevar un poco de sal conmigo porque no te daban nada. No te dejaban ir a la tienda a comprarla. Quiero decir, era muy difícil," dijo.</p>
+      </div>
+      <div class="scrolly-photo__card reveal">
+        <p>Hernández fue enviado a casa mientras trabajaba en la I-94 en 2009.</p>
+        <p>"Solo nos enviaron a casa una vez. Hacía mucho, mucho, mucho calor," dijo. "Pero a partir de entonces, nunca más se preocuparon por nosotros."</p>
+        <p>Hernández dijo que siempre le duele la espalda y se siente cansado.</p>
+        <p>"Es el precio que pago por todos esos años de duro trabajo físico," dijo Hernández.</p>
+      </div>
+      <div class="scrolly-photo__card reveal">
+        <p>Algunos lugares de trabajo están mejorando, dijo Hernández. Sus hijos trabajan en la construcción del puente internacional Gordie Howe, donde se suministra a los trabajadores "bastante" agua mineralizada, afirmó.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header reveal">
+    <div class="section-header__rule"></div>
+    <h2 class="section-header__title">Detroit se calienta</h2>
+  </div>
+
+  <div class="text-section reveal">
+    <p>En 2024, se batió el récord de temperatura media en la superficie terrestre, que fue la más cálida de la historia desde que se empezaron a registrar estos datos en 1880, según la NASA.</p>
+    <p>El tercer año más cálido fue 2025, según el registro de temperaturas globales de la Administración Nacional Oceánica y Atmosférica, que se remonta a 1850.</p>
+    <p>Desde 1970, la temperatura media anual en Detroit ha aumentado 4,1 grados Fahrenheit, según Climate Central, una organización sin ánimo de lucro dedicada a la comunicación climática.</p>
+    <p>El efecto de isla de calor urbano, en el que las altas temperaturas y la humedad se combinan para crear valores peligrosos en el índice de calor, es una preocupación importante para Detroit y otras zonas urbanas similares, según un resumen climático de Michigan de 2022 de la NOAA.</p>
+    <p>Los trabajadores urbanos al aire libre pueden enfrentarse a temperaturas más altas que los trabajadores rurales debido al efecto de isla de calor urbano, que puede elevar las temperaturas de la ciudad entre 18 y 27 °F durante el día y entre 9 y 18 °F durante la noche en comparación con las zonas periféricas, según la Agencia de Protección Ambiental.</p>
+    <p>El índice de calor es un indicador de la sensación térmica que percibe el cuerpo, y mide la temperatura real del aire y la humedad relativa. Ante las altas temperaturas y la elevada humedad, al cuerpo le cuesta más enfriarse, ya que la intensa humedad ralentiza la evaporación del sudor, lo que provoca un peligroso estrés térmico.</p>
+  </div>
+
+  <div class="chart-section reveal" id="chartSection">
+    <div class="chart-wrap">
+      <h3 class="chart-wrap__title">Aumento de los días con índice de calor en Detroit</h3>
+      <p class="chart-wrap__subtitle">Días adicionales al año en comparación con la referencia de 1979 · 1979-2023</p>
+      <div class="chart-bars">
+        <div class="chart-bar">
+          <span class="chart-bar__label">Días con índice de calor elevado (≥80°F)</span>
+          <div class="chart-bar__track"><div class="chart-bar__fill chart-bar__fill--caution" data-width="67"></div></div>
+          <span class="chart-bar__value">+10</span>
+        </div>
+        <div class="chart-bar">
+          <span class="chart-bar__label">Días de alerta (80–94°F)</span>
+          <div class="chart-bar__track"><div class="chart-bar__fill chart-bar__fill--warning" data-width="60"></div></div>
+          <span class="chart-bar__value">+9</span>
+        </div>
+        <div class="chart-bar">
+          <span class="chart-bar__label">Días peligrosos (≥95°F)</span>
+          <div class="chart-bar__track"><div class="chart-bar__fill chart-bar__fill--danger" data-width="20"></div></div>
+          <span class="chart-bar__value">+1</span>
+        </div>
+      </div>
+      <p class="chart-source">Fuente: Conjunto de datos Gridmet, Servicio Meteorológico Nacional · Análisis de Climate Central.</p>
+    </div>
+  </div>
+
+  <div class="text-section reveal">
+    <p>Entre 1979 y 2023, Detroit experimentó 10 días más al año con un índice de calor de 80 °F o más; nueve días más de alerta cada año, con un índice de calor de entre 80 y 94 °F; y un día adicional de peligro en el que el índice de calor era de 95 °F o más.</p>
+    <p>Las estadísticas proceden del conjunto de datos gridMET elaborado por un laboratorio de climatología de la Universidad de California y el Servicio Meteorológico Nacional.</p>
+    <p>Las oficinas locales de la agencia meteorológica emiten una alerta de calor extremo cuando estas condiciones son posibles, y avisos de calor extremo cuando se produce o está a punto de producirse un calor peligroso.</p>
+    <p>Un estudio publicado en la revista científica internacional británica Nature reveló que, en la segunda mitad del siglo XXI, la exposición de los estadounidenses al calor extremo aumentará "entre cuatro y seis veces con respecto a los niveles observados a finales del siglo XX."</p>
+    <p>Las temperaturas mínimas nocturnas se han calentado más rápidamente que las máximas diurnas, lo que puede reducir las oportunidades de alivio durante las olas de calor, según una asociación para la adaptación climática de los Grandes Lagos.</p>
+    <p>Las olas de calor más frecuentes y las condiciones de humedad elevan el riesgo de muertes y enfermedades relacionadas con el calor.</p>
+  </div>
+
+  <div class="photo-full reveal">
+    <img src="aus7.jpg" alt="Una histórica norma federal busca prevenir las lesiones y muertes por calor en el trabajo">
+    <div class="photo-full__caption">Una histórica norma federal busca prevenir las lesiones y muertes por calor en el trabajo, pero mientras tanto, los latinos, que a menudo se dedican a trabajos de alto riesgo como la construcción, carecen de protecciones suficientes contra el calor. Foto de Alejandro Ugalde Sandoval.</div>
+  </div>
+
+  <div class="section-header reveal">
+    <div class="section-header__rule"></div>
+    <h2 class="section-header__title">Los trabajadores al aire libre pagan el precio del calentamiento climático</h2>
+  </div>
+
+  <div class="text-section reveal">
+    <div class="civic-action-float">
+      <div class="civic-action-box" style="background: #f0f5f8; border: 1px solid #d0d8e0; border-radius: 8px; padding: 20px; font-family: -apple-system, sans-serif; max-width: 350px;">
+        <h3 style="font-size: 18px; font-weight: bold; margin: 0 0 16px 0; padding-bottom: 12px; border-bottom: 2px solid #2f80c3;">🗳️ Caja de herramientas para la acción cívica</h3>
+        <div style="margin-bottom: 16px;">
+          <h4 style="font-size: 14px; font-weight: 600; margin: 0 0 8px 0; color: #333;">Por qué es importante</h4>
+          <div style="font-size: 14px; color: #333; line-height: 1.5;">
+            <p>Los trabajadores al aire libre y los que realizan labores manuales, muchos de los cuales son latinos, se enfrentan a un calor cada vez más intenso y peligroso con pocas protecciones, lo que provoca enfermedades, lesiones y muertes que se podrían evitar. Detroit se está calentando más rápido que en décadas anteriores, lo que aumenta el riesgo para los trabajadores que construyen y mantienen infraestructuras esenciales.</p>
+          </div>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <h4 style="font-size: 14px; font-weight: 600; margin: 0 0 8px 0; color: #333;">¿Quién toma las decisiones públicas?</h4>
+          <div style="font-size: 14px; color: #333; line-height: 1.5;">
+            <p><strong>OSHA: </strong>Se está considerando una nueva norma nacional sobre el calor que obligaría a los empleadores a poner en práctica planes de seguridad contra el calor.</p><p><strong>OSHA de Michigan:</strong> Vela por la seguridad en el lugar de trabajo, realiza inspecciones y consultas; carece de una norma específica sobre el calor.&nbsp;</p><p><strong>Los empleadores y los líderes del sector </strong>son quienes deciden si adoptar voluntariamente prácticas de seguridad contra el calor mientras las regulaciones se quedan atrás.</p>
+          </div>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <h4 style="font-size: 14px; font-weight: 600; margin: 0 0 8px 0; color: #333;">Próximas reuniones</h4>
+          <ul style="margin: 0; padding-left: 0; list-style: none; font-size: 14px;">
+            <li style="margin-bottom: 8px; list-style: none;"><label style="display: flex; align-items: flex-start; gap: 6px; cursor: pointer;"><input type="checkbox" class="civic-checkbox" data-action="attend_meeting" data-label="Comité Permanente de Salud Pública y Seguridad" style="margin-top: 3px; cursor: pointer;"> <span><strong>Comité Permanente de Salud Pública y Seguridad</strong> (Ayuntamiento de Detroit) — 16 de marzo, 10:00 a. m. · <a href="https://cityofdetroit.zoom.us/j/85846903626?utm_source=planet_detroit&amp;utm_medium=civic_action_box&amp;utm_campaign=civic_action&amp;utm_content=meeting_detroit_city_council" style="color: #2f80c3;">Detalles</a><br><span style="font-size: 12px;">📅 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Public%20Health%20and%20Safety%20Standing%20Committee&amp;dates=20260309T140000Z/20260309T150000Z&amp;ctz=America/Detroit&amp;details=Agency%3A%20Detroit%20City%20Council%0AJoin%20online%3A%20https%3A%2F%2Fcityofdetroit.zoom.us%2Fj%2F85846903626%0APublic%20comment%20accepted.%20Email%20CCPublicComment%40detroitmi.gov%20or%20attend%20in%20person.&amp;location=Coleman%20A.%20Young%20Municipal%20Center%2C%202%20Woodward%20Ave%2C%20Detroit&amp;utm_source=planet_detroit&amp;utm_medium=civic_action_box&amp;utm_campaign=civic_action&amp;utm_content=calendar_google" style="color: #2f80c3;">Google</a> · <a href="https://outlook.live.com/calendar/0/action/compose?subject=Public%20Health%20and%20Safety%20Standing%20Committee&amp;startdt=2026-03-09T14:00:00.000Z&amp;enddt=2026-03-09T15:00:00.000Z&amp;body=Agency%3A%20Detroit%20City%20Council%0AJoin%20online%3A%20https%3A%2F%2Fcityofdetroit.zoom.us%2Fj%2F85846903626%0APublic%20comment%20accepted.%20Email%20CCPublicComment%40detroitmi.gov%20or%20attend%20in%20person.&amp;location=Coleman%20A.%20Young%20Municipal%20Center%2C%202%20Woodward%20Ave%2C%20Detroit&amp;utm_source=planet_detroit&amp;utm_medium=civic_action_box&amp;utm_campaign=civic_action&amp;utm_content=calendar_outlook" style="color: #2f80c3;">Outlook</a></span></span></label></li>
+          </ul>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <h4 style="font-size: 14px; font-weight: 600; margin: 0 0 8px 0; color: #333;">Acciones cívicas: lo que tú puedes hacer</h4>
+          <ul style="margin: 0; padding-left: 0; list-style: none; font-size: 14px;">
+            <li style="margin-bottom: 8px; list-style: none;"><label style="display: flex; align-items: flex-start; gap: 6px; cursor: pointer;"><input type="checkbox" class="civic-checkbox" data-action="contact_your_elected_officials" data-label="Póngase en contacto con sus representantes electos." style="margin-top: 3px; cursor: pointer;"> <span><strong>Póngase en contacto con sus representantes electos.</strong><br><span style="color: #666; font-size: 13px;">Póngase en contacto con los representantes federales y estatales para apoyar la norma propuesta por la OSHA sobre el calor y unas protecciones más estrictas para los trabajadores.
+
+Senadora estadounidense Elissa Slotkin, oficina de Detroit: 313-961-4330
+Senador estadounidense Gary Peters, oficina de Detroit: 313-226-6020
+Representante estadounidense Shri Thanedar, oficina de Detroit: 313-880-2400
+Representante estadounidense Rashida Tlaib, oficina de Detroit: 313-463-6220
+Representante de los Estados Unidos John James, oficina de Warren: 586-498-7122
+Representante de los Estados Unidos Debbie Dingell, oficina de Ann Arbor: 734-481-1100
+Representante de los Estados Unidos Haley Stevens, oficina de Farmington Hills: 734-853-3040
+Gobernadora Gretchen Whitmer, Lansing: 517-335-7858</span></span></label></li>
+          </ul>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <h4 style="font-size: 14px; font-weight: 600; margin: 0 0 8px 0; color: #333;">Qué hay que tener en cuenta a continuación</h4>
+          <div style="font-size: 14px; color: #333; line-height: 1.5;">Esté atento a la decisión de la OSHA sobre si implementar la norma federal de seguridad contra el calor propuesta, que exigiría a los empleadores proteger a los trabajadores cuando las temperaturas alcancen los 80 °F o más.</div>
+        </div>
+        <div id="civic-response-form" style="margin: 16px 0 12px 0; padding: 12px; background: #e8f0fe; border-radius: 6px;">
+          <p style="font-size: 13px; color: #333; margin: 0 0 8px 0; font-weight: 600;">¿Has tomado medidas? Háznoslo saber.</p>
+          <form id="civic-response-submit">
+            <textarea id="civic-response-message" placeholder="Asistí a una reunión, contacté a mi representante, envié un comentario..." required style="width: 100%; box-sizing: border-box; padding: 6px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px; font-family: inherit; resize: vertical; min-height: 50px; margin-bottom: 6px;"></textarea>
+            <div style="display: flex; gap: 8px;">
+              <input type="email" id="civic-response-email" placeholder="Correo electrónico (opcional)" style="flex: 1; padding: 6px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px;">
+              <button type="submit" style="padding: 6px 14px; background: #2f80c3; color: white; border: none; border-radius: 4px; font-size: 13px; cursor: pointer; font-weight: 600;">Enviar</button>
+            </div>
+          </form>
+          <p id="civic-response-thanks" style="display: none; font-size: 13px; color: #2f80c3; margin: 8px 0 0 0; font-weight: 600;">¡Gracias! Tu respuesta ha sido registrada.</p>
+        </div>
+        <p style="font-size: 11px; color: #888; margin: 0; padding-top: 12px; border-top: 1px solid #d0d8e0;">
+          Recursos cívicos recopilados por <a href="https://planetdetroit.org" style="color: #2f80c3;">Planet Detroit</a>
+        </p>
+      </div>
+    </div>
+    <p>Los trabajadores de la construcción representan el 6% del total de la población activa de EE. UU., pero suponen más de un tercio de todas las muertes laborales relacionadas con la exposición al calor, según un estudio publicado en la revista American Journal of Industrial Medicine.</p>
+    <p>Los trabajadores al aire libre se enfrentan de manera desproporcionada a mayores riesgos para la salud relacionados con el calor, especialmente en trabajos que implican actividades extenuantes como palear, serrar manualmente, empujar y tirar de cargas pesadas o caminar a paso rápido, según las instrucciones del Programa Nacional de Énfasis del Departamento de Trabajo de los Estados Unidos, un programa temporal que centra los recursos de la OSHA en un peligro concreto.</p>
+    <p>A partir de abril de 2022, el programa sobre riesgos relacionados con el calor en exteriores e interiores amplía la iniciativa de prevención de enfermedades relacionadas con el calor de la agencia, con el objetivo de fomentar las intervenciones tempranas de los empleadores para prevenir enfermedades y muertes de los trabajadores en condiciones de calor extremo.</p>
+    <p>Cuando el índice de calor es de 80°F o más, las enfermedades y lesiones graves relacionadas con el calor en el trabajo se vuelven más frecuentes, según la OSHA.</p>
+    <p>Entre 1992 y 2022, un total de 986 trabajadores estadounidenses de todos los sectores industriales fallecieron por exposición al calor, incluidos 334 trabajadores de la construcción, según datos de la Oficina de Estadísticas Laborales.</p>
+    <p>Las lesiones, enfermedades y muertes relacionadas con el calor en el trabajo son en gran medida evitables, según el Sistema Nacional Integrado de Información sobre la Salud y el Calor, una creación de la NOAA y los Centros para el Control y la Prevención de Enfermedades.</p>
+    <p>Sin embargo, Laurel Harduar Morano, profesora asociada e investigadora de salud pública de la Universidad Estatal de Míchigan, afirmó que faltan normas y protecciones integrales a nivel nacional para los trabajadores que se enfrentan al calor.</p>
+  </div>
+
+  <div class="section-header reveal">
+    <div class="section-header__rule"></div>
+    <h2 class="section-header__title">'En el ámbito laboral, una sola muerte ya es demasiado'</h2>
+  </div>
+
+  <div class="text-section reveal">
+    <p>MIOSHA no define una temperatura específica que sea demasiado alta para trabajar, y la agencia estatal no tiene una norma sobre el calor.</p>
+    <p>En su lugar, MIOSHA anima a los empleadores a poner en marcha elementos de un programa de prevención de enfermedades relacionadas con el calor para reducir el riesgo de padecerlas en el trabajo.</p>
+    <p>Los empleadores están obligados a informar a MIOSHA de cualquier muerte relacionada con el trabajo en un plazo de ocho horas y de las hospitalizaciones en un plazo de 24 horas.</p>
+    <p>La norma nacional sobre calor propuesta por la OSHA cubriría a todos los empleadores bajo la jurisdicción de la OSHA que trabajen en interiores o exteriores cuando el índice de calor sea de 80°F o más, la temperatura a la que los daños graves se vuelven más frecuentes, según el Departamento de Trabajo.</p>
+    <p>Los empleadores con menos de 10 empleados no estarían obligados a tener un plan escrito de prevención de lesiones y enfermedades por calor, sino que comunicarían las instrucciones verbalmente, según la norma propuesta.</p>
+    <p>La Ley de Seguridad y Salud Ocupacional de 1970, administrada por la OSHA, no cubre a los trabajadores autónomos, a los familiares directos de los empleadores agrícolas ni a los trabajadores cuyos riesgos están regulados por otra agencia federal.</p>
+    <p>Los trabajadores cuyos riesgos están regulados por otra agencia se encuentran en campos como la minería, la energía nuclear, muchos aspectos de las industrias del transporte y los empleados de los gobiernos estatales y locales, a menos que se encuentren en uno de los estados que aplican un plan estatal aprobado por la OSHA, según el Departamento de Trabajo.</p>
+    <p>En virtud del plan estatal de Míchigan, las pequeñas explotaciones agrícolas y los empleadores pueden seguir estando sujetos a la aplicación de la ley, las inspecciones y las obligaciones de cumplimiento de la MIOSHA, incluso en los casos en que la OSHA pueda estar restringida.</p>
+    <p>Los comentarios posteriores a la audiencia sobre la norma federal propuesta sobre el calor se aceptaron hasta el 30 de octubre de 2025. La OSHA ha concluido las audiencias públicas como parte del proceso de elaboración de normas en curso, dijo Juan Rodríguez, subdirector regional de la región este del Departamento de Trabajo, que supervisa la OSHA.</p>
+    <p>"Una vez que se cierre el expediente de la audiencia, el departamento lo tendrá todo en cuenta y tomará una decisión sobre cómo proceder," afirmó Rodríguez en una declaración enviada por correo electrónico.</p>
+  </div>
+
+  <div class="timeline-section reveal">
+    <h3 class="timeline-section__title">El largo camino hacia una norma térmica</h3>
+    <div class="timeline">
+      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">1970</div><p class="timeline__text">La Ley de Seguridad y Salud Ocupacional crea la OSHA, autorizando al gobierno federal a inspeccionar los lugares de trabajo y exigiendo a los empleadores que proporcionen un lugar de trabajo "libre de riesgos reconocidos."</p></div>
+      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">1973</div><p class="timeline__text">El NIOSH publica el primer documento de criterios en el que se recomiendan normas relacionadas con el calor. Revisado en 1986.</p></div>
+      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">2016</div><p class="timeline__text">El NIOSH revisa los criterios relativos al calor y establece unos criterios formales para una norma sobre el calor, aunque sigue siendo solo una recomendación.</p></div>
+      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">Jan 2021</div><p class="timeline__text">El presidente Biden firma una orden ejecutiva que sienta las bases para el Plan de Acción Climática del Departamento de Trabajo, que prioriza "la seguridad de los trabajadores como una cuestión importante para la resiliencia climática."</p></div>
+      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">2022</div><p class="timeline__text">La OSHA publica un memorándum sobre la iniciativa contra el calor y el Programa Nacional de Énfasis se amplía para cubrir los riesgos relacionados con el calor tanto en exteriores como en interiores. Michigan adopta el Programa Estatal de Énfasis.</p></div>
+      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">Aug 2024</div><p class="timeline__text">La OSHA propone una norma histórica para la prevención de lesiones y enfermedades causadas por el calor para los empleadores de todo el país.</p></div>
+      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">Oct 2025</div><p class="timeline__text">Se cierra el período de comentarios públicos. La OSHA concluye las audiencias como parte del proceso normativo en curso.</p></div>
+    </div>
+  </div>
+
+  <div class="text-section reveal">
+    <p>Kristin Osterkamp, directora del programa de MIOSHA, afirmó que la agencia estatal ha registrado un aumento del 30% en las consultas sobre el calor en los últimos tres años, desde que se creó el programa estatal.</p>
+    <p>Las temperaturas están aumentando en Míchigan y, en el último año, 225 empleadores solicitaron consultas sobre el calor, afirmó. Se trata de una gran variedad de empleadores de sectores como la construcción y el paisajismo, así como de lugares de trabajo interiores, como obras industriales sin aire acondicionado.</p>
+    <p>"Es una clara señal de que los empleadores están colaborando con nosotros antes de que se produzca un problema," afirmó Osterkamp.</p>
+    <div class="pullquote">
+      <div class="pullquote__inner">
+        <p class="pullquote__text">"En el ámbito laboral, una sola muerte ya es demasiado. Nuestros formadores trabajan a diario con los empleadores para implementar planes que garanticen la seguridad de nuestros trabajadores, sin esperar a que se produzca una muerte."</p>
+        <p class="pullquote__attr">— Kristin Osterkamp, gerente del programa MIOSHA</p>
+      </div>
+    </div>
+    <p>Anima a los empleadores a pensar en los detalles: quién supervisa las alertas por calor, cuáles son los niveles de activación en esos días y cuál es su plan cuando suben las temperaturas.</p>
+    <p>No todos los empleadores llaman, dijo. MIOSHA intenta estar presente en las conferencias del sector, dijo Osterkamp, y añadió que quiere que los empleadores consideren a los reguladores estatales "accesibles y no se sientan intimidados."</p>
+    <p>"Lo que me preocupa es que la gente no vaya a informar de los síntomas a tiempo, y que no sean conscientes de la necesidad de controlar su estado," dijo Osterkamp.</p>
+    <p>Sin una normativa sobre el estrés térmico, Osterkamp se ve obligada a aplicar la cláusula federal de obligación general, una disposición general que exige a todos los empleadores proporcionar un lugar de trabajo libre de riesgos.</p>
+    <p>"En el ámbito laboral, una muerte ya es demasiado," afirmó Osterkamp. "Nuestros formadores trabajan a diario con los empleadores para implementar planes que garanticen la seguridad de nuestros trabajadores, sin esperar a que se produzca una muerte."</p>
+  </div>
+
+  <div class="section-header reveal">
+    <div class="section-header__rule"></div>
+    <h2 class="section-header__title">Empresas que lo hacen bien</h2>
+  </div>
+
+  <div class="text-section reveal">
+    <p>A pesar de no existir una norma nacional, un empresario del norte de Míchigan afirmó que aplica medidas de protección contra el calor porque sus empleados son "el alma" de la empresa.</p>
+    <p>Paul Mahon, director sénior de proyectos de Grand Traverse Construction en Traverse City, completó la formación sobre seguridad contra el calor de MIOSHA en el verano de 2025.</p>
+    <p>Según él, la formación le ayudó a «perfeccionar» sus prácticas de seguridad contra el calor, como añadir estaciones para lavarse las manos y métodos de refrigeración.</p>
+    <p>Los 58 empleados de la empresa prestan servicios comerciales e industriales en todo el norte de Míchigan, entre los que se incluyen la colocación de cimientos, aceras y losas de hormigón; la realización de trabajos de carpintería en escuelas y centros comerciales; y la colaboración con los municipios en la construcción y modernización de plantas de tratamiento de aguas residuales y potables.</p>
+    <p>Las temperaturas estivales en Traverse City han alcanzado una media de 25 °C en los últimos tres años. Según el Servicio Meteorológico Nacional, la temperatura en esta ciudad del norte de Míchigan alcanzó los 34°C a finales de junio de 2025.</p>
+    <p>"Hemos visto esos días en pleno verano en los que el calor es bastante agobiante y la humedad es alta," afirmó Mahon.</p>
+    <p>Una semana antes de los días con índices de calor elevados, Mahon envía recordatorios a sus equipos para que planifiquen en consecuencia. Abastece todos los lugares de trabajo con agua, neveras portátiles y bebidas electrolíticas, y planifica descansos en remolques refrigerados durante las horas de mayor temperatura, lo que permite a los empleados recuperarse.</p>
+    <p>"Simplemente intentamos mantener las mismas prácticas que siempre hemos seguido. No nos oponemos a gastar dinero para garantizar la seguridad de todos," afirma Mahon.</p>
+    <div class="pullquote pullquote--left">
+      <div class="pullquote__inner">
+        <p class="pullquote__text">"No nos oponemos a gastar dinero para garantizar la seguridad de todos."</p>
+        <p class="pullquote__attr">— Paul Mahon, Grand Traverse Construction</p>
+      </div>
+    </div>
+    <p>La formación sobre concienciación sobre el calor que imparte Mahon orienta a los empleados sobre los signos del estrés térmico y cómo superarlo.</p>
+    <p>"Con las condiciones del verano, nos enfrentaremos a algunos días de calor extremo... solo tenemos que asegurarnos de que todo el mundo tenga los conocimientos necesarios y no se vea afectado por el calor," afirma Mahon.</p>
+    <p>Algunos empleados de Grand Traverse Construction son latinos, según Mahon. Según datos de la Oficina del Censo de los Estados Unidos, los latinos representan el 4% de la población de Traverse City y el 8% de los residentes de Detroit.</p>
+    <p>Mahon dijo que los buenos empleadores se preocupan por sus empleados: "sin ellos no somos nada," afirmó. Si un empleador no mira hacia el futuro ni proporciona el equipo adecuado, tiempo de descanso adicional y recursos, esto repercute en los empleados, dijo.</p>
+    <p>"Es una situación muy mala. Nosotros no funcionamos así como empresa y tampoco esperamos que otras empresas lo hagan," dijo Mahon.</p>
+    <p>"Así que hay que cuidar a los empleados en todos los ámbitos."</p>
+  </div>
+
+</article>
+
+<div class="author-box reveal">
+  <div class="author-box__inner">
+    <div class="author-box__photo">
+      <img src="https://planetdetroit.org/wp-content/uploads/2025/04/cropped-Planet-Detroit1899-isabelle-80x80.jpeg" alt="Isabelle Tavares">
+    </div>
+    <div class="author-box__text">
+      <p class="author-box__label">Sobre la autora</p>
+      <p class="author-box__name"><a href="https://planetdetroit.org/author/isabelle-tavares/">Isabelle Tavares</a></p>
+      <p class="author-box__bio">Isabelle Tavares cubre los impactos ambientales y de salud pública en el suroeste de Detroit para Planet Detroit con Report for America. Trabajando en texto, cine y audio, es una narradora dominico-estadounidense interesada en la identidad, el tiempo generacional y la ecología.</p>
+    </div>
+  </div>
+</div>
+
+<section class="donate-banner">
+  <div class="donate-banner__bg" style="background-image:url(donate-bg.jpg)"></div>
+  <div class="donate-banner__overlay"></div>
+  <div class="donate-banner__content">
+    <p class="donate-banner__label">Apoya a Planet Detroit</p>
+    <h2 class="donate-banner__title">Apoya este periodismo</h2>
+    <p class="donate-banner__text">Esta investigación analiza la relación entre el clima y el trabajo, y cómo afecta de manera desproporcionada a las comunidades latinas de Detroit. Es la primera de una serie y requiere tiempo y un esfuerzo sostenido.</p>
+    <a href="https://donorbox.org/be-a-planet-detroiter-780440" class="donate-banner__cta" target="_blank" rel="noopener">Dona ahora</a>
+  </div>
+</section>
+
+<footer class="article-footer">
+  <div class="article-footer__logo">
+    <img src="https://planetdetroit.org/wp-content/uploads/2024/07/cropped-PlanetDetroitLogo-WhiteText-2.png" alt="Planet Detroit">
+  </div>
+  <p class="article-footer__note">Con raíces en Detroit, nuestra misión es impulsar la acción informada a través del periodismo ambiental y climático independiente centrado en la comunidad, amplificando las voces locales, exigiendo rendición de cuentas al poder y destacando soluciones para inspirar esperanza y acción en Michigan y los Grandes Lagos.</p>
+  <p class="article-footer__credits">Fotografía: Alejandro Ugalde Sandoval &amp; Maricela Hernández · Ilustración: <a href="https://www.instagram.com/rr_archivo/" target="_blank" rel="noopener">rr archivo</a></p>
+  <p class="article-footer__links">
+    <a href="https://planetdetroit.org">planetdetroit.org</a>
+    <a href="https://www.instagram.com/planetdetroitnews/">Instagram</a>
+    <a href="https://www.facebook.com/planetdetroitnews">Facebook</a>
+    <a href="https://bsky.app/profile/planetdetroit.bsky.social">Bluesky</a>
+  </p>
+</footer>
+
+<script>
+const progressBar = document.getElementById('progressBar');
+const stickyNav = document.getElementById('stickyNav');
+function updateProgress() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = (scrollTop / docHeight) * 100 + '%';
+  stickyNav.classList.toggle('visible', scrollTop > window.innerHeight * 0.8);
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
+
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => revealObserver.observe(el));
+
+const chartSection = document.getElementById('chartSection');
+const chartFills = document.querySelectorAll('.chart-bar__fill');
+let chartAnimated = false;
+new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !chartAnimated) {
+      chartAnimated = true;
+      chartFills.forEach(fill => { fill.style.width = fill.dataset.width + '%'; });
+    }
+  });
+}, { threshold: 0.3 }).observe(chartSection);
+
+// Civic Action Box
+(function() {
+  function civicActionInit() {
+    var box = document.querySelector('.civic-action-box');
+    if (box) {
+      var checks = box.querySelectorAll('.civic-checkbox');
+      checks.forEach(function(cb) {
+        cb.addEventListener('change', function() {
+          var action = cb.getAttribute('data-action');
+          var label = cb.getAttribute('data-label');
+          if (typeof gtag !== 'undefined') {
+            gtag('event', cb.checked ? 'civic_action_taken' : 'civic_action_untaken', {
+              action_label: action,
+              action_detail: label,
+              article_url: window.location.href
+            });
+          }
+        });
+      });
+    }
+    var form = document.getElementById('civic-response-submit');
+    var wrapper = document.getElementById('civic-response-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var msg = document.getElementById('civic-response-message').value.trim();
+        var email = document.getElementById('civic-response-email').value.trim();
+        if (!msg) return;
+        var payload = {
+          message: msg,
+          article_url: window.location.href,
+          article_title: document.title
+        };
+        if (email) payload.email = email;
+        function showThanks() {
+          if (wrapper) {
+            wrapper.innerHTML = '';
+            var p = document.createElement('p');
+            p.style.fontSize = '13px';
+            p.style.color = '#2f80c3';
+            p.style.margin = '0';
+            p.style.fontWeight = '600';
+            p.textContent = '¡Gracias! Tu respuesta ha sido registrada.';
+            wrapper.appendChild(p);
+          }
+        }
+        fetch('https://ask-planet-detroit-production.up.railway.app/api/civic-responses', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).then(showThanks).catch(showThanks);
+      });
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', civicActionInit);
+  } else {
+    civicActionInit();
+  }
+})();
+</script>
+
+</body>
+</html>

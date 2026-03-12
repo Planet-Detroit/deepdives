@@ -714,6 +714,29 @@ a:hover { text-decoration: underline; }
   .pullquote { float: none; width: 100%; margin: 1.5rem 0; }
   .pullquote__inner { padding-left: 1.25rem; }
 }
+
+/* ============ LANGUAGE TOGGLE ============ */
+.lang-toggle {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.5);
+}
+.lang-toggle a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.lang-toggle a:hover {
+  color: var(--pd-white);
+  text-decoration: none;
+}
+.lang-toggle__current {
+  color: var(--pd-white);
+  font-weight: 600;
+}
+.sticky-nav .lang-toggle {
+  font-size: 0.75rem;
+}
 </style>
 </head>
 <body>
@@ -725,6 +748,7 @@ a:hover { text-decoration: underline; }
     <img src="https://planetdetroit.org/wp-content/uploads/2024/07/cropped-PlanetDetroitLogo-WhiteText-2.png" alt="Planet Detroit">
   </span>
   <span class="sticky-nav__title">Heat &amp; Harm</span>
+  <span class="lang-toggle"><span class="lang-toggle__current">English</span> | <a href="../latino-workers-heat-es/">Español</a></span>
 </nav>
 
 <!-- ===== HERO ===== -->
@@ -744,6 +768,7 @@ a:hover { text-decoration: underline; }
       <span>By <a href="https://planetdetroit.org/author/isabelle-tavares/">Isabelle Tavares</a></span>
       <span>March 3, 2026</span>
       <span>16 min read</span>
+      <span class="lang-toggle"><span class="lang-toggle__current">English</span> | <a href="../latino-workers-heat-es/">Español</a></span>
     </div>
   </div>
   <div class="hero__scroll-cue">
