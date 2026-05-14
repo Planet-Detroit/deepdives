@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federal heat regulations on ice: 'The cost of doing nothing' — Heat & Harm — Planet Detroit</title>
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5QQJ9SVV07"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5QQJ9SVV07');
+</script>
+<style>
+/* ============================================================
+   PLANET DETROIT — BRAND TOKENS
+   Core palette from style guide, with warm investigation accent
+   ============================================================ */
+:root {
+  /* Brand colors */
+  --pd-blue: #2982C4;
+  --pd-orange: #EA5A39;
+  --pd-red: #DD3333;
+  --pd-body: #111111;
+  --pd-secondary: #515151;
+  --pd-dark-bg: #333333;
+  --pd-top-bar: #4A4A4A;
+  --pd-light-bg: #F0F0F0;
+  --pd-border: #CCCCCC;
+  --pd-white: #FFFFFF;
+
+  /* Investigation accent — warm tint from illustration, used sparingly */
+  --inv-warm: #C85A2A;
+  --inv-warm-light: #FDF2EC;
+
+  /* Typography — per style guide */
+  --font-headline: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+  --font-body: georgia, garamond, "Times New Roman", serif;
+  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+
+  /* Layout */
+  --max-text: 900px;
+  --max-wide: 1100px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--pd-white);
+  color: var(--pd-body);
+  line-height: 1.6;
+  font-size: 20px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+@media (max-width: 600px) { body { font-size: 18px; } }
+
+a { color: var(--pd-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ============ PROGRESS BAR ============ */
+.progress-bar {
+  position: fixed; top: 0; left: 0;
+  height: 3px;
+  background: var(--pd-blue);
+  z-index: 1001; width: 0%;
+  transition: width 50ms linear;
+}
+
+/* ============ STICKY NAV ============ */
+.sticky-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(51, 51, 51, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.6rem 1.5rem;
+  transform: translateY(-100%);
+  transition: transform 0.35s ease;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.sticky-nav.visible { transform: translateY(0); }
+.sticky-nav__logo img { height: 28px; width: auto; }
+.sticky-nav__title {
+  font-family: var(--font-headline);
+  font-size: 0.9rem; font-weight: 600;
+  color: var(--pd-white);
+}
+.sticky-nav__series {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.5);
+}
+.sticky-nav__series a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+}
+.sticky-nav__series a:hover { color: var(--pd-white); }
+
+/* ============ HERO ============ */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  overflow: hidden; background: var(--pd-dark-bg);
+}
+.hero__illustration {
+  position: absolute; inset: 0; z-index: 1;
+}
+.hero__illustration img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 30%;
+  opacity: 0.88;
+}
+.hero__gradient {
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(to bottom,
+    rgba(51,51,51,0) 0%, rgba(51,51,51,0.1) 35%,
+    rgba(51,51,51,0.65) 65%, rgba(51,51,51,0.95) 100%);
+}
+.hero__content {
+  position: relative; z-index: 3;
+  padding: 4rem 2rem 3rem;
+  max-width: var(--max-wide); margin: 0 auto; width: 100%;
+}
+.hero__logo {
+  margin-bottom: 1.5rem;
+  opacity: 0; animation: fadeSlideUp 0.8s ease forwards 0.2s;
+}
+.hero__logo img { height: 36px; width: auto; }
+.hero__label {
+  font-family: var(--font-ui);
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--pd-white); background: var(--pd-blue);
+  display: inline-block; padding: 0.25em 0.6em; border-radius: 4px;
+  margin-bottom: 1rem;
+  opacity: 0; animation: fadeSlideUp 0.8s ease forwards 0.4s;
+}
+.hero__title {
+  font-family: var(--font-headline);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700; line-height: 1.15;
+  color: var(--pd-white);
+  margin-bottom: 1.5rem;
+  opacity: 0; animation: fadeSlideUp 0.8s ease forwards 0.5s;
+}
+.hero__deck {
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  line-height: 1.55;
+  color: rgba(255,255,255,0.8);
+  max-width: 620px; margin-bottom: 2rem;
+  opacity: 0; animation: fadeSlideUp 0.8s ease forwards 0.7s;
+}
+.hero__meta {
+  display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center;
+  font-family: var(--font-ui); font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  opacity: 0; animation: fadeSlideUp 0.8s ease forwards 0.9s;
+  padding-bottom: 2rem;
+}
+.hero__meta a { color: var(--pd-white); background: var(--pd-blue); padding: 0.15em 0.5em; border-radius: 4px; font-size: 0.85rem; font-weight: 700; }
+.hero__scroll-cue {
+  position: absolute; bottom: 1.5rem; left: 50%;
+  transform: translateX(-50%); z-index: 4;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 1.5s, bounce 2s ease infinite 2.5s;
+}
+.hero__scroll-cue svg {
+  width: 26px; height: 26px;
+  stroke: rgba(255,255,255,0.35); fill: none; stroke-width: 2;
+}
+
+/* ============ TEXT SECTIONS ============ */
+.article { position: relative; }
+.text-section {
+  max-width: var(--max-text); margin: 0 auto; padding: 2.5rem 2rem;
+}
+.text-section > p {
+  margin-bottom: 1.4rem;
+  font-size: 1.3rem; color: var(--pd-body); line-height: 1.6;
+}
+.text-section > p:last-child { margin-bottom: 0; }
+.text-section--drop-cap p:first-of-type::first-letter {
+  font-family: var(--font-headline);
+  font-size: 3.4em; float: left; line-height: 0.8;
+  margin: 0.06em 0.1em 0 0;
+  color: var(--pd-body); font-weight: 700;
+}
+
+/* ============ PULLQUOTE (floating) ============ */
+.pullquote {
+  float: right;
+  width: 38%;
+  margin: 0.5rem 0 1.5rem 2.5rem;
+  padding: 0;
+}
+.pullquote--left {
+  float: left;
+  margin: 0.5rem 2.5rem 1.5rem 0;
+}
+.pullquote__inner {
+  border-left: 3px solid var(--pd-blue);
+  padding-left: 1.5rem;
+}
+.pullquote__text {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  line-height: 1.4; color: var(--pd-body); font-style: italic;
+}
+.pullquote__attr {
+  margin-top: 0.75rem; font-family: var(--font-ui);
+  font-size: 0.78rem; font-weight: 600; color: var(--pd-secondary);
+}
+
+/* ============ SECTION HEADERS ============ */
+.section-header {
+  position: relative; padding: 4rem 2rem 2rem;
+  max-width: var(--max-wide); margin: 0 auto;
+}
+.section-header__rule {
+  width: 50px; height: 3px; background: var(--pd-blue); margin-bottom: 1.25rem;
+}
+.section-header__title {
+  font-family: var(--font-headline);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700; line-height: 1.2;
+  color: var(--pd-body); max-width: 700px;
+}
+
+/* ============ PHOTOS ============ */
+.photo-full {
+  position: relative; width: 100%;
+  max-width: var(--max-wide); margin: 2.5rem auto; overflow: hidden;
+}
+.photo-full img { width: 100%; display: block; }
+.photo-full__caption {
+  padding: 0.75rem 2rem;
+  color: var(--pd-secondary); font-family: var(--font-ui);
+  font-size: 0.78rem; font-style: italic;
+  border-bottom: 1px solid var(--pd-border);
+}
+
+/* ============ STAT BAND ============ */
+.stat-band {
+  background: var(--pd-white); padding: 3.5rem 2rem; margin: 2.5rem 0;
+}
+.stat-band__inner {
+  max-width: var(--max-wide); margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+.stat-card {
+  text-align: left;
+  background: var(--pd-white);
+  border: 1px solid var(--pd-border);
+  border-top: 4px solid var(--pd-blue);
+  border-radius: 6px;
+  padding: 1.75rem 1.5rem;
+}
+.stat-card__number {
+  font-family: var(--font-headline);
+  font-size: clamp(2.4rem, 5vw, 3.2rem); font-weight: 700;
+  color: var(--pd-blue); line-height: 1.1; margin-bottom: 0.6rem;
+}
+.stat-card__label {
+  font-family: var(--font-ui); font-size: 0.95rem;
+  color: var(--pd-secondary); line-height: 1.5;
+}
+.stat-card__source {
+  font-family: var(--font-ui); font-size: 0.75rem;
+  color: var(--pd-secondary); margin-top: 0.75rem;
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+
+/* ============ TIMELINE ============ */
+.timeline-section {
+  max-width: var(--max-text); margin: 3rem auto; padding: 0 2rem;
+}
+.timeline-section__title {
+  font-family: var(--font-headline);
+  font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700;
+  margin-bottom: 2rem; color: var(--pd-body);
+}
+.timeline { position: relative; padding-left: 2.25rem; }
+.timeline::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 6px; background: var(--pd-blue); opacity: 0.3;
+}
+.timeline__item {
+  position: relative; margin-bottom: 2rem; padding-bottom: 2rem;
+  border-bottom: 1px solid var(--pd-light-bg);
+}
+.timeline__item:last-child { border-bottom: none; margin-bottom: 0; }
+.timeline__dot {
+  position: absolute; left: -2.65rem; top: 0.2rem;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--pd-blue); border: 2px solid var(--pd-white);
+}
+.timeline__year {
+  font-family: var(--font-ui); font-size: 1rem;
+  font-weight: 900; color: var(--pd-blue);
+  letter-spacing: 0.03em; margin-bottom: 0.25rem;
+}
+.timeline__text {
+  font-family: var(--font-ui); font-size: 1.15rem; font-weight: 900;
+  color: var(--pd-secondary); line-height: 1.55;
+}
+
+/* ============ DARK SECTION ============ */
+.dark-section {
+  background: var(--pd-dark-bg); color: var(--pd-white);
+  padding: 4rem 2rem; margin: 2.5rem 0;
+}
+.dark-section .text-inner { max-width: var(--max-text); margin: 0 auto; }
+.dark-section p {
+  color: rgba(255,255,255,0.75); margin-bottom: 1.4rem;
+  font-size: 1.3rem; line-height: 1.6;
+}
+.dark-section .section-header__title { color: var(--pd-white); }
+.dark-section .pullquote__text { color: rgba(255,255,255,0.9); }
+.dark-section .pullquote__attr { color: rgba(255,255,255,0.5); }
+.dark-section .pullquote__inner { border-left-color: var(--pd-blue); }
+
+/* ============ CREDIT / PARTNERSHIP BLOCK ============ */
+.credit-block {
+  max-width: var(--max-wide);
+  margin: 2.5rem auto;
+  padding: 0 2rem;
+}
+.credit-block__inner {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 2.5rem 3rem;
+  background: #EDF2F9;
+  border-left: 5px solid #1B2A4A;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.credit-block__inner::before {
+  content: '';
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: 200px;
+  background: linear-gradient(135deg, transparent 40%, rgba(27,42,74,0.05) 100%);
+  pointer-events: none;
+}
+.credit-block__logo { flex-shrink: 0; }
+.credit-block__logo img { width: 200px; height: auto; }
+.credit-block__body { position: relative; z-index: 1; }
+.credit-block__label {
+  font-family: var(--font-ui);
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #1B2A4A; margin-bottom: 0.5rem;
+}
+.credit-block__text {
+  font-family: var(--font-body);
+  font-size: 0.95rem; font-style: normal;
+  color: #333333; line-height: 1.55; margin-bottom: 0.75rem;
+}
+.credit-block__link {
+  font-family: var(--font-ui);
+  font-size: 0.78rem; font-weight: 600;
+  color: #E8448A; text-decoration: none;
+  letter-spacing: 0.03em; transition: color 0.2s;
+}
+.credit-block__link:hover { color: #f472b6; text-decoration: none; }
+.credit-block__link svg {
+  width: 12px; height: 12px;
+  vertical-align: -1px; margin-left: 0.3em;
+  stroke: currentColor; fill: none; stroke-width: 2;
+}
+@media (max-width: 600px) {
+  .credit-block__inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 2rem 1.5rem;
+  }
+  .credit-block__logo img { width: 160px; }
+}
+
+/* ============ AUTHOR BOX ============ */
+.author-box {
+  max-width: var(--max-text);
+  margin: 0 auto;
+  padding: 2.5rem 2rem 3rem;
+}
+.author-box__inner {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 2rem;
+  border-top: 1px solid var(--pd-border);
+  border-bottom: 1px solid var(--pd-border);
+}
+.author-box__photo {
+  flex-shrink: 0;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.author-box__photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.author-box__label {
+  font-family: var(--font-ui);
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--pd-secondary);
+  margin-bottom: 0.25rem;
+}
+.author-box__name {
+  font-family: var(--font-headline);
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--pd-body);
+  margin-bottom: 0.5rem;
+}
+.author-box__name a {
+  color: var(--pd-body);
+  text-decoration: none;
+}
+.author-box__name a:hover { color: var(--pd-blue); }
+.author-box__bio {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--pd-secondary);
+  line-height: 1.55;
+}
+@media (max-width: 600px) {
+  .author-box__inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+}
+
+/* ============ DONATE PARALLAX ============ */
+.donate-banner {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.donate-banner__bg {
+  position: absolute; inset: 0; z-index: 1;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.donate-banner__overlay {
+  position: absolute; inset: 0; z-index: 2;
+  background: rgba(17, 17, 17, 0.7);
+}
+.donate-banner__content {
+  position: relative; z-index: 3;
+  max-width: 620px;
+  padding: 4rem 2rem;
+}
+.donate-banner__label {
+  font-family: var(--font-ui);
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--pd-orange);
+  margin-bottom: 1rem;
+}
+.donate-banner__title {
+  font-family: var(--font-headline);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700; line-height: 1.2;
+  color: var(--pd-white);
+  margin-bottom: 1.25rem;
+}
+.donate-banner__text {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+.donate-banner__cta {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.9rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  background: var(--pd-orange); color: var(--pd-white);
+  padding: 0.85rem 2.5rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: opacity 0.2s;
+}
+.donate-banner__cta:hover { opacity: 0.9; text-decoration: none; }
+@media (max-width: 600px) {
+  .donate-banner { min-height: 360px; }
+  .donate-banner__bg { background-attachment: scroll; }
+  .donate-banner__content { padding: 3rem 1.25rem; }
+}
+
+/* ============ FOOTER ============ */
+.article-footer {
+  background: var(--pd-dark-bg); padding: 3.5rem 2rem; text-align: center;
+}
+.article-footer__logo { margin-bottom: 1.25rem; }
+.article-footer__logo img { height: 40px; width: auto; }
+.article-footer__note {
+  font-family: var(--font-ui); font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  max-width: 480px; margin: 0 auto 1.5rem; line-height: 1.55;
+}
+.article-footer__cta {
+  display: inline-block; font-family: var(--font-ui);
+  font-size: 0.85rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  background: var(--pd-orange); color: var(--pd-white);
+  padding: 0.75rem 2rem; text-decoration: none;
+  margin-bottom: 2rem; transition: opacity 0.2s;
+}
+.article-footer__cta:hover { opacity: 0.9; text-decoration: none; }
+.article-footer__credits {
+  font-family: var(--font-ui); font-size: 0.72rem;
+  color: rgba(255,255,255,0.3); margin-bottom: 0.5rem;
+}
+.article-footer__links {
+  font-family: var(--font-ui); font-size: 0.7rem;
+  color: rgba(255,255,255,0.25);
+}
+.article-footer__links a {
+  color: rgba(255,255,255,0.4); margin: 0 0.5rem;
+}
+
+/* ============ SERIES NAV ============ */
+.series-nav {
+  max-width: var(--max-text);
+  margin: 0 auto;
+  padding: 2rem 2rem 0;
+}
+.series-nav__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--pd-border);
+}
+.series-nav__link {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--pd-blue);
+  text-decoration: none;
+}
+.series-nav__link:hover { text-decoration: underline; }
+.series-nav__link--disabled {
+  color: var(--pd-secondary);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ============ CHART ============ */
+.chart-section {
+  max-width: var(--max-wide); margin: 3rem auto; padding: 0 2rem;
+}
+.chart-wrap {
+  background: var(--pd-white);
+  border: 1px solid var(--pd-border); padding: 2.5rem;
+}
+.chart-wrap__title {
+  font-family: var(--font-headline);
+  font-size: 1.3rem; font-weight: 700;
+  margin-bottom: 0.35rem; color: var(--pd-body);
+}
+.chart-wrap__subtitle {
+  font-family: var(--font-ui); font-size: 0.8rem;
+  color: var(--pd-secondary); margin-bottom: 2rem;
+}
+.chart-bars { display: flex; flex-direction: column; gap: 1.25rem; }
+.chart-bar {
+  display: grid;
+  grid-template-columns: 200px 1fr 60px;
+  gap: 1rem; align-items: center;
+}
+.chart-bar__label {
+  font-family: var(--font-ui); font-size: 0.82rem;
+  color: var(--pd-secondary); text-align: right;
+}
+.chart-bar__track {
+  height: 28px; background: var(--pd-light-bg);
+  position: relative; overflow: hidden;
+}
+.chart-bar__fill {
+  height: 100%; width: 0%;
+  transition: width 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.chart-bar__fill--danger { background: var(--pd-red); }
+.chart-bar__fill--warning { background: var(--pd-orange); }
+.chart-bar__fill--caution { background: var(--pd-blue); }
+.chart-bar__fill--success { background: #22a355; }
+.chart-bar__value {
+  font-family: var(--font-ui); font-size: 0.85rem;
+  font-weight: 700; color: var(--pd-body);
+}
+.chart-source {
+  font-family: var(--font-ui); font-size: 0.65rem;
+  color: var(--pd-secondary); margin-top: 1.5rem;
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+@media (max-width: 600px) {
+  .chart-bar { grid-template-columns: 1fr; gap: 0.25rem; }
+  .chart-bar__label { text-align: left; }
+}
+
+/* ============ ACCLIMATION INFOGRAPHIC ============ */
+.acclimation-graphic {
+  max-width: var(--max-wide); margin: 3rem auto; padding: 0 2rem;
+}
+.acclimation-graphic__inner {
+  background: var(--inv-warm-light);
+  border: 1px solid #e8d5c8;
+  border-radius: 10px;
+  padding: 2.5rem 3rem;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+.acclimation-graphic__bars {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+.acclimation-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.acclimation-bar__fill {
+  width: 60px;
+  border-radius: 4px 4px 0 0;
+  transition: height 1s ease;
+}
+.acclimation-bar__fill--build {
+  height: 120px;
+  background: linear-gradient(to top, var(--pd-blue), #5ba8dc);
+}
+.acclimation-bar__fill--lose {
+  height: 30px;
+  background: linear-gradient(to top, var(--pd-red), #e86050);
+}
+.acclimation-bar__label {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--pd-secondary);
+  text-align: center;
+}
+.acclimation-bar__number {
+  font-family: var(--font-headline);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.acclimation-bar__number--blue { color: var(--pd-blue); }
+.acclimation-bar__number--red { color: var(--pd-red); }
+.acclimation-graphic__text {
+  flex: 1;
+}
+.acclimation-graphic__title {
+  font-family: var(--font-headline);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--pd-body);
+  margin-bottom: 0.75rem;
+}
+.acclimation-graphic__desc {
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  color: var(--pd-secondary);
+  line-height: 1.55;
+  margin-bottom: 0.75rem;
+}
+.acclimation-graphic__source {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  color: var(--pd-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+@media (max-width: 600px) {
+  .acclimation-graphic__inner {
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+  }
+}
+
+/* ============ HEAT TRIGGERS CALLOUT ============ */
+.heat-triggers {
+  max-width: var(--max-wide); margin: 3rem auto; padding: 0 2rem;
+}
+.heat-triggers__inner {
+  border: 2px solid var(--pd-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.heat-triggers__title {
+  font-family: var(--font-headline);
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 1.25rem 2rem;
+  background: var(--pd-light-bg);
+  border-bottom: 1px solid var(--pd-border);
+  color: var(--pd-body);
+}
+.heat-triggers__level {
+  padding: 1.5rem 2rem;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+.heat-triggers__level + .heat-triggers__level {
+  border-top: 1px solid var(--pd-border);
+}
+.heat-triggers__temp {
+  font-family: var(--font-headline);
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.heat-triggers__temp--initial { color: var(--pd-orange); }
+.heat-triggers__temp--high { color: var(--pd-red); }
+.heat-triggers__temp-label {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.25rem;
+}
+.heat-triggers__reqs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.heat-triggers__reqs li {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  color: var(--pd-body);
+  line-height: 1.5;
+  padding: 0.35rem 0;
+  padding-left: 1.25rem;
+  position: relative;
+}
+.heat-triggers__reqs li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.heat-triggers__level:first-of-type .heat-triggers__reqs li::before {
+  background: var(--pd-orange);
+}
+.heat-triggers__level:last-of-type .heat-triggers__reqs li::before {
+  background: var(--pd-red);
+}
+@media (max-width: 600px) {
+  .heat-triggers__level {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+/* ============ STATE MAP ============ */
+.state-map {
+  max-width: var(--max-wide); margin: 3rem auto; padding: 0 2rem;
+}
+.state-map__inner {
+  background: var(--pd-white);
+  border: 1px solid var(--pd-border);
+  border-radius: 10px;
+  padding: 2.5rem;
+}
+.state-map__title {
+  font-family: var(--font-headline);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  color: var(--pd-body);
+}
+.state-map__subtitle {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--pd-secondary);
+  margin-bottom: 2rem;
+}
+.state-map__groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+.state-map__group {
+  padding: 1.25rem;
+  border-radius: 8px;
+}
+.state-map__group--active { background: #e8f5e9; border: 1px solid #a5d6a7; }
+.state-map__group--pending { background: #fff8e1; border: 1px solid #ffe082; }
+.state-map__group--blocking { background: #fbe9e7; border: 1px solid #ef9a9a; }
+.state-map__group-title {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.state-map__group--active .state-map__group-title { color: #2e7d32; }
+.state-map__group--pending .state-map__group-title { color: #f57f17; }
+.state-map__group--blocking .state-map__group-title { color: #c62828; }
+.state-map__states {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.state-map__badge {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.3em 0.7em;
+  border-radius: 4px;
+  color: var(--pd-white);
+}
+.state-map__group--active .state-map__badge { background: #43a047; }
+.state-map__group--pending .state-map__badge { background: #ffa000; }
+.state-map__group--blocking .state-map__badge { background: #e53935; }
+.state-map__note {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: var(--pd-secondary);
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+.state-map__source {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  color: var(--pd-secondary);
+  margin-top: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ============ PRODUCTIVITY ESCALATOR ============ */
+.productivity-chart {
+  max-width: var(--max-wide); margin: 3rem auto; padding: 0 2rem;
+}
+.productivity-chart__inner {
+  background: var(--pd-white);
+  border: 1px solid var(--pd-border);
+  padding: 2.5rem;
+}
+.productivity-chart__title {
+  font-family: var(--font-headline);
+  font-size: 1.3rem; font-weight: 700;
+  margin-bottom: 0.35rem; color: var(--pd-body);
+}
+.productivity-chart__subtitle {
+  font-family: var(--font-ui); font-size: 0.8rem;
+  color: var(--pd-secondary); margin-bottom: 2rem;
+}
+.productivity-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  align-items: end;
+  min-height: 200px;
+}
+.productivity-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.productivity-step__bar {
+  width: 100%;
+  max-width: 80px;
+  border-radius: 4px 4px 0 0;
+  transition: height 1s ease;
+}
+.productivity-step__temp {
+  font-family: var(--font-headline);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--pd-body);
+}
+.productivity-step__loss {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.productivity-source {
+  font-family: var(--font-ui); font-size: 0.65rem;
+  color: var(--pd-secondary); margin-top: 1.5rem;
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+@media (max-width: 600px) {
+  .productivity-steps { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ============ ANIMATIONS ============ */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(7px); }
+}
+
+@media (max-width: 600px) {
+  .hero__content { padding: 3rem 1.25rem 2rem; }
+  .text-section { padding: 2rem 1.25rem; }
+  .stat-band { padding: 3rem 1.25rem; }
+  .pullquote { float: none; width: 100%; margin: 1.5rem 0; }
+  .pullquote__inner { padding-left: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="sticky-nav" id="stickyNav">
+  <span class="sticky-nav__logo">
+    <img src="https://planetdetroit.org/wp-content/uploads/2024/07/cropped-PlanetDetroitLogo-WhiteText-2.png" alt="Planet Detroit">
+  </span>
+  <span class="sticky-nav__title">Heat &amp; Harm · Part 2</span>
+  <span class="sticky-nav__series"><a href="../">All stories in this series</a></span>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero__illustration">
+    <img src="Drafts.jpg" alt="Federal workplace heat regulation documents and policy materials.">
+  </div>
+  <div class="hero__gradient"></div>
+  <div class="hero__content">
+    <div class="hero__logo">
+      <img src="https://planetdetroit.org/wp-content/uploads/2024/07/cropped-PlanetDetroitLogo-WhiteText-2.png" alt="Planet Detroit">
+    </div>
+    <div class="hero__label">Deep Dive / Investigation · Part 2</div>
+    <h1 class="hero__title">Federal heat regulations on ice: 'The cost of doing nothing'</h1>
+    <p class="hero__deck">A landmark federal heat rule is being challenged. For millions of outdoor workers, the stakes are life and livelihood.</p>
+    <div class="hero__meta">
+      <span>By <a href="https://planetdetroit.org/author/isabelle-tavares/">Isabelle Tavares</a></span>
+      <span>May 2026</span>
+      <span>14 min read</span>
+    </div>
+  </div>
+  <div class="hero__scroll-cue">
+    <svg viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+  </div>
+</header>
+
+<!-- ===== ARTICLE ===== -->
+<article class="article">
+
+  <div class="text-section text-section--drop-cap reveal">
+    <p>When Jordan Barab walks around his neighborhood in Tacoma Park, Maryland, he said every worker he sees laboring on a roof, digging a ditch, or pouring concrete &ndash; is Latino.</p>
+    <p>&ldquo;Latino workers do a lot of the most dangerous work out there&hellip;and most of them aren&rsquo;t very well protected,&rdquo; Barab, former deputy assistant secretary at OSHA during the Obama administration, said.</p>
+    <p>Latino workers have long faced higher fatality rates, particularly in industries like construction, transportation and agriculture.</p>
+    <p>Across the U.S. in 2024, there were 842 fatalities among foreign-born Hispanic and Latino workers and 370 among native-born workers in the same demographic. In Michigan, six of the 152 worker deaths that year were Hispanic or Latino.</p>
+    <div class="pullquote">
+      <div class="pullquote__inner">
+        <p class="pullquote__text">&ldquo;Latino workers do a lot of the most dangerous work out there&hellip;and most of them aren&rsquo;t very well protected.&rdquo;</p>
+        <p class="pullquote__attr">&mdash; Jordan Barab, former Deputy Assistant Secretary of Labor at OSHA</p>
+      </div>
+    </div>
+    <p>The fate of the nation&rsquo;s first-ever federal workplace standard now hinges on a political divide. A Biden-era heat proposal, which requires employers to provide paid breaks, shade, and water, faces an uncertain future under the Trump administration and a new Republican bill that seeks to block the rule, and any similar heat rules in the future, from passing.</p>
+    <p>The only existing nationwide heat-specific safeguard, the heat National Emphasis Program, has already shifted from proactive inspections and enforcement to a largely voluntary approach, leaving Latinos in high-risk jobs with fewer protections.</p>
+  </div>
+
+  <!-- Pulitzer Center / StoryReach credit -->
+  <div class="credit-block reveal">
+    <div class="credit-block__inner">
+      <div class="credit-block__logo">
+        <img src="../storyreach-logo.webp" alt="StoryReach Midwest &mdash; Pulitzer Center">
+      </div>
+      <div class="credit-block__body">
+        <p class="credit-block__label">Supported by</p>
+        <p class="credit-block__text">This story was produced as part of the Pulitzer Center&rsquo;s StoryReach U.S. Fellowship.</p>
+        <a href="https://pulitzercenter.org/journalism/initiatives/storyreach-us/storyreach-us-fellows" class="credit-block__link" target="_blank" rel="noopener">Learn about StoryReach Fellows <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header reveal">
+    <div class="section-header__rule"></div>
+    <h2 class="section-header__title">'Agency is the best protection'</h2>
+  </div>
+
+  <div class="text-section reveal">
+    <p>Detroit-native Jason Glaser, CEO of La Isla Network, an international heat stress research and advisory organization, said structural factors contribute to that disparity. Many immigrant workers are concentrated in high-risk jobs, often with limited protections, he said.</p>
+    <p>Language barriers, lack of training and fear of retaliation can further increase vulnerability, Glaser said.</p>
+    <div class="pullquote pullquote--left">
+      <div class="pullquote__inner">
+        <p class="pullquote__text">&ldquo;Too many people don&rsquo;t have that level of agency. They&rsquo;re scared to go to the hospital&hellip;They&rsquo;re scared to really engage with any of the protective systems, either through OSHA or emergency care.&rdquo;</p>
+        <p class="pullquote__attr">&mdash; Jason Glaser, CEO of La Isla Network</p>
+      </div>
+    </div>
+    <p>Glaser said this fear can lead workers to push beyond safe limits, as some workers may try to recover at home, leading to &ldquo;full-blown kidney disease,&rdquo; he said.</p>
+    <p>&ldquo;They push themselves beyond their capacity and they get into trouble,&rdquo; he said, noting that piece-rate pay systems can intensify that pressure.</p>
+    <p>Grace Wickerson, senior manager of climate and health at the Federation of American Scientists, said in the event of dangerous conditions, some workers feel like they have to choose &ldquo;between life and livelihood.&rdquo; Wickerson, who uses they/them pronouns, said one protective strategy could be agency.</p>
+    <p>&ldquo;Agency to say, it&rsquo;s too hot, I need to go into shade,&rdquo; they said. &ldquo;Maybe you cannot take that break while you&rsquo;re in the middle of pouring concrete, but maybe you finish that up and take a break.&rdquo;</p>
+    <p>&ldquo;The bottom line is, these are the people we depend on to cook our food, to build our houses, to provide our crops,&rdquo; Glaser said. &ldquo;I think we could afford them the decency and dignity to have just baseline protections, and if they feel like they need to take a break, that their job&rsquo;s not in danger for doing so.&rdquo;</p>
+  </div>
+
+  <!-- Acclimatization Infographic -->
+  <div class="acclimation-graphic reveal">
+    <div class="acclimation-graphic__inner">
+      <div class="acclimation-graphic__bars">
+        <div class="acclimation-bar">
+          <div class="acclimation-bar__number acclimation-bar__number--blue">8&ndash;14</div>
+          <div class="acclimation-bar__fill acclimation-bar__fill--build"></div>
+          <div class="acclimation-bar__label">Days to<br>acclimate</div>
+        </div>
+        <div class="acclimation-bar">
+          <div class="acclimation-bar__number acclimation-bar__number--red">3</div>
+          <div class="acclimation-bar__fill acclimation-bar__fill--lose"></div>
+          <div class="acclimation-bar__label">Days to<br>lose it</div>
+        </div>
+      </div>
+      <div class="acclimation-graphic__text">
+        <p class="acclimation-graphic__title">Heat acclimatization: Slow to build, fast to lose</p>
+        <p class="acclimation-graphic__desc">Traditional guidance says it takes 14 days for a worker to fully adjust to heat. La Isla Network estimates about 8 days. But after just 3&ndash;5 days off, that adaptation is gone &mdash; undermining the myth that workers from hot climates &ldquo;are already used to the heat.&rdquo;</p>
+        <p class="acclimation-graphic__source">Source: Jason Glaser, La Isla Network</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header reveal">
+    <div class="section-header__rule"></div>
+    <h2 class="section-header__title">The cost of inaction</h2>
+  </div>
+
+  <div class="text-section reveal">
+    <p>Wickerson says most people in government aren&rsquo;t blind: They know the Earth is getting hotter, and they know the impacts on the United States workforce are real.</p>
+    <p>&ldquo;The struggle really is, what are we willing to do about it?&rdquo; Wickerson said.</p>
+    <p>The contentious conversations about how to regulate heat in the workplace shouldn&rsquo;t be about the cost of compliance with a historic proposed rule, Wickerson said. It should be about &ldquo;the cost of doing nothing,&rdquo; they said.</p>
+    <p>To prevent the growing threat of heat illness in the U.S. workforce, the Occupational Safety and Health Administration, or OSHA, set the groundwork for the first-ever heat regulation by publishing its proposed rule on Aug. 30, 2024.</p>
+    <p>The proposed rule mandates that employers offer water, shade, and paid breaks during heat waves &mdash; which are the <a href="https://www.weather.gov/hazstat" target="_blank" rel="noopener">deadliest weather event</a>, and <a href="https://www.epa.gov/climatechange-science/extreme-heat" target="_blank" rel="noopener">becoming more common</a> due to climate change.</p>
+    <p>The rule progressed quickly with the support of a climate-friendly Biden administration and was developed in three years, which experts say is speedy.</p>
+    <p>The agency under the Trump administration says it is still reviewing <a href="https://www.federalregister.gov/documents/2024/08/30/2024-14824/heat-injury-and-illness-prevention-in-outdoor-and-indoor-work-settings" target="_blank" rel="noopener">over 43,000</a> public comments after holding hearings on the rule during the summer of 2025.</p>
+    <p>Former OSHA official Barab told Planet Detroit it&rsquo;s still unclear what direction the administration will take.</p>
+    <p>The Labor Department will take the public comment on the heat rule into consideration and make a decision on how to proceed, a department spokesperson told Planet Detroit in a Jan. 30 email.</p>
+    <p>U.S. Sen. Bill Cassidy <a href="https://www.help.senate.gov/imo/media/doc/wil26228pdf.pdf" target="_blank" rel="noopener">introduced a bill</a> April 30, the Heat Workforce Standards Act of 2026, that would bar the labor secretary from finalizing, implementing, or enforcing Biden&rsquo;s proposed heat standard, or any similar rule in the future.</p>
+    <p>&ldquo;The proposed standard&hellip;is overly prescriptive, burdensome to businesses, and confusing for workers,&rdquo; according to the legislation introduced by Cassidy, a Louisiana Republican who is a physician.</p>
+    <p>The Federation of American Scientists&rsquo; Wickerson said the chances of the proposed rule reaching publication under Trump &ldquo;feel very close to zero.&rdquo;</p>
+    <div class="pullquote">
+      <div class="pullquote__inner">
+        <p class="pullquote__text">&ldquo;The struggle really is, what are we willing to do about it?&rdquo;</p>
+        <p class="pullquote__attr">&mdash; Grace Wickerson, Federation of American Scientists</p>
+      </div>
+    </div>
+    <p>According to an April 2026 <a href="https://aflcio.org/sites/default/files/2026-04/485%20DOTJ_2026%20FIN-NBUG%20rev.pdf" target="_blank" rel="noopener">report</a> from the American Federation of Labor and Congress of Industrial Organizations &ndash; the largest federation of unions in the U.S. &ndash; OSHA is &ldquo;now in charge of 85% more establishments, 44% more workers and new hazards and technologies, yet Congress has reduced its already-tiny budget by 10% and staffing by 26%, including a 16% reduction in inspectors.&rdquo;</p>
+    <p>Wickerson said the costs of inaction on the federal heat rule span from economic losses that could cascade to the broader economy, to long-term health impacts.</p>
+    <p>The Atlantic Council think tank <a href="https://www.atlanticcouncil.org/content-series/the-big-story/heat-is-killing-us-and-the-economy-too/" target="_blank" rel="noopener">estimates</a> that every year, U.S. businesses are facing $100 billion dollars in labor productivity losses due to extreme heat.</p>
+    <p>Wickerson said the long-term health impacts due to consistent heat exposure, such as chronic kidney disease, which <a href="https://undark.org/2025/11/05/chronic-kidney-disease-heat-exposure/" target="_blank" rel="noopener">some experts say</a> is the first climate-related disease, are arising in Latin America and starting to show up in the U.S.</p>
+    <p>According to La Isla Network, sugarcane cutters in Central America have suffered from chronic kidney disease for decades. The organization&rsquo;s <a href="https://www.sciencedirect.com/science/article/pii/S2468024924033990" target="_blank" rel="noopener">2024 study</a> said working in high heat leads to kidney injury and long term kidney dysfunction.</p>
+    <p>Despite the loss of capacity, funding cuts and other changes at the federal level, &ldquo;concern about extreme heat is pretty universal among state and local governments,&rdquo; Wickerson said.</p>
+  </div>
+
+  <div class="stat-band reveal">
+    <div class="stat-band__inner">
+      <div class="stat-card">
+        <div class="stat-card__number">$100B</div>
+        <div class="stat-card__label">Annual U.S. labor productivity losses due to extreme heat</div>
+        <div class="stat-card__source">Atlantic Council</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__number">43,000+</div>
+        <div class="stat-card__label">Public comments submitted on OSHA's proposed heat rule</div>
+        <div class="stat-card__source">Federal Register</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__number">842</div>
+        <div class="stat-card__label">Fatalities among foreign-born Hispanic/Latino workers in the U.S., 2024</div>
+        <div class="stat-card__source">Bureau of Labor Statistics</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__number">26%</div>
+        <div class="stat-card__label">Reduction in OSHA staffing, including 16% fewer inspectors</div>
+        <div class="stat-card__source">AFL-CIO 2026 Report</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Productivity Loss Escalator -->
+  <div class="productivity-chart reveal" id="productivityChart">
+    <div class="productivity-chart__inner">
+      <h3 class="productivity-chart__title">Productivity loss per degree of heat</h3>
+      <p class="productivity-chart__subtitle">Unmanaged worker output decline above 25&deg;C (77&deg;F) baseline</p>
+      <div class="productivity-steps">
+        <div class="productivity-step">
+          <div class="productivity-step__loss" style="color: #f5a623;">-2&ndash;4%</div>
+          <div class="productivity-step__bar" style="height:50px; background: #f5a623;" data-height="50"></div>
+          <div class="productivity-step__temp">80&deg;F</div>
+        </div>
+        <div class="productivity-step">
+          <div class="productivity-step__loss" style="color: var(--pd-orange);">-6&ndash;10%</div>
+          <div class="productivity-step__bar" style="height:90px; background: var(--pd-orange);" data-height="90"></div>
+          <div class="productivity-step__temp">85&deg;F</div>
+        </div>
+        <div class="productivity-step">
+          <div class="productivity-step__loss" style="color: #d84315;">-10&ndash;16%</div>
+          <div class="productivity-step__bar" style="height:130px; background: #d84315;" data-height="130"></div>
+          <div class="productivity-step__temp">90&deg;F</div>
+        </div>
+        <div class="productivity-step">
+          <div class="productivity-step__loss" style="color: var(--pd-red);">-14&ndash;22%</div>
+          <div class="productivity-step__bar" style="height:170px; background: var(--pd-red);" data-height="170"></div>
+          <div class="productivity-step__temp">95&deg;F</div>
+        </div>
+      </div>
+      <p class="productivity-source">Source: La Isla Network &mdash; 1&ndash;2% productivity loss per degree Celsius above 25&deg;C, if unmanaged</p>
+    </div>
+  </div>
+
+  <div class="section-header reveal">
+    <div class="section-header__rule"></div>
+    <h2 class="section-header__title">A patchwork of heat regulations</h2>
+  </div>
+
+  <div class="text-section reveal">
+    <p>The climate is growing hotter. Detroit experienced average annual <a href="https://www.climatecentral.org/climate-local/41432" target="_blank" rel="noopener">temperature climbs of 4.1 degrees</a> Fahrenheit since 1970, according to Climate Central, a climate communication nonprofit.</p>
+    <p>OSHA started the process for a federal heat standard in 1972, when the National Institute for Occupational Safety and Health (NIOSH) issued its first criteria, which was then updated in 1986 and 2016.</p>
+    <p>On Sept. 20, 2021, the Biden administration announced a national initiative to address heat exposure. Within weeks, the agency issued an advance notice of proposed rulemaking, followed by the creation of a National Emphasis Program and a dedicated advisory work group in 2022.</p>
+    <p>Under the proposed standard, all employers conducting business indoors or outdoors across general industry, construction, maritime, and agriculture sectors where OSHA has jurisdiction, would need to create a plan for heat hazards in the workplace.</p>
+    <p>&ldquo;It would clarify employer obligations and the steps necessary to effectively protect employees from hazardous heat,&rdquo; <a href="https://www.osha.gov/heat-exposure/rulemaking" target="_blank" rel="noopener">according to</a> the rule.</p>
+    <p>Workers, unions, employers, advocacy groups, and occupational and public health experts gave testimony and submitted evidence to the record from June 16&ndash;July 2, 2025, during OSHA&rsquo;s public hearing on the proposed rule. Comments were accepted until Oct. 30, 2025.</p>
+  </div>
+
+  <div class="timeline-section reveal">
+    <h3 class="timeline-section__title">The federal heat rule: A timeline</h3>
+    <div class="timeline">
+      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">1972</div><p class="timeline__text">NIOSH issues first criteria document recommending heat standards. Revised in 1986 and 2016.</p></div>
+      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">Sept 2021</div><p class="timeline__text">Biden administration announces national initiative to address heat exposure; OSHA issues advance notice of proposed rulemaking.</p></div>
+      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">2022</div><p class="timeline__text">OSHA issues National Emphasis Program on heat hazards. Michigan adopts State Emphasis Program. Advisory work group formed.</p></div>
+      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">Aug 2024</div><p class="timeline__text">OSHA publishes proposed Heat Injury and Illness Prevention Standard &mdash; the first-ever federal heat rule.</p></div>
+      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">Summer 2025</div><p class="timeline__text">Public hearings held. Workers, unions, employers, and experts testify. Comments accepted through Oct. 30, 2025.</p></div>
+      <div class="timeline__item"><div class="timeline__dot"></div><div class="timeline__year">April 2026</div><p class="timeline__text">Trump administration lets Biden-era NEP expire April 8, then issues revised version shifting from enforcement to voluntary compliance. Sen. Cassidy introduces bill to block the heat rule entirely.</p></div>
+    </div>
+  </div>
+
+  <div class="text-section reveal">
+    <p>Wickerson said that, if passed by the Trump administration, the rule would be similar to the recently revised National Emphasis Program, or NEP, on indoor and outdoor heat-related hazards.</p>
+    <p>The Trump administration let the Biden-era program expire on April 8, 2026, and passed a new, weaker program two days later which is in effect for five years until April 2031.</p>
+    <p>A NEP is a temporary program that centers OSHA&rsquo;s resources on targeted hazards and high-hazard industries, such as fall prevention and protection, hazardous machinery, and lead, <a href="https://www.osha.gov/enforcement/directives/nep" target="_blank" rel="noopener">according to</a> OSHA.</p>
+    <p>The AFL-CIO report said the Biden-era NEP included programmed and unprogrammed inspections across all industries, but especially high-risk ones, to prevent heat-related illness. &ldquo;The results were clear: The number of agency inspections, warning letters and citations increased.&rdquo;</p>
+    <p>The Trump administration&rsquo;s 2026 revision stripped specific inspection metrics and changed focus from enforcement to voluntary compliance, according to the report.</p>
+    <p>This shift &ldquo;removes a major tool for inspectors, who need to be able to conduct their own independent investigations, speak directly with workers and issue citations where appropriate,&rdquo; the report states.</p>
+    <p>With or without a federal rule or a NEP, regulators can cite the General Duty Clause, which requires an employer to provide a workplace free of hazards.</p>
+    <p>Wickerson said the clause is insufficient because it steps in after the harm has been done.</p>
+    <p>In order to issue a violation under the General Duty Clause, OSHA needs to establish four criteria: the employer failed to keep the workplace free of a hazard, the hazard is recognized by the industry, it could cause injury or death, and a feasible means of abatement exists.</p>
+    <p>Barab told Planet Detroit the general duty clause is &ldquo;burdensome.&rdquo;</p>
+    <div class="pullquote" style="float:none;width:100%;margin:1.5rem 0;">
+      <div class="pullquote__inner">
+        <p class="pullquote__text">&ldquo;The general duty clause is always resource intensive and more vulnerable to legal challenge than just having a standard, which is like a checklist: if you don&rsquo;t comply with each element of the standard, then it&rsquo;s fairly easy for OSHA to determine whether or not a citation needs to be issued.&rdquo;</p>
+        <p class="pullquote__attr">&mdash; Jordan Barab, former OSHA Deputy Assistant Secretary</p>
+      </div>
+    </div>
+    <p>Wickerson said the clause can be useful for inspections, and to make sure employers have heat protections in place, but without clear guidelines, Wickerson said &ldquo;there can be a lot of subjective challenges to prove they are doing enough to protect their workers.&rdquo;</p>
+    <p>&ldquo;There have been some very bad actors that have been able to be cited for heat under the general duty clause, and all of that is coming after the risk has already happened and a worker has already been injured or has died,&rdquo; Wickerson said.</p>
+    <p>Wickerson said in the absence of a federal standard, states are starting to take action by exploring how to set up standards modeled on the federal rule tailored to their own conditions, such as California, Colorado, Maryland, Oregon, and Washington. States with high heat risk like Florida and Texas prohibit cities and counties from creating local heat safety regulations.</p>
+    <p>The Michigan Occupational Safety and Health Administration (MIOSHA) adopted a heat State Emphasis Program in 2022, when OSHA issued the heat initiative memorandum and the NEP expanded to cover outdoor and indoor heat-related hazards.</p>
+    <p>Michigan cites businesses for heat infractions through the General Duty Clause, according to Port Huron-based Kathleen Dobson, construction safety consultant and former chair of a National Advisory Committee on Occupational Safety and Health heat-illness task group. She said when using the clause to cite, sometimes it&rsquo;s &ldquo;tough&rdquo; to make a case.</p>
+    <p>An inspector can enter a job site, measure the ambient temperature, and if it&rsquo;s above 80 degrees inside or outside the facilities, ask: &ldquo;Are you doing anything about heat? Where are you keeping your water? You&rsquo;re giving people adequate rest periods?&rdquo; Dobson said.</p>
+  </div>
+
+  <!-- State Heat Standards Map -->
+  <div class="state-map reveal">
+    <div class="state-map__inner">
+      <h3 class="state-map__title">State heat standards: A divided landscape</h3>
+      <p class="state-map__subtitle">Without a federal rule, protection depends on where you work</p>
+      <div class="state-map__groups">
+        <div class="state-map__group state-map__group--active">
+          <p class="state-map__group-title">Have heat standards</p>
+          <div class="state-map__states">
+            <span class="state-map__badge">California</span>
+            <span class="state-map__badge">Washington</span>
+            <span class="state-map__badge">Oregon</span>
+            <span class="state-map__badge">Nevada</span>
+            <span class="state-map__badge">Maryland</span>
+            <span class="state-map__badge">Minnesota</span>
+          </div>
+        </div>
+        <div class="state-map__group state-map__group--pending">
+          <p class="state-map__group-title">Mandated by law</p>
+          <div class="state-map__states">
+            <span class="state-map__badge">Virginia</span>
+          </div>
+          <p class="state-map__note">Required to create heat standard by May 2028</p>
+        </div>
+        <div class="state-map__group state-map__group--blocking">
+          <p class="state-map__group-title">Block local heat rules</p>
+          <div class="state-map__states">
+            <span class="state-map__badge">Florida</span>
+            <span class="state-map__badge">Texas</span>
+          </div>
+          <p class="state-map__note">Prohibit cities and counties from creating local heat safety regulations</p>
+        </div>
+      </div>
+      <p class="state-map__source">Sources: Jordan Barab, former OSHA Deputy Assistant Secretary; Grace Wickerson, Federation of American Scientists</p>
+    </div>
+  </div>
+
+  <!-- OSHA Inspector Collapse -->
+  <div class="stat-band reveal">
+    <div class="stat-band__inner">
+      <div class="stat-card">
+        <div class="stat-card__number">64</div>
+        <div class="stat-card__label">Workplace safety inspectors in Michigan &mdash; for 4.4 million workers across 300,000+ establishments</div>
+        <div class="stat-card__source">AFL-CIO 2026 Report</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__number">80 yrs</div>
+        <div class="stat-card__label">Time it would take OSHA to inspect each Michigan workplace once at current staffing</div>
+        <div class="stat-card__source">AFL-CIO 2026 Report</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__number">~700</div>
+        <div class="stat-card__label">Federal OSHA inspectors nationwide &mdash; down from 900+ during the Obama era</div>
+        <div class="stat-card__source">Jordan Barab, former OSHA official</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__number">1992</div>
+        <div class="stat-card__label">Last time a Republican administration issued a major OSHA standard (George H.W. Bush)</div>
+        <div class="stat-card__source">Jordan Barab</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header reveal">
+    <div class="section-header__rule"></div>
+    <h2 class="section-header__title">A rule was born</h2>
+  </div>
+
+  <div class="text-section reveal">
+    <p>From 2022 to early 2023, Dobson said the work group reviewed existing OSHA guidance and found gaps.</p>
+    <p>&ldquo;There was a lot of it that was either outdated or it had no scientific backup,&rdquo; Dobson said.</p>
+    <p>The group of industry professionals, from construction to waste management, said resources need to be multilingual, and reach workers beyond English and Spanish, including Portuguese, Vietnamese, and Russian, Dobson said.</p>
+    <p>A parallel group analyzed nearly 1,000 public comments submitted during the early stages of rulemaking and made its final recommendations in May 2023, she said.</p>
+    <p>Dobson said the groups met with small businesses to gain input on the potential impacts of a heat-specific standard from August to November 2023.</p>
+    <p>By summer 2025, OSHA held public hearings, gathering testimony from workers, unions, employers and experts.</p>
+    <p>&ldquo;For OSHA, it moved really quickly. Normally, it&rsquo;ll take anywhere from three to seven years to pass a standard,&rdquo; Dobson said. &ldquo;For them to do even one phase of it in three months is very uncommon.&rdquo;</p>
+    <p>The next phase is to get the rule published, and review another round of public comments, she said, adding that moving forward will require political momentum.</p>
+    <p>&ldquo;We need a champion within Congress to keep pushing it forward,&rdquo; she said. &ldquo;Congress is so divided right now. There would have to be some sort of an effort made from both sides of the playing field, to say this needs to happen.&rdquo;</p>
+    <p>Barab said he sees &ldquo;no indication at this point that the Trump administration is serious about protecting workers in general, or more specifically, protecting workers from the very obvious and very hazardous effects of heat.&rdquo;</p>
+    <p>If another Democratic administration had pushed the rule forward, Barab estimates a heat standard could possibly have been finalized by 2027.</p>
+    <p>&ldquo;The Trump administration has really cut back on their resources. They don&rsquo;t really have the political will to do anything,&rdquo; Barab said.</p>
+    <p>If the White House goes &ldquo;back to the drawing board&rdquo; to rewrite the proposed rule into a weaker standard, Barab said he has &ldquo;serious doubts&rdquo; that it could be finished by the end of Trump&rsquo;s term given OSHA&rsquo;s reduced capacity, he said.</p>
+  </div>
+
+  <!-- Rulemaking Speed Comparison Chart -->
+  <div class="chart-section reveal" id="rulemakingChart">
+    <div class="chart-wrap">
+      <h3 class="chart-wrap__title">OSHA standard timeline</h3>
+      <p class="chart-wrap__subtitle">Years from initiation to final rule</p>
+      <div class="chart-bars">
+        <div class="chart-bar">
+          <span class="chart-bar__label">Beryllium standard</span>
+          <div class="chart-bar__track"><div class="chart-bar__fill chart-bar__fill--danger" data-width="100"></div></div>
+          <span class="chart-bar__value">~20 yrs</span>
+        </div>
+        <div class="chart-bar">
+          <span class="chart-bar__label">Silica standard</span>
+          <div class="chart-bar__track"><div class="chart-bar__fill chart-bar__fill--danger" data-width="100"></div></div>
+          <span class="chart-bar__value">~20 yrs</span>
+        </div>
+        <div class="chart-bar">
+          <span class="chart-bar__label">Average major standard (GAO)</span>
+          <div class="chart-bar__track"><div class="chart-bar__fill chart-bar__fill--warning" data-width="35"></div></div>
+          <span class="chart-bar__value">~7 yrs</span>
+        </div>
+        <div class="chart-bar">
+          <span class="chart-bar__label">Heat rule (to proposal stage)</span>
+          <div class="chart-bar__track"><div class="chart-bar__fill chart-bar__fill--success" data-width="15"></div></div>
+          <span class="chart-bar__value">~3 yrs</span>
+        </div>
+        <div class="chart-bar">
+          <span class="chart-bar__label">Estimated if finalized (friendly admin)</span>
+          <div class="chart-bar__track"><div class="chart-bar__fill chart-bar__fill--caution" data-width="20"></div></div>
+          <span class="chart-bar__value">~4 yrs</span>
+        </div>
+      </div>
+      <p class="chart-source">Sources: GAO; Jordan Barab, former OSHA Deputy Assistant Secretary; Kathleen Dobson, NACOSH work group</p>
+    </div>
+  </div>
+
+  <div class="section-header reveal">
+    <div class="section-header__rule"></div>
+    <h2 class="section-header__title">'Under and over protective'</h2>
+  </div>
+
+  <div class="text-section reveal">
+    <p>Barab said OSHA does not include a trial period to test out the proposed rule. After new standards are issued, he said OSHA helps employers by offering training, in addition, OSHA gives written instructions to &ldquo;help inspectors know how to enforce, and help employers know what inspectors will be looking for,&rdquo; he said.</p>
+    <p>The &ldquo;fundamental problem&rdquo; with the rulemaking process is that no trial period was conducted in high risk industries to test and develop viable versions of the protections, said La Isla Network&rsquo;s Glaser.</p>
+    <p>&ldquo;I find that wasteful. We&rsquo;re gonna paralyze some worksites, and we&rsquo;re going to leave other workers at very high risk,&rdquo; Glaser said. &ldquo;It&rsquo;s under and over protective.&rdquo;</p>
+    <p>The proposed rule kicks in with an initial heat trigger with a heat index of 80 degrees Fahrenheit, requiring employers to provide drinking water, break areas, rest breaks if needed, acclimatization, communication, and indoor work area controls.</p>
+    <p>A high heat trigger begins with a heat index of 90 degrees Fahrenheit, mandating 15-minute paid rest breaks every two hours, observation for illness, and hazard alerts.</p>
+  </div>
+
+  <!-- Heat Trigger Thresholds -->
+  <div class="heat-triggers reveal">
+    <div class="heat-triggers__inner">
+      <p class="heat-triggers__title">What the proposed OSHA heat rule requires</p>
+      <div class="heat-triggers__level">
+        <div>
+          <div class="heat-triggers__temp heat-triggers__temp--initial">80&deg;F</div>
+          <div class="heat-triggers__temp-label">Initial trigger</div>
+        </div>
+        <ul class="heat-triggers__reqs">
+          <li>Drinking water readily accessible</li>
+          <li>Break areas with shade or cooling</li>
+          <li>Rest breaks when needed</li>
+          <li>Acclimatization plan for new/returning workers</li>
+          <li>Two-way communication about heat hazards</li>
+          <li>Indoor work area controls</li>
+        </ul>
+      </div>
+      <div class="heat-triggers__level">
+        <div>
+          <div class="heat-triggers__temp heat-triggers__temp--high">90&deg;F</div>
+          <div class="heat-triggers__temp-label">High heat trigger</div>
+        </div>
+        <ul class="heat-triggers__reqs">
+          <li>15-minute paid rest break every 2 hours</li>
+          <li>Active observation of workers for signs of illness</li>
+          <li>Hazard alerts issued to all workers</li>
+          <li>All initial trigger protections still apply</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-section reveal">
+    <p>Depending on the climate and workload, some workers would be fine, he said, and other workers &ldquo;will already be in trouble,&rdquo; Glaser said.</p>
+    <p>Dobson said some industries, like construction, cannot easily pause, for example, mid-concrete pour when proposed thresholds at 80 and 90 degrees are triggered.</p>
+    <div class="pullquote">
+      <div class="pullquote__inner">
+        <p class="pullquote__text">&ldquo;Imagine you&rsquo;re on a construction site with a crane lifting a huge steel beam, and the whistle blows. That&rsquo;s a tough sell, I think for a lot of people, me included.&rdquo;</p>
+        <p class="pullquote__attr">&mdash; Kathleen Dobson, construction safety consultant</p>
+      </div>
+    </div>
+    <p>Still, she said, &ldquo;anything could be planned around,&rdquo; noting that industries already adapt schedules for safety and quality, such as pouring concrete at night to avoid heat.</p>
+    <p>In the opposition bill to the heat standard introduced by Louisiana Sen. Cassidy, he named &ldquo;high heat triggers, stringent protocols around rest breaks, strict acclimatization protocols, and highly detailed written safety plans&rdquo; as &ldquo;unworkable&rdquo; requirements.</p>
+    <p>Cassidy said the rule &ldquo;covers all industries and geographies without regard for unique considerations,&rdquo; and &ldquo;will cause confusion and undermine worker safety.&rdquo;</p>
+    <p>The bill that would bar OSHA&rsquo;s proposed heat rule follows a March <a href="https://www.help.senate.gov/imo/media/doc/chairman_cassidy_colleagues_urge_trump_administration_to_ditch_democrat_heat_rule_proposal.pdf" target="_blank" rel="noopener">letter co-signed by 15 Republican senators</a>, led by Cassidy, urging OSHA to consider their concerns that a &ldquo;one size fits all&rdquo; rule could create operational challenges.</p>
+    <p>They argue that existing tools, including the general duty clause and NEP&rsquo;s, are sufficient. They also warn requirements such as heat triggers, a heat safety coordinator, acclimatization rules, a written safety plan, among other requirements, would &ldquo;cause confusion and, in several circumstances, may even undermine worker safety.&rdquo;</p>
+    <p>Wickerson said they hear from a lot of the opposition arguments that heat is a major concern, &ldquo;And then they bring up every possible reason why they can&rsquo;t protect their workers,&rdquo; Wickerson said.</p>
+    <p>&ldquo;The rule put forward by OSHA is a prescriptive rule: if this is happening, you do this,&rdquo; Wickerson said. &ldquo;The alternative that has been proposed is more performance based,&rdquo; and gives you more flexibility to design &ldquo;when you activate cooling protections, when you rest, when you can get water.&rdquo;</p>
+    <p>Yet the way the opposition has defined performance is not actually a true performance based rule, Wickerson said.</p>
+    <p>It&rsquo;s closest to <a href="https://www.leg.state.nv.us/Register/2024Register/R131-24AP.pdf" target="_blank" rel="noopener">Nevada&rsquo;s standard</a>, which requires an employer to have &ldquo;some level&rdquo; of a heat illness prevention plan in place, Wickerson said, but leaves implementation largely to employers.</p>
+    <p>&ldquo;There&rsquo;s not really any level of accountability,&rdquo; they said.</p>
+    <p>With Nevada&rsquo;s performance-based rule, the only way to know that something is not working is if a worker gets sick, injured, or dies, Wickerson said.</p>
+    <p>If the federal heat rule does pass, Wickerson said it may be tweaked to be a similar rule like Nevada&rsquo;s, without prescriptive protection, and with some level of heat illness prevention planning and emergency management, &ldquo;which is better than absolutely nothing, but not enough to safeguard folks against heat.&rdquo;</p>
+  </div>
+
+</article>
+
+<!-- Series navigation -->
+<div class="series-nav">
+  <div class="series-nav__inner">
+    <a href="../latino-workers-heat/" class="series-nav__link">&larr; Part 1: Michigan&rsquo;s Latino workers face deadly heat</a>
+    <a href="../" class="series-nav__link">All stories &rarr;</a>
+  </div>
+</div>
+
+<div class="author-box reveal">
+  <div class="author-box__inner">
+    <div class="author-box__photo">
+      <img src="https://planetdetroit.org/wp-content/uploads/2025/04/cropped-Planet-Detroit1899-isabelle-80x80.jpeg" alt="Isabelle Tavares">
+    </div>
+    <div class="author-box__text">
+      <p class="author-box__label">About the author</p>
+      <p class="author-box__name"><a href="https://planetdetroit.org/author/isabelle-tavares/">Isabelle Tavares</a></p>
+      <p class="author-box__bio">Isabelle Tavares covers environmental and public health impacts in Southwest Detroit for Planet Detroit with Report for America. Working in text, film and audio, she is a Dominican-American storyteller who is concerned with identity, generational time, and ecology.</p>
+    </div>
+  </div>
+</div>
+
+<section class="donate-banner">
+  <div class="donate-banner__bg" style="background-image:url(Drafts.jpg)"></div>
+  <div class="donate-banner__overlay"></div>
+  <div class="donate-banner__content">
+    <p class="donate-banner__label">Support Planet Detroit</p>
+    <h2 class="donate-banner__title">Support this journalism</h2>
+    <p class="donate-banner__text">This investigation examines how a federal heat standard meant to protect millions of outdoor workers faces political opposition &mdash; while workers continue to suffer preventable injuries and deaths.</p>
+    <a href="https://donorbox.org/be-a-planet-detroiter-780440" class="donate-banner__cta" target="_blank" rel="noopener">Donate Now</a>
+  </div>
+</section>
+
+<footer class="article-footer">
+  <div class="article-footer__logo">
+    <img src="https://planetdetroit.org/wp-content/uploads/2024/07/cropped-PlanetDetroitLogo-WhiteText-2.png" alt="Planet Detroit">
+  </div>
+  <p class="article-footer__note">Rooted in Detroit, we're on a mission to drive informed action through community-centered independent environmental and climate journalism by amplifying local voices, holding power accountable, and spotlighting solutions to inspire hope and action across Michigan and the Great Lakes.</p>
+  <p class="article-footer__credits">Reporting: Isabelle Tavares</p>
+  <p class="article-footer__links">
+    <a href="https://planetdetroit.org">planetdetroit.org</a>
+    <a href="https://www.instagram.com/planetdetroitnews/">Instagram</a>
+    <a href="https://www.facebook.com/planetdetroitnews">Facebook</a>
+    <a href="https://bsky.app/profile/planetdetroit.bsky.social">Bluesky</a>
+  </p>
+</footer>
+
+<script>
+const progressBar = document.getElementById('progressBar');
+const stickyNav = document.getElementById('stickyNav');
+function updateProgress() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = (scrollTop / docHeight) * 100 + '%';
+  stickyNav.classList.toggle('visible', scrollTop > window.innerHeight * 0.8);
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
+
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => revealObserver.observe(el));
+
+// Animate chart bars on scroll
+document.querySelectorAll('.chart-section').forEach(function(section) {
+  var animated = false;
+  new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !animated) {
+        animated = true;
+        section.querySelectorAll('.chart-bar__fill').forEach(function(fill) {
+          fill.style.width = fill.dataset.width + '%';
+        });
+      }
+    });
+  }, { threshold: 0.3 }).observe(section);
+});
+
+// Animate productivity bars on scroll
+var prodChart = document.getElementById('productivityChart');
+if (prodChart) {
+  var prodAnimated = false;
+  new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !prodAnimated) {
+        prodAnimated = true;
+        prodChart.querySelectorAll('.productivity-step__bar').forEach(function(bar) {
+          var h = bar.dataset.height;
+          bar.style.height = '0px';
+          requestAnimationFrame(function() {
+            bar.style.height = h + 'px';
+          });
+        });
+      }
+    });
+  }, { threshold: 0.3 }).observe(prodChart);
+}
+</script>
+
+</body>
+</html>
