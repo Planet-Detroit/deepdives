@@ -89,6 +89,37 @@ a:hover { text-decoration: underline; }
   font-size: 0.9rem; font-weight: 600;
   color: var(--pd-white);
 }
+.sticky-nav__series {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.5);
+}
+.sticky-nav__series a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+}
+.sticky-nav__series a:hover { color: var(--pd-white); }
+
+.series-nav {
+  max-width: var(--max-text);
+  margin: 0 auto;
+  padding: 2rem 2rem 0;
+}
+.series-nav__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--pd-border);
+}
+.series-nav__link {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--pd-blue);
+  text-decoration: none;
+}
+.series-nav__link:hover { text-decoration: underline; }
 
 /* ============ HERO ============ */
 .hero {
@@ -748,6 +779,7 @@ a:hover { text-decoration: underline; }
     <img src="https://planetdetroit.org/wp-content/uploads/2024/07/cropped-PlanetDetroitLogo-WhiteText-2.png" alt="Planet Detroit">
   </span>
   <span class="sticky-nav__title">Heat &amp; Harm</span>
+  <span class="sticky-nav__series"><a href="../">All stories in this series</a></span>
   <span class="lang-toggle"><span class="lang-toggle__current">English</span> | <a href="../latino-workers-heat-es/">Español</a></span>
 </nav>
 
@@ -1116,6 +1148,14 @@ Gov. Gretchen Whitmer, Lansing: 517-335-7858</span></span></label></li>
   </div>
 
 </article>
+
+<!-- Series navigation -->
+<div class="series-nav">
+  <div class="series-nav__inner">
+    <a href="../" class="series-nav__link">&larr; All stories in this series</a>
+    <a href="../osha/" class="series-nav__link">Part 2: Federal heat regulations on ice &rarr;</a>
+  </div>
+</div>
 
 <div class="author-box reveal">
   <div class="author-box__inner">
