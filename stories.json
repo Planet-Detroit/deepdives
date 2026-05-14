@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "latino-workers-heat",
+    "title": "Michigan's Latino workers face deadly heat",
+    "description": "As climate change drives temperatures higher, Latino outdoor workers in Michigan face dangerous conditions with few protections — and a culture of silence that keeps many from speaking up.",
+    "author": "isabelle-tavares",
+    "author_name": "Isabelle Tavares",
+    "series": "heat-and-harm",
+    "series_name": "Heat & Harm",
+    "lang": "en",
+    "url": "https://deepdives.planetdetroit.org/heat-and-harm/latino-workers-heat/",
+    "image_url": "https://planetdetroit.org/wp-content/uploads/2026/03/WEBSITE-.png",
+    "badge_text": "Part 1",
+    "badge_color": "#2982C4"
+  },
+  {
+    "slug": "latino-workers-heat-es",
+    "title": "Los trabajadores latinos de Michigan se enfrentan a un calor mortal",
+    "description": "A medida que el cambio climático impulsa temperaturas más altas, los trabajadores latinos al aire libre en Michigan enfrentan condiciones peligrosas con pocas protecciones.",
+    "author": "isabelle-tavares",
+    "author_name": "Isabelle Tavares",
+    "series": "heat-and-harm",
+    "series_name": "Calor y Daño",
+    "lang": "es",
+    "url": "https://deepdives.planetdetroit.org/heat-and-harm/latino-workers-heat-es/",
+    "image_url": "https://planetdetroit.org/wp-content/uploads/2026/03/WEBSITE-.png",
+    "badge_text": "Parte 1 · En Español",
+    "badge_color": "#EA5A39"
+  },
+  {
+    "slug": "osha",
+    "title": "Federal heat regulations on ice: 'The cost of doing nothing'",
+    "description": "A federal workplace heat standard meant to protect millions of outdoor workers faces political opposition, while workers continue to suffer preventable injuries and deaths.",
+    "author": "isabelle-tavares",
+    "author_name": "Isabelle Tavares",
+    "series": "heat-and-harm",
+    "series_name": "Heat & Harm",
+    "lang": "en",
+    "url": "https://deepdives.planetdetroit.org/heat-and-harm/osha/",
+    "image_url": "https://planetdetroit.org/wp-content/uploads/2026/03/WEBSITE-.png",
+    "badge_text": "Part 2",
+    "badge_color": "#2982C4"
+  },
+  {
+    "slug": "osha-es",
+    "title": "La normativa federal sobre calefacción, en el punto de mira: 'El costo de no hacer nada'",
+    "description": "Una norma federal sobre el calor destinada a proteger a millones de trabajadores al aire libre enfrenta oposición política, mientras los trabajadores siguen sufriendo lesiones y muertes evitables.",
+    "author": "isabelle-tavares",
+    "author_name": "Isabelle Tavares",
+    "series": "heat-and-harm",
+    "series_name": "Calor y Daño",
+    "lang": "es",
+    "url": "https://deepdives.planetdetroit.org/heat-and-harm/osha-es/",
+    "image_url": "https://planetdetroit.org/wp-content/uploads/2026/03/WEBSITE-.png",
+    "badge_text": "Parte 2 · En Español",
+    "badge_color": "#EA5A39"
+  }
+]
