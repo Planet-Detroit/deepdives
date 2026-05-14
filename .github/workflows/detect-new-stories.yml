@@ -1,0 +1,89 @@
+name: Detect new deep dive stories
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/index.html'
+      - '!index.html'
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Find new stories not in stories.json
+        id: check
+        run: |
+          # Get slugs already registered in stories.json
+          REGISTERED=$(jq -r '.[].slug' stories.json 2>/dev/null || echo "")
+
+          NEW_STORIES=""
+
+          # Find all story-level index.html files (depth 2: series/story/index.html)
+          for file in */*/index.html; do
+            [ -f "$file" ] || continue
+
+            # Extract the story slug (parent folder name)
+            SLUG=$(echo "$file" | cut -d'/' -f2)
+            SERIES=$(echo "$file" | cut -d'/' -f1)
+
+            # Skip if already in stories.json
+            if echo "$REGISTERED" | grep -qx "$SLUG"; then
+              continue
+            fi
+
+            # Extract title from <title> tag
+            TITLE=$(grep -oP '(?<=<title>)[^<]+' "$file" | sed 's/ — .*//')
+
+            # Build the URL
+            URL="https://deepdives.planetdetroit.org/${SERIES}/${SLUG}/"
+
+            NEW_STORIES="${NEW_STORIES}| ${SLUG} | ${TITLE} | ${URL} | ${SERIES} |\n"
+          done
+
+          if [ -z "$NEW_STORIES" ]; then
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "found=true" >> "$GITHUB_OUTPUT"
+            # Write to a file to avoid escaping issues
+            printf "$NEW_STORIES" > /tmp/new_stories.txt
+          fi
+
+      - name: Create GitHub Issue
+        if: steps.check.outputs.found == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          STORIES=$(cat /tmp/new_stories.txt)
+          BODY=$(cat <<'HEADER'
+          ## New deep dive stories detected
+
+          The following story folders were found that aren't yet in `stories.json`:
+
+          | Slug | Title | URL | Series |
+          |------|-------|-----|--------|
+          HEADER
+          )
+          BODY="${BODY}
+          ${STORIES}
+
+          ### What to do
+
+          Ask Claude to update \`stories.json\` with the full metadata for these stories:
+
+          > Add these new stories to stories.json in the deepdives repo: [paste slugs]
+
+          Claude will fill in the description, image, badge, author, and language fields. Once \`stories.json\` is updated, both the WordPress plugin and newsletter builder pick up the new stories automatically.
+
+          ---
+          *This issue was created automatically by the detect-new-stories workflow.*"
+
+          gh issue create \
+            --repo Planet-Detroit/deepdives \
+            --title "New deep dive stories need registration" \
+            --body "$BODY"
