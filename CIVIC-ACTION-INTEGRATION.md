@@ -127,7 +127,7 @@ Not:
 | What | Where |
 |------|-------|
 | Civic action builder tool | `/Users/user/projects/civic-action-builder/` |
-| WordPress block plugin | `/Users/user/projects/civic-action-block/` |
+| WordPress block plugin | `/Users/user/projects/wordpress/civic-action-block/` |
 | API endpoint (civic responses) | `/Users/user/projects/ask-planet-detroit/api/main.py` → `POST /api/civic-responses` |
 | Supabase table | `civic_responses` (columns: message, email, article_url, article_title, user_agent, created_at) |
 | CORS config | `/Users/user/projects/ask-planet-detroit/api/main.py` → `ALLOWED_ORIGINS` list |
